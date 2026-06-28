@@ -21,11 +21,16 @@ node_modules/
 dist/
 build/
 coverage/
+tsconfig.tsbuildinfo
 
 # Framework and tool caches
 .next/
 .turbo/
 .cache/
+
+# Test artifacts
+playwright-report/
+test-results/
 
 # Temporary files
 tmp/

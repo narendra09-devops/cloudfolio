@@ -20,18 +20,21 @@ The project is intended to show not only the final user interface, but also the 
 
 ## Planned Technology Stack
 
-The exact stack will be introduced in later milestones. The current plan is:
+The application foundation uses:
 
 - Frontend: Next.js, React, TypeScript
-- Styling: Tailwind CSS or an equivalent design system approach
-- Content: Markdown, MDX, or a structured content source
+- Styling: Tailwind CSS
+- Animations: Framer Motion
+- Icons: Lucide React
+- Theme: next-themes
+- Content: MDX support through `@next/mdx`
 - Testing: Unit, integration, accessibility, and end-to-end tests
 - Quality: Formatting, linting, type checking, and automated validation
-- Deployment: Cloud-hosted production environment with preview deployments
+- Deployment: Vercel-ready project structure
 - Infrastructure: Infrastructure as code where appropriate
 - Observability: Logging, monitoring, and performance tracking
 
-No application framework, package manifest, dependencies, Docker setup, or CI configuration has been added yet.
+Docker and infrastructure code have not been added yet.
 
 ## Planned Architecture
 
@@ -64,7 +67,55 @@ The project will follow an incremental workflow:
 4. Update `CHANGELOG.md` for meaningful user-facing or project-level changes.
 5. Keep learning notes in `LEARNING.md` when new concepts, tradeoffs, or lessons are discovered.
 
-Until the application scaffold is introduced, there are no package scripts, local dev server commands, or dependency installation steps.
+## Local Development
+
+Prerequisites:
+
+- Node.js 20 or newer
+- npm 10 or newer
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+Validate the project:
+
+```bash
+npm run format:check
+npm run lint
+npm run typecheck
+npm run test -- --run
+npm run build
+```
+
+End-to-end tests are prepared with Playwright and will become meaningful once user-facing pages are implemented.
+
+## Project Structure
+
+```text
+src/
+├── app/
+├── components/
+│   ├── ui/
+│   ├── layout/
+│   └── sections/
+├── content/
+├── hooks/
+├── lib/
+├── styles/
+├── types/
+├── utils/
+├── config/
+└── constants/
+```
 
 ## Contributing
 
