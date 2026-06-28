@@ -1,0 +1,75 @@
+# CloudFolio
+
+CloudFolio is a production-grade open-source portfolio project designed to demonstrate modern cloud, DevOps, application engineering, and software delivery practices through a real, maintainable product.
+
+The repository is intentionally starting with a clean foundation before application code is added. This keeps the project structured, documented, and ready for long-term iteration.
+
+## Vision
+
+CloudFolio will become a polished engineering portfolio that presents projects, experience, architecture decisions, operational practices, and learning progress in one cohesive product.
+
+The project is intended to show not only the final user interface, but also the engineering discipline behind it: clear documentation, explicit decisions, secure defaults, maintainable workflows, and incremental delivery.
+
+## Goals
+
+- Build a professional portfolio suitable for public review by engineering teams, recruiters, and collaborators.
+- Demonstrate production-oriented frontend, backend, cloud, and DevOps practices over time.
+- Maintain clear project documentation from the beginning.
+- Record important technical decisions and learning milestones as the project evolves.
+- Keep the repository clean, understandable, and approachable for contributors.
+
+## Planned Technology Stack
+
+The exact stack will be introduced in later milestones. The current plan is:
+
+- Frontend: Next.js, React, TypeScript
+- Styling: Tailwind CSS or an equivalent design system approach
+- Content: Markdown, MDX, or a structured content source
+- Testing: Unit, integration, accessibility, and end-to-end tests
+- Quality: Formatting, linting, type checking, and automated validation
+- Deployment: Cloud-hosted production environment with preview deployments
+- Infrastructure: Infrastructure as code where appropriate
+- Observability: Logging, monitoring, and performance tracking
+
+No application framework, package manifest, dependencies, Docker setup, or CI configuration has been added yet.
+
+## Planned Architecture
+
+CloudFolio is expected to evolve into a modular web application with clear separation between:
+
+- Presentation layer for portfolio pages and user-facing experiences
+- Content layer for projects, experience, notes, and case studies
+- Design system layer for reusable UI patterns
+- Data and integration layer for future APIs or external services
+- Delivery layer for deployment, quality gates, and operational automation
+
+Architecture decisions will be recorded in [DECISIONS.md](DECISIONS.md) as the project moves from foundation to implementation.
+
+## Roadmap
+
+- Milestone 1: Repository foundation, documentation, and contribution standards
+- Milestone 2: Application scaffold and development tooling
+- Milestone 3: Core portfolio experience and content model
+- Milestone 4: Testing, accessibility, and quality gates
+- Milestone 5: Deployment, observability, and release workflow
+- Milestone 6: Advanced cloud and DevOps demonstrations
+
+## Development Workflow
+
+The project will follow an incremental workflow:
+
+1. Define the milestone scope before implementation.
+2. Keep changes small, reviewable, and documented.
+3. Record major decisions in `DECISIONS.md`.
+4. Update `CHANGELOG.md` for meaningful user-facing or project-level changes.
+5. Keep learning notes in `LEARNING.md` when new concepts, tradeoffs, or lessons are discovered.
+
+Until the application scaffold is introduced, there are no package scripts, local dev server commands, or dependency installation steps.
+
+## Contributing
+
+Contributions are welcome once the project begins accepting external changes. Please read [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), and [SECURITY.md](SECURITY.md) before opening issues or pull requests.
+
+## License
+
+CloudFolio is licensed under the MIT License. See [LICENSE](LICENSE) for details.
