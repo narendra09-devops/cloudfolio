@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageWrapper } from "@/components/layout/page-wrapper";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import "@/styles/globals.css";
 
@@ -18,14 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-white text-neutral-950 antialiased dark:bg-neutral-950 dark:text-neutral-50">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <PageWrapper>{children}</PageWrapper>
         </ThemeProvider>
       </body>
     </html>
