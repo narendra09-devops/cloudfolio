@@ -1,43 +1,43 @@
 import type { Metadata } from "next";
-import { BlogGrid } from "@/components/blog/blog-grid";
+import { ArchitectureGrid } from "@/components/architecture/architecture-grid";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
-import { blogPosts } from "@/content/blog";
+import { architectureTopics } from "@/content/architecture";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Architecture Gallery",
   description:
-    "CloudFolio blog posts about AWS security, SAP cost optimization, operations, observability, SSL automation, and infrastructure scale.",
+    "CloudFolio architecture gallery covering AWS security, SAP cost optimization, VM audit automation, SSL lifecycle, dashboards, and cloud migration.",
   alternates: {
-    canonical: `${siteConfig.url}/blog`,
+    canonical: `${siteConfig.url}/architecture`,
   },
   openGraph: {
-    title: "Blog | CloudFolio",
+    title: "Architecture Gallery | CloudFolio",
     description:
-      "Technical writing for cloud infrastructure, DevOps, platform engineering, and SRE leadership.",
-    url: `${siteConfig.url}/blog`,
+      "A gallery of cloud architecture patterns and operational diagrams for recruiters and engineering teams.",
+    url: `${siteConfig.url}/architecture`,
     siteName: siteConfig.name,
     type: "website",
   },
 };
 
-export default function BlogPage() {
+export default function ArchitecturePage() {
   return (
     <>
       <Section className="border-b border-border bg-surface/30">
         <Container>
           <div className="max-w-4xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
-              Writing
+              Architecture
             </p>
             <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Technical writing for cloud operators.
+              Architecture gallery and design patterns.
             </h1>
             <Paragraph className="mt-6 max-w-3xl">
-              Practical articles on cloud infrastructure, security operations, platform reliability,
-              and the decisions behind measurable engineering work.
+              A visual index of cloud architecture patterns, operational designs, and engineering
+              decisions that shape reliable systems.
             </Paragraph>
           </div>
         </Container>
@@ -46,13 +46,13 @@ export default function BlogPage() {
       <Section>
         <Container>
           <div className="mb-10 max-w-3xl">
-            <H2>Latest articles.</H2>
+            <H2>Reference diagrams.</H2>
             <Paragraph className="mt-4">
-              Every article follows an evidence-based structure with clear context, operational
-              tradeoffs, and takeaways that can be applied in real environments.
+              Each architecture topic explains the system flow, the technical choices, and the
+              operational constraints behind the design.
             </Paragraph>
           </div>
-          <BlogGrid posts={blogPosts} />
+          <ArchitectureGrid topics={architectureTopics} />
         </Container>
       </Section>
     </>
