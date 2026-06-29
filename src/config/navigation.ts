@@ -12,6 +12,18 @@ export const mainNavigation = [
     href: "/blog",
   },
   {
+    label: "Architecture",
+    href: "/architecture",
+  },
+  {
+    label: "Learning",
+    href: "/learning",
+  },
+  {
+    label: "Notes",
+    href: "/notes",
+  },
+  {
     label: "Timeline",
     href: "/timeline",
   },
