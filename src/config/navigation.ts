@@ -1,5 +1,13 @@
 export const mainNavigation = [
   {
+    label: "Dashboard",
+    href: "/dashboard",
+  },
+  {
+    label: "Activity",
+    href: "/activity",
+  },
+  {
     label: "About",
     href: "/about",
   },
