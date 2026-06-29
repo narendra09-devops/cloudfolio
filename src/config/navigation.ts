@@ -16,6 +16,10 @@ export const mainNavigation = [
     href: "/timeline",
   },
   {
+    label: "Recruiter",
+    href: "/recruiter",
+  },
+  {
     label: "Contact",
     href: "/contact",
   },
