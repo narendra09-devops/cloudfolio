@@ -1,29 +1,29 @@
-import type { Metadata } from "next";
 import { PageWrapper } from "@/components/layout/page-wrapper";
 import { ThemeProvider } from "@/components/layout/theme-provider";
-import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: "CloudFolio",
-    template: "%s | CloudFolio",
-  },
-  description:
-    "Production-grade engineering portfolio platform for cloud, platform, DevOps, and SRE work.",
-  keywords: [
-    "CloudFolio",
-    "AWS",
-    "DevOps",
-    "SRE",
-    "Platform Engineering",
-    "Technical Blog",
-    "Architecture Gallery",
-  ],
-  authors: [{ name: "CloudFolio" }],
-};
+export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://cloudfolio-xi.vercel.app"),
 
+  title: "CloudFolio | Narendra Pratap Singh",
+
+  description:
+    "Senior Cloud Infrastructure Engineer | Site Reliability Engineer | Platform Engineer",
+
+  openGraph: {
+    title: "CloudFolio | Narendra Pratap Singh",
+    description: "Senior Cloud Infrastructure Engineer | Site Reliability Engineer",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://cloudfolio-xi.vercel.app",
+    siteName: "CloudFolio",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "CloudFolio | Narendra Pratap Singh",
+    description: "Senior Cloud Infrastructure Engineer | Site Reliability Engineer",
+  },
+};
 export default function RootLayout({
   children,
 }: Readonly<{
