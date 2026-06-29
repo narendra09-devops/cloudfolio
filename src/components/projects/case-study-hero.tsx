@@ -1,0 +1,41 @@
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { ButtonLink } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { TechnologyBadges } from "@/components/projects/technology-badges";
+import type { Project } from "@/content/projects";
+
+type CaseStudyHeroProps = {
+  project: Project;
+};
+
+export function CaseStudyHero({ project }: CaseStudyHeroProps) {
+  return (
+    <section className="border-b border-border bg-surface/30 py-16 sm:py-20 lg:py-24">
+      <Container>
+        <Link
+          className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          href="/projects"
+        >
+          <ArrowLeft aria-hidden="true" className="size-4" />
+          Projects
+        </Link>
+        <div className="mt-8 max-w-4xl">
+          <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
+            Case Study
+          </p>
+          <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            {project.title}
+          </h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-muted">{project.summary}</p>
+        </div>
+        <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <TechnologyBadges technologies={project.technologies} />
+          <ButtonLink href="/contact" variant="outline">
+            Discuss similar work
+          </ButtonLink>
+        </div>
+      </Container>
+    </section>
+  );
+}
