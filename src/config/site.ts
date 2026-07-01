@@ -6,7 +6,7 @@ export const siteConfig = {
   links: {
     github: "https://github.com/narendra09-devops",
     linkedin: "https://www.linkedin.com/in/narendra09-devops",
-    email: "mailto:napr.singh09@gmail.com",
+    email: "mailto:napr.singh09@gmail.com?subject=CloudFolio%20Opportunity%20Discussion",
     resume: "/resume/narendra-pratap-singh-resume.pdf",
   },
 } as const;

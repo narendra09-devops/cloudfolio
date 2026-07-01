@@ -56,7 +56,7 @@ export const footerNavigation = [
   },
   {
     label: "Email",
-    href: "mailto:napr.singh09@gmail.com",
+    href: "mailto:napr.singh09@gmail.com?subject=CloudFolio%20Opportunity%20Discussion",
   },
   {
     label: "Resume",

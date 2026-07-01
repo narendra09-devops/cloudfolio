@@ -42,6 +42,9 @@ export function Navbar() {
                     "rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors",
                     "hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     active && "bg-surface text-foreground",
+                    active &&
+                      item.href === "/contact" &&
+                      "bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 text-primary shadow-sm ring-1 ring-primary/25",
                   )}
                   href={item.href}
                   key={item.href}
@@ -92,6 +95,9 @@ export function Navbar() {
                       "rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors",
                       "hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                       active && "bg-surface text-foreground",
+                      active &&
+                        item.href === "/contact" &&
+                        "bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 text-primary shadow-sm ring-1 ring-primary/25",
                     )}
                     href={item.href}
                     key={item.href}

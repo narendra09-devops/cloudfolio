@@ -40,7 +40,7 @@ export function Footer() {
           <nav aria-label="Social links" className="flex flex-wrap gap-3">
             {footerNavigation.map((item) => {
               const Icon = socialIcons[item.label];
-              const isExternal = item.href.startsWith("http") || item.href.startsWith("mailto:");
+              const isExternal = item.href.startsWith("http");
               return (
                 <Link
                   aria-label={item.label}

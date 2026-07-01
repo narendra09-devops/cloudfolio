@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   Clock3,
   Download,
+  ExternalLink,
   FileText,
   Github,
   Globe2,
@@ -20,8 +21,9 @@ import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 
-const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
+const resumePdfUrl = "/resume/narendra-pratap-singh-resume.pdf";
 const emailAddress = "napr.singh09@gmail.com";
+const emailHref = `mailto:${emailAddress}?subject=CloudFolio%20Opportunity%20Discussion`;
 const githubUrl = "https://github.com/narendra09-devops";
 const linkedinUrl = "https://www.linkedin.com/in/narendra09-devops";
 
@@ -35,30 +37,34 @@ const contactCards = [
   {
     title: "Email",
     value: emailAddress,
-    href: `mailto:${emailAddress}`,
+    href: emailHref,
     icon: Mail,
-    accent: "border-emerald-400/25 bg-emerald-500/10 text-emerald-500",
+    accent:
+      "border-emerald-400/30 bg-gradient-to-br from-emerald-500/20 via-green-500/10 to-card text-emerald-500 shadow-emerald-500/15 hover:shadow-emerald-500/30",
   },
   {
     title: "LinkedIn",
     value: "Professional profile",
     href: linkedinUrl,
     icon: Linkedin,
-    accent: "border-blue-400/25 bg-blue-500/10 text-blue-500",
+    accent:
+      "border-blue-400/30 bg-gradient-to-br from-blue-500/20 via-cyan-500/10 to-card text-blue-500 shadow-cyan-500/15 hover:shadow-cyan-500/30",
   },
   {
     title: "GitHub",
     value: "Engineering work",
     href: githubUrl,
     icon: Github,
-    accent: "border-purple-400/25 bg-purple-500/10 text-purple-500",
+    accent:
+      "border-purple-400/30 bg-gradient-to-br from-purple-500/20 via-pink-500/10 to-card text-purple-500 shadow-pink-500/15 hover:shadow-pink-500/30",
   },
   {
     title: "Resume",
     value: "ATS-optimized PDF",
-    href: resumePdfPath,
+    href: resumePdfUrl,
     icon: FileText,
-    accent: "border-orange-400/25 bg-orange-500/10 text-orange-500",
+    accent:
+      "border-orange-400/30 bg-gradient-to-br from-orange-500/20 via-amber-500/10 to-card text-orange-500 shadow-orange-500/15 hover:shadow-orange-500/30",
     download: true,
   },
   {
@@ -66,9 +72,30 @@ const contactCards = [
     value: "CloudFolio projects",
     href: "/projects",
     icon: Globe2,
-    accent: "border-cyan-400/25 bg-cyan-500/10 text-cyan-500",
+    accent:
+      "border-cyan-400/30 bg-gradient-to-br from-cyan-500/20 via-sky-500/10 to-card text-cyan-500 shadow-cyan-500/15 hover:shadow-cyan-500/30",
   },
 ];
+
+const statusPills = ["Remote", "Germany", "Europe", "UAE", "Visa Sponsorship"] as const;
+
+const availabilityPills = [
+  "Remote",
+  "Germany",
+  "Europe",
+  "UAE",
+  "Visa Sponsorship",
+  "Full-time",
+  "Contract",
+  "Consulting",
+] as const;
+
+const recruiterBadges = [
+  "14+ Years Experience",
+  "AWS Certified",
+  "SRE",
+  "Platform Engineering",
+] as const;
 
 const availability = [
   { label: "Location", value: "Greater Noida, Uttar Pradesh, India", icon: MapPin },
@@ -93,13 +120,13 @@ function ActionLink({
   variant?: "primary" | "outline";
   download?: boolean;
 }) {
-  const isExternal = href.startsWith("http") || href.startsWith("mailto:");
+  const isExternal = href.startsWith("http");
   return (
     <a
       className={
         variant === "primary"
-          ? "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          : "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-border bg-card px-5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          ? "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-gradient-to-r from-primary via-secondary to-accent px-5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          : "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-primary/25 bg-card/85 px-5 text-sm font-semibold text-foreground shadow-md shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-primary/50 hover:bg-surface hover:shadow-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       }
       download={download}
       href={href}
@@ -114,9 +141,10 @@ function ActionLink({
 export default function ContactPage() {
   return (
     <main className="bg-background text-foreground">
-      <Section className="overflow-hidden border-b border-border bg-[radial-gradient(circle_at_16%_10%,rgb(var(--color-secondary)/0.16),transparent_24rem),radial-gradient(circle_at_86%_8%,rgb(var(--color-accent)/0.14),transparent_24rem)] py-14 sm:py-16 lg:py-20">
+      <Section className="relative overflow-hidden border-b border-border bg-[linear-gradient(135deg,rgb(var(--color-primary)/0.12),transparent_32%),radial-gradient(circle_at_16%_10%,rgb(var(--color-secondary)/0.20),transparent_24rem),radial-gradient(circle_at_86%_8%,rgb(var(--color-accent)/0.18),transparent_24rem)] py-14 sm:py-16 lg:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(var(--color-border)/0.30)_1px,transparent_1px),linear-gradient(90deg,rgb(var(--color-border)/0.30)_1px,transparent_1px)] bg-[size:44px_44px] opacity-35" />
         <Container>
-          <div className="grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+          <div className="relative grid gap-8 lg:grid-cols-[1fr_0.85fr] lg:items-center">
             <div className="max-w-4xl">
               <Badge variant="primary">Recruiter contact</Badge>
               <H1 className="mt-5">Let&apos;s connect</H1>
@@ -125,18 +153,38 @@ export default function ContactPage() {
                 Engineer, and Cloud Architect opportunities.
               </Paragraph>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <ActionLink download href={resumePdfPath}>
+                <ActionLink download href={resumePdfUrl}>
                   <Download className="size-4" />
                   Download Resume
                 </ActionLink>
-                <ActionLink href={`mailto:${emailAddress}`} variant="outline">
+                <ActionLink href={emailHref} variant="outline">
                   <Mail className="size-4" />
                   Email Me
                 </ActionLink>
               </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {recruiterBadges.map((badge) => (
+                  <span
+                    className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary"
+                    key={badge}
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {statusPills.map((pill) => (
+                  <span
+                    className="rounded-full border border-cyan-400/30 bg-gradient-to-r from-cyan-500/15 to-emerald-500/15 px-3 py-1 text-xs font-semibold text-foreground shadow-sm shadow-cyan-500/10"
+                    key={pill}
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
             </div>
 
-            <Card className="bg-card/70 shadow-xl shadow-primary/5 backdrop-blur-xl">
+            <Card className="border-primary/15 bg-card/70 shadow-2xl shadow-primary/10 backdrop-blur-xl">
               <CardHeader>
                 <CardTitle>Fastest ways to reach me</CardTitle>
               </CardHeader>
@@ -145,23 +193,16 @@ export default function ContactPage() {
                   const Icon = item.icon;
                   return (
                     <a
-                      className="group flex items-center gap-3 rounded-lg border border-border bg-background/60 p-3 transition-colors hover:border-primary/40 hover:bg-surface"
+                      aria-label={`Open ${item.title}`}
+                      className="group flex items-center gap-3 rounded-lg border border-border bg-background/60 p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-primary/40 hover:bg-surface hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       download={item.download}
                       href={item.href}
                       key={item.title}
-                      rel={
-                        item.href.startsWith("http") || item.href.startsWith("mailto:")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      target={
-                        item.href.startsWith("http") || item.href.startsWith("mailto:")
-                          ? "_blank"
-                          : undefined
-                      }
+                      rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
                     >
                       <span
-                        className={`flex size-10 shrink-0 items-center justify-center rounded-lg border ${item.accent}`}
+                        className={`flex size-10 shrink-0 items-center justify-center rounded-lg border shadow-lg ${item.accent}`}
                       >
                         <Icon className="size-5" />
                       </span>
@@ -192,44 +233,38 @@ export default function ContactPage() {
             {contactCards.map((item) => {
               const Icon = item.icon;
               return (
-                <Card
-                  className="bg-card/70 transition-colors hover:border-primary/40"
+                <a
+                  aria-label={`Open ${item.title} contact option`}
+                  className={`group block h-full rounded-lg border p-px shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${item.accent}`}
+                  download={item.download}
+                  href={item.href}
                   key={item.title}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
                 >
-                  <CardContent className="p-5">
-                    <span
-                      className={`flex size-11 items-center justify-center rounded-lg border ${item.accent}`}
-                    >
-                      <Icon className="size-5" />
-                    </span>
-                    <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
-                    <p className="mt-2 min-h-10 text-sm leading-5 text-muted">{item.value}</p>
-                    <a
-                      className="mt-4 inline-flex text-sm font-semibold text-primary hover:text-primary/80"
-                      download={item.download}
-                      href={item.href}
-                      rel={
-                        item.href.startsWith("http") || item.href.startsWith("mailto:")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      target={
-                        item.href.startsWith("http") || item.href.startsWith("mailto:")
-                          ? "_blank"
-                          : undefined
-                      }
-                    >
-                      Open
-                    </a>
-                  </CardContent>
-                </Card>
+                  <Card className="h-full border-0 bg-card/80 backdrop-blur-xl transition-colors group-hover:bg-card/95">
+                    <CardContent className="p-5">
+                      <span
+                        className={`flex size-11 items-center justify-center rounded-lg border shadow-lg ${item.accent}`}
+                      >
+                        <Icon className="size-5" />
+                      </span>
+                      <h3 className="mt-4 text-base font-semibold text-foreground">{item.title}</h3>
+                      <p className="mt-2 min-h-10 text-sm leading-5 text-muted">{item.value}</p>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-primary/80">
+                        Open
+                        <ExternalLink className="size-3.5" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </a>
               );
             })}
           </div>
         </Container>
       </Section>
 
-      <Section className="border-y border-border bg-surface/30 py-12 sm:py-14 lg:py-16">
+      <Section className="border-y border-border bg-[linear-gradient(135deg,rgb(var(--color-success)/0.10),transparent_34%),radial-gradient(circle_at_88%_18%,rgb(var(--color-primary)/0.14),transparent_22rem)] py-12 sm:py-14 lg:py-16">
         <Container>
           <div className="grid gap-6 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
@@ -241,14 +276,27 @@ export default function ContactPage() {
                 Practical location, timezone, and work preference details for screening calls and
                 hiring conversations.
               </Paragraph>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {availabilityPills.map((pill) => (
+                  <span
+                    className="rounded-full border border-emerald-400/30 bg-gradient-to-r from-emerald-500/15 to-blue-500/15 px-3 py-1 text-xs font-semibold text-foreground shadow-sm shadow-emerald-500/10"
+                    key={pill}
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
             </div>
             <div className="grid gap-4 md:grid-cols-2">
               {availability.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <Card className="bg-card/70" key={item.label}>
+                  <Card
+                    className="border-emerald-400/20 bg-card/75 shadow-lg shadow-emerald-500/10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-blue-500/15"
+                    key={item.label}
+                  >
                     <CardContent className="flex gap-3 p-5">
-                      <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-secondary/30 bg-secondary/10 text-secondary">
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-emerald-400/30 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 text-emerald-500 shadow-lg shadow-emerald-500/15">
                         <Icon className="size-5" />
                       </span>
                       <div>
@@ -266,7 +314,7 @@ export default function ContactPage() {
 
       <Section className="py-12 sm:py-14 lg:py-16">
         <Container>
-          <Card className="overflow-hidden bg-card/70 shadow-xl shadow-primary/5">
+          <Card className="overflow-hidden border-primary/20 bg-[linear-gradient(135deg,rgb(var(--color-secondary)/0.16),rgb(var(--color-primary)/0.10)_42%,rgb(var(--color-accent)/0.12))] shadow-2xl shadow-primary/10">
             <CardContent className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.9fr]">
               <div>
                 <Badge variant="secondary">Recruiter CTA</Badge>
@@ -278,11 +326,11 @@ export default function ContactPage() {
                   automation, or reliability roles, I would be happy to connect.
                 </Paragraph>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <ActionLink download href={resumePdfPath}>
+                  <ActionLink download href={resumePdfUrl}>
                     <Download className="size-4" />
                     Download Resume
                   </ActionLink>
-                  <ActionLink href={`mailto:${emailAddress}`} variant="outline">
+                  <ActionLink href={emailHref} variant="outline">
                     <Mail className="size-4" />
                     Email Me
                   </ActionLink>
@@ -294,21 +342,29 @@ export default function ContactPage() {
                     <Linkedin className="size-4" />
                     LinkedIn
                   </ActionLink>
+                  <ActionLink href={githubUrl} variant="outline">
+                    <Github className="size-4" />
+                    GitHub
+                  </ActionLink>
                 </div>
               </div>
 
-              <div className="rounded-xl border border-border bg-background/60 p-5">
+              <div className="rounded-xl border border-border bg-background/70 p-5 shadow-xl shadow-primary/10 backdrop-blur-xl">
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 text-primary">
+                  <span className="flex size-10 items-center justify-center rounded-lg border border-purple-400/30 bg-gradient-to-br from-purple-500/20 to-blue-500/20 text-purple-500 shadow-lg shadow-purple-500/15">
                     <MessageSquare className="size-5" />
                   </span>
                   <div>
                     <h3 className="font-heading text-lg font-semibold text-foreground">
                       Contact form placeholder
                     </h3>
-                    <p className="text-sm text-muted">Frontend only. No emails are sent yet.</p>
+                    <p className="text-sm text-muted">Frontend-only contact helper.</p>
                   </div>
                 </div>
+                <p className="mt-4 rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-2 text-sm leading-6 text-muted">
+                  This form is a visual contact helper. For now, please use Email Me or LinkedIn to
+                  contact me directly.
+                </p>
                 <form className="mt-5 grid gap-3" aria-label="Contact form placeholder">
                   {["Name", "Email", "Company"].map((label) => (
                     <label className="grid gap-1.5" key={label}>
@@ -327,14 +383,13 @@ export default function ContactPage() {
                       placeholder="Role, timeline, location, and a few details about the opportunity"
                     />
                   </label>
-                  <button
-                    className="mt-2 inline-flex min-h-11 cursor-not-allowed items-center justify-center gap-2 rounded-md border border-border bg-surface px-5 text-sm font-semibold text-muted"
-                    disabled
-                    type="button"
+                  <a
+                    className="mt-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-gradient-to-r from-emerald-500 to-cyan-500 px-5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-emerald-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    href={emailHref}
                   >
                     <Send className="size-4" />
-                    Submit unavailable
-                  </button>
+                    Email Narendra
+                  </a>
                 </form>
               </div>
             </CardContent>

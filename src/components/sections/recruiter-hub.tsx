@@ -18,7 +18,7 @@ const recruiterDetails = [
 ] as const;
 
 const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
-const emailHref = "mailto:napr.singh09@gmail.com";
+const emailHref = "mailto:napr.singh09@gmail.com?subject=CloudFolio%20Opportunity%20Discussion";
 const linkedinHref = "https://www.linkedin.com/in/narendra09-devops";
 const githubHref = "https://github.com/narendra09-devops";
 
@@ -60,14 +60,7 @@ export function RecruiterHub() {
             <ButtonLink className="w-full sm:w-auto" href="/contact" size="lg" variant="outline">
               Contact Me
             </ButtonLink>
-            <ButtonLink
-              className="w-full sm:w-auto"
-              href={emailHref}
-              rel="noopener noreferrer"
-              size="lg"
-              target="_blank"
-              variant="outline"
-            >
+            <ButtonLink className="w-full sm:w-auto" href={emailHref} size="lg" variant="outline">
               <Mail className="size-4" />
               Email
             </ButtonLink>
