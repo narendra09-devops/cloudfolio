@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 
+const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
+
 export const metadata: Metadata = {
   title: "Resume | Narendra Pratap Singh",
   description:
@@ -29,6 +31,24 @@ export default function ResumePage() {
               Engineer, and AWS Cloud Engineer with 14+ years of experience designing, automating,
               and operating scalable cloud infrastructure and reliability platforms.
             </Paragraph>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                className="inline-flex min-h-11 items-center justify-center rounded-md border border-transparent bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                href={resumePdfPath}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                View Resume
+              </a>
+              <a
+                className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-transparent px-5 text-sm font-semibold text-foreground transition-colors hover:border-muted hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                download
+                href={resumePdfPath}
+              >
+                Download Resume PDF
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground">Last Updated: July 2026</p>
           </div>
         </Container>
       </Section>
