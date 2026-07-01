@@ -14,7 +14,7 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
     <a
       className="group block h-full rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       href={repository.htmlUrl}
-      rel="noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       <Card className="h-full transition-colors group-hover:border-primary/40 group-hover:bg-surface/80">

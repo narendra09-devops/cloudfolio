@@ -70,12 +70,24 @@ export function GithubProfileCard({ profile }: GithubProfileCardProps) {
         </div>
 
         <div className="flex flex-col gap-3 sm:flex-row">
-          <ButtonLink href={profile.htmlUrl} size="sm" target="_blank" variant="primary">
+          <ButtonLink
+            href={profile.htmlUrl}
+            rel="noopener noreferrer"
+            size="sm"
+            target="_blank"
+            variant="primary"
+          >
             <Github aria-hidden="true" className="size-4" />
             View GitHub
           </ButtonLink>
           {profile.blog ? (
-            <ButtonLink href={profile.blog} size="sm" target="_blank" variant="outline">
+            <ButtonLink
+              href={profile.blog}
+              rel="noopener noreferrer"
+              size="sm"
+              target="_blank"
+              variant="outline"
+            >
               <LinkIcon aria-hidden="true" className="size-4" />
               Website
             </ButtonLink>

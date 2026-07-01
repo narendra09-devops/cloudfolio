@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -15,6 +16,11 @@ const recruiterDetails = [
   { label: "Relocation", value: "Europe & UAE" },
   { label: "Visa Sponsorship Required", value: "Yes" },
 ] as const;
+
+const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
+const emailHref = "mailto:napr.singh09@gmail.com";
+const linkedinHref = "https://www.linkedin.com/in/narendra09-devops";
+const githubHref = "https://github.com/narendra09-devops";
 
 export function RecruiterHub() {
   return (
@@ -48,11 +54,44 @@ export function RecruiterHub() {
           </motion.div>
 
           <motion.div className="mt-8 flex flex-col gap-3 sm:flex-row" variants={fadeUp}>
-            <ButtonLink className="w-full sm:w-auto" href="/resume-placeholder.pdf" size="lg">
+            <ButtonLink className="w-full sm:w-auto" href={resumePdfPath} size="lg">
               Download Resume
             </ButtonLink>
             <ButtonLink className="w-full sm:w-auto" href="/contact" size="lg" variant="outline">
               Contact Me
+            </ButtonLink>
+            <ButtonLink
+              className="w-full sm:w-auto"
+              href={emailHref}
+              rel="noopener noreferrer"
+              size="lg"
+              target="_blank"
+              variant="outline"
+            >
+              <Mail className="size-4" />
+              Email
+            </ButtonLink>
+            <ButtonLink
+              className="w-full sm:w-auto"
+              href={linkedinHref}
+              rel="noopener noreferrer"
+              size="lg"
+              target="_blank"
+              variant="outline"
+            >
+              <Linkedin className="size-4" />
+              LinkedIn
+            </ButtonLink>
+            <ButtonLink
+              className="w-full sm:w-auto"
+              href={githubHref}
+              rel="noopener noreferrer"
+              size="lg"
+              target="_blank"
+              variant="outline"
+            >
+              <Github className="size-4" />
+              GitHub
             </ButtonLink>
           </motion.div>
         </motion.div>

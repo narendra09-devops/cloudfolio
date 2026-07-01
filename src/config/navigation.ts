@@ -48,14 +48,18 @@ export const mainNavigation = [
 export const footerNavigation = [
   {
     label: "GitHub",
-    href: "https://github.com/narendra09-devops/cloudfolio",
+    href: "https://github.com/narendra09-devops",
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/narendra09-devops",
   },
   {
     label: "Email",
-    href: "mailto:hello@example.com",
+    href: "mailto:napr.singh09@gmail.com",
+  },
+  {
+    label: "Resume",
+    href: "/resume/narendra-pratap-singh-resume.pdf",
   },
 ] as const;
