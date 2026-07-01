@@ -95,7 +95,7 @@ export function ActivityFeed({ blogs, projects, repositories }: ActivityFeedProp
             return (
               <li key={`${item.source}-${item.href}`}>
                 {external ? (
-                  <a href={item.href} rel="noreferrer" target="_blank">
+                  <a href={item.href} rel="noopener noreferrer" target="_blank">
                     {content}
                   </a>
                 ) : (
