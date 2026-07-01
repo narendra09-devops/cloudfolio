@@ -4,6 +4,17 @@ export type ProjectMetric = {
   context: string;
 };
 
+export type ProjectDetailSection = {
+  title: string;
+  items: string[];
+};
+
+export type ProjectMermaidDiagram = {
+  title: string;
+  description: string;
+  code: string;
+};
+
 export type Project = {
   title: string;
   slug: string;
@@ -15,9 +26,181 @@ export type Project = {
   businessImpact: string[];
   lessonsLearned: string[];
   architecture: string[];
+  employer?: string;
+  client?: string;
+  role?: string;
+  duration?: string;
+  environmentScale?: string[];
+  dataCollected?: string[];
+  technicalChallenges?: string[];
+  implementation?: ProjectDetailSection[];
+  keyAchievements?: string[];
+  mermaidDiagrams?: ProjectMermaidDiagram[];
 };
 
 export const projects: Project[] = [
+  {
+    title: "VM Audit & Automation Platform - Infrastructure Optimization",
+    slug: "vm-audit-automation-platform",
+    summary:
+      "Designed and implemented an automation platform to audit, reconcile, and optimize virtual infrastructure across two enterprise environments for a global hosting provider.",
+    employer: "Agivant Technologies Pvt. Ltd.",
+    client: "Confidential Enterprise Customer",
+    role: "Cloud Site Reliability Engineer / Lead Digital Platform Engineer",
+    duration: "November 2025 - April 2026",
+    problem:
+      "The organization had no centralized dashboard or authoritative inventory for virtual workloads across Environment A and Environment B. Workload state was split across the virtualization platform, billing platform, and operational spreadsheets, leaving inactive and orphaned workloads powered on and consuming compute, storage, backup capacity, licensing, and infrastructure spend.",
+    solution:
+      "Built a reconciliation workflow that established a single source of truth between virtualization inventory and billing records, generated audit reports, identified infrastructure and billing mismatches, automated backup and restore validation, and enabled controlled lifecycle actions through approved asset identifiers.",
+    technologies: [
+      "Billing Platform",
+      "Virtualization Platform",
+      "Object Storage",
+      "Automation Framework",
+      "Infrastructure Audit Platform",
+    ],
+    metrics: [
+      {
+        label: "Infrastructure assets",
+        value: "900+",
+        context: "reconciled across Environment A and Environment B",
+      },
+      {
+        label: "Inactive workloads",
+        value: "300+",
+        context: "identified for review, backup, and controlled lifecycle action",
+      },
+      {
+        label: "Manual audit effort",
+        value: "70%",
+        context: "reduction through reusable automation workflows and reports",
+      },
+      {
+        label: "Environments",
+        value: "2",
+        context: "normalized into one infrastructure audit workflow",
+      },
+      {
+        label: "Approval gates",
+        value: "100%",
+        context: "required before customer-impacting lifecycle actions",
+      },
+    ],
+    environmentScale: [
+      "900+ infrastructure assets audited across two enterprise environments.",
+      "Environment A and Environment B inventory normalized into one operating view.",
+      "300+ inactive and orphaned workloads requiring ownership and billing validation.",
+      "Virtualization platform integrated through approved automation interfaces.",
+      "Billing platform and object storage used for reconciliation and recovery workflows.",
+      "Multiple engineering, operations, finance, and business stakeholders.",
+    ],
+    dataCollected: [
+      "Asset label, asset identifier, ownership group, and placement metadata.",
+      "CPU, RAM, storage allocation, operating system, and creation date.",
+      "Virtualization status, billing status, operational status, and power state.",
+      "Backup status, last activity, ownership, and lifecycle indicators.",
+    ],
+    technicalChallenges: [
+      "No centralized dashboard or trusted source of truth for virtual infrastructure inventory.",
+      "Inconsistent workload status between the virtualization platform and billing data.",
+      "Manual validation burden across more than 900 infrastructure assets.",
+      "Customer outage risk if the wrong workload was paused or decommissioned.",
+      "No standardized backup, restore validation, or decommissioning workflow.",
+    ],
+    implementation: [
+      {
+        title: "Inventory and reconciliation automation",
+        items: [
+          "Created automation workflows to list assets, retrieve approved asset identifiers, enrich records with infrastructure details, and compare infrastructure state against billing status.",
+          "Generated audit reports that highlighted mismatches, inactive-but-powered-on workloads, orphaned resources, and records requiring stakeholder approval.",
+          "Used approved asset identifiers as lifecycle control keys to reduce ambiguity when labels or ownership records were inconsistent.",
+        ],
+      },
+      {
+        title: "Backup, validation, and lifecycle controls",
+        items: [
+          "Automated enterprise backup workflows to object storage before decommissioning candidates were actioned.",
+          "Validated restore procedures so recovery paths were confirmed before workload shutdown or removal.",
+          "Built controlled suspend, unsuspend, backup, restore, and lifecycle operations around approved asset lists.",
+        ],
+      },
+      {
+        title: "Automation capabilities delivered",
+        items: [
+          "Inventory discovery workflow",
+          "Asset identifier lookup workflow",
+          "Metadata enrichment workflow",
+          "Controlled lifecycle workflow",
+          "Backup and recovery validation workflow",
+        ],
+      },
+    ],
+    keyAchievements: [
+      "Audited and reconciled 900+ infrastructure assets across Environment A and Environment B.",
+      "Identified infrastructure and billing discrepancies between the virtualization platform and billing platform.",
+      "Discovered 300+ inactive workloads that were still consuming infrastructure resources.",
+      "Reduced manual audit effort by approximately 70%.",
+      "Improved billing reconciliation and workload ownership visibility.",
+      "Created reusable automation frameworks for future infrastructure audits.",
+      "Reduced operational risk through backup and restore validation before decommissioning.",
+    ],
+    businessImpact: [
+      "Reduced unnecessary infrastructure costs by identifying powered-on workloads without corresponding active billing signals.",
+      "Improved visibility and governance across the virtual infrastructure estate.",
+      "Increased stakeholder confidence in decommissioning decisions by tying actions to reconciled evidence.",
+      "Reduced operational overhead by replacing spreadsheet-heavy reviews with repeatable automation.",
+      "Established a controlled, auditable process for customer-impacting workload lifecycle changes.",
+    ],
+    lessonsLearned: [
+      "Inventory without ownership context is insufficient.",
+      "Evidence-based automation builds trust.",
+      "Recovery validation must precede decommissioning.",
+      "Small automation investments create large operational leverage.",
+      "Cross-team collaboration is essential.",
+    ],
+    architecture: [
+      "Discover assets",
+      "Collect metadata",
+      "Query billing platform",
+      "Compare status",
+      "Generate reports",
+      "Approve changes",
+      "Backup to object storage",
+      "Validate restore",
+      "Decommission safely",
+    ],
+    mermaidDiagrams: [
+      {
+        title: "Audit Reconciliation Workflow",
+        description:
+          "End-to-end control flow from asset discovery through approval, backup, restore validation, and decommissioning.",
+        code: `flowchart TD
+  A[Discover Assets] --> B[Collect Metadata]
+  B --> C[Query Billing Platform]
+  C --> D[Compare Status]
+  D --> E[Generate Audit Reports]
+  E --> F[Identify Mismatches]
+  F --> G[Stakeholder Approval]
+  G --> H[Backup to Object Storage]
+  H --> I[Restore Validation]
+  I --> J[Controlled Decommissioning]`,
+      },
+      {
+        title: "Source-of-Truth Reconciliation",
+        description:
+          "The platform reconciled infrastructure, billing, and operational evidence before lifecycle actions were approved.",
+        code: `flowchart LR
+  A[Virtualization Platform] --> D[Infrastructure Audit Platform]
+  B[Billing Platform] --> D
+  C[Operational Spreadsheets] --> D
+  D --> E[Normalized Asset Inventory]
+  E --> F[Discrepancy Report]
+  F --> G[Approval Queue]
+  G --> H[Backup and Restore Validation]
+  H --> I[Lifecycle Action by Asset ID]`,
+      },
+    ],
+  },
   {
     title: "AWS Security Hub Remediation Program",
     slug: "aws-security-hub-remediation-program",
@@ -131,42 +314,6 @@ export const projects: Project[] = [
       "Framework adoption improves when review outputs are reusable in delivery work.",
     ],
     architecture: ["Design intake", "Decision records", "Reference patterns", "Readiness review"],
-  },
-  {
-    title: "VM Audit Automation Platform",
-    slug: "vm-audit-automation-platform",
-    summary:
-      "Automation platform for VM inventory, compliance checks, owner mapping, and audit-ready infrastructure reporting.",
-    problem:
-      "Manual VM audits were slow, error-prone, and dependent on scattered infrastructure data from multiple operational systems.",
-    solution:
-      "Built automated inventory collection, normalization, compliance checks, and reporting workflows that produced consistent audit outputs.",
-    technologies: ["Python", "Linux", "VMware", "Shell", "PostgreSQL", "Reporting"],
-    metrics: [
-      { label: "Audit effort", value: "70%", context: "reduction in manual evidence gathering" },
-      {
-        label: "Inventory accuracy",
-        value: "95%+",
-        context: "after normalization and owner mapping",
-      },
-      { label: "Report cadence", value: "Weekly", context: "automated compliance snapshots" },
-    ],
-    businessImpact: [
-      "Reduced audit delivery risk by removing spreadsheet-driven reconciliation.",
-      "Improved infrastructure ownership visibility for operations and compliance teams.",
-      "Created a dependable source of truth for recurring VM estate reviews.",
-    ],
-    lessonsLearned: [
-      "Audit platforms need strong data normalization before dashboards become trustworthy.",
-      "Owner and lifecycle metadata are as important as technical configuration facts.",
-      "Automated evidence should be explainable so auditors can trace source data.",
-    ],
-    architecture: [
-      "Inventory collectors",
-      "Normalization layer",
-      "Compliance rules",
-      "Audit reports",
-    ],
   },
   {
     title: "SSL Lifecycle Automation Platform",
