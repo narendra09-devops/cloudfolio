@@ -6,13 +6,13 @@ type ArchitecturePlaceholderProps = {
 };
 
 export function ArchitecturePlaceholder({
-  title = "Architecture placeholder",
+  title = "Architecture system flow",
   steps,
 }: ArchitecturePlaceholderProps) {
   return (
-    <div className="rounded-lg border border-dashed border-border bg-surface/50 p-5 sm:p-6">
+    <div className="rounded-lg border border-secondary/20 bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/10 p-5 shadow-lg shadow-secondary/10 sm:p-6">
       <div className="flex items-center gap-3">
-        <div className="flex size-10 items-center justify-center rounded-md border border-secondary/30 bg-secondary/10 text-sky-300">
+        <div className="flex size-10 items-center justify-center rounded-md border border-secondary/30 bg-secondary/10 text-secondary">
           <GitBranch aria-hidden="true" className="size-5" />
         </div>
         <div>
@@ -20,7 +20,7 @@ export function ArchitecturePlaceholder({
             {title}
           </h2>
           <p className="text-sm leading-6 text-muted">
-            Diagram-ready system flow for a future visual architecture asset.
+            Key architecture steps for review, discussion, and implementation planning.
           </p>
         </div>
       </div>

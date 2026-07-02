@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <>
-      <Section className="border-b border-border bg-surface/30">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-secondary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-primary)/0.10),transparent_42%)]">
         <Container>
           <div className="max-w-4xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
@@ -45,7 +45,7 @@ export default function BlogPage() {
 
       <Section>
         <Container>
-          <div className="mb-10 max-w-3xl">
+          <div className="mb-8 max-w-3xl">
             <H2>Latest articles.</H2>
             <Paragraph className="mt-4">
               Every article follows an evidence-based structure with clear context, operational

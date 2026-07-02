@@ -3,6 +3,7 @@ import { CareerHighlights } from "@/components/sections/career-highlights";
 import { CertificationsSection } from "@/components/sections/certifications-section";
 import { ResumeDownload } from "@/components/sections/resume-download";
 import { SkillsMatrix } from "@/components/sections/skills-matrix";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <>
-      <Section className="border-b border-border">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
         <Container>
           <div className="max-w-4xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
@@ -31,22 +32,25 @@ export default function ResumePage() {
               Engineer, and AWS Cloud Engineer with 14+ years of experience designing, automating,
               and operating scalable cloud infrastructure and reliability platforms.
             </Paragraph>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                className="inline-flex min-h-11 items-center justify-center rounded-md border border-transparent bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <ButtonLink
+                className="w-full sm:w-auto"
                 href={resumePdfPath}
                 rel="noopener noreferrer"
+                size="lg"
                 target="_blank"
               >
                 View Resume
-              </a>
-              <a
-                className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-transparent px-5 text-sm font-semibold text-foreground transition-colors hover:border-muted hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              </ButtonLink>
+              <ButtonLink
+                className="w-full sm:w-auto"
                 download
                 href={resumePdfPath}
+                size="lg"
+                variant="outline"
               >
                 Download Resume PDF
-              </a>
+              </ButtonLink>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">Last Updated: July 2026</p>
           </div>

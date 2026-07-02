@@ -8,10 +8,10 @@ import { Section } from "@/components/ui/section";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const highlights = [
-  { value: "14+", label: "Years Experience" },
-  { value: "5+", label: "Years AWS & SRE" },
-  { value: "1000+", label: "Servers Managed" },
-  { value: "50+", label: "Automations Delivered" },
+  { value: "14+", label: "Years Experience", accent: "from-primary/20 to-secondary/10" },
+  { value: "5+", label: "Years AWS & SRE", accent: "from-secondary/20 to-accent/10" },
+  { value: "1000+", label: "Servers Managed", accent: "from-accent/20 to-primary/10" },
+  { value: "50+", label: "Automations Delivered", accent: "from-success/20 to-secondary/10" },
 ] as const;
 
 interface CareerHighlightsProps {
@@ -43,9 +43,9 @@ export function CareerHighlights({
           >
             {highlights.map((highlight) => (
               <motion.div key={highlight.label} variants={fadeUp}>
-                <Card className="h-full">
-                  <CardContent className="p-6">
-                    <p className="font-heading text-4xl font-semibold tracking-tight text-foreground">
+                <Card className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10">
+                  <CardContent className={`bg-gradient-to-br ${highlight.accent} p-5 sm:p-6`}>
+                    <p className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                       {highlight.value}
                     </p>
                     <p className="mt-2 text-sm font-medium text-muted">{highlight.label}</p>

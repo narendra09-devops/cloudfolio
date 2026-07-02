@@ -20,7 +20,7 @@ export function AnalyticsCard({ fetchedAt }: AnalyticsCardProps) {
     {
       icon: BarChart3,
       label: "Analytics",
-      value: "Placeholder ready for page views, conversion events, and repository trends.",
+      value: "Prepared for page views, conversion events, and repository trend tracking.",
     },
     {
       icon: Clock,
@@ -33,7 +33,7 @@ export function AnalyticsCard({ fetchedAt }: AnalyticsCardProps) {
   ];
 
   return (
-    <Card>
+    <Card className="min-w-0 overflow-hidden">
       <CardHeader>
         <CardTitle>Analytics integration</CardTitle>
       </CardHeader>

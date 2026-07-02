@@ -32,7 +32,8 @@ export function CertificationsSection() {
           <motion.div className="mt-10 grid gap-4 md:grid-cols-2" variants={staggerContainer}>
             {certifications.map((certification) => (
               <motion.div key={certification} variants={fadeUp}>
-                <Card className="h-full">
+                <Card className="h-full overflow-hidden border-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10">
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardHeader>
                     <CardTitle>{certification}</CardTitle>
                   </CardHeader>

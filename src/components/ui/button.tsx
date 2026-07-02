@@ -6,17 +6,17 @@ type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 const baseButtonClasses =
-  "inline-flex items-center justify-center gap-2 rounded-md border font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-md border font-semibold shadow-sm transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "border-transparent bg-primary text-white shadow-sm hover:bg-primary/90 focus-visible:ring-primary/40",
+    "border-transparent bg-gradient-to-r from-primary via-secondary to-accent text-white shadow-lg shadow-primary/20 hover:shadow-primary/35 focus-visible:ring-primary/40",
   secondary:
-    "border-transparent bg-secondary text-white shadow-sm hover:bg-secondary/90 focus-visible:ring-secondary/40",
+    "border-transparent bg-gradient-to-r from-secondary to-primary text-white shadow-lg shadow-secondary/20 hover:shadow-secondary/35 focus-visible:ring-secondary/40",
   outline:
-    "border-border bg-transparent text-foreground hover:border-muted hover:bg-surface focus-visible:ring-primary/30",
+    "border-primary/25 bg-surface/80 text-foreground hover:border-primary/50 hover:bg-primary/10 hover:shadow-primary/15 focus-visible:ring-primary/30",
   ghost:
-    "border-transparent bg-transparent text-muted hover:bg-surface hover:text-foreground focus-visible:ring-primary/30",
+    "border-transparent bg-transparent text-muted hover:bg-surface hover:text-foreground hover:shadow-primary/10 focus-visible:ring-primary/30",
 };
 
 const sizes: Record<ButtonSize, string> = {

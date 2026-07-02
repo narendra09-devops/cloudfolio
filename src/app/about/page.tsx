@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Section className="border-b border-border bg-background">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-4xl">
@@ -102,7 +102,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <Card className="h-full">
+            <Card className="h-full overflow-hidden border-primary/20 shadow-xl shadow-primary/10">
+              <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
               <CardHeader>
                 <CardTitle>Role Focus</CardTitle>
               </CardHeader>
@@ -181,7 +182,11 @@ export default function AboutPage() {
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {strengths.map((strength) => (
-              <Card className="h-full" key={strength.title}>
+              <Card
+                className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10"
+                key={strength.title}
+              >
+                <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                 <CardHeader>
                   <CardTitle>{strength.title}</CardTitle>
                 </CardHeader>
@@ -210,7 +215,11 @@ export default function AboutPage() {
 
             <div className="grid gap-4 md:grid-cols-2">
               {certifications.map((certification) => (
-                <Card className="h-full" key={certification}>
+                <Card
+                  className="h-full overflow-hidden border-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+                  key={certification}
+                >
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardHeader>
                     <CardTitle>{certification}</CardTitle>
                   </CardHeader>
@@ -238,7 +247,7 @@ export default function AboutPage() {
               </Paragraph>
             </div>
 
-            <Card>
+            <Card className="border-success/20 bg-gradient-to-br from-success/10 via-primary/5 to-secondary/10">
               <CardContent className="p-6">
                 <ul className="grid gap-3" aria-label="International availability">
                   {availability.map((item) => (
@@ -256,7 +265,7 @@ export default function AboutPage() {
 
       <Section>
         <Container>
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-sm sm:p-8 lg:p-10">
+          <div className="rounded-lg border border-primary/20 bg-[linear-gradient(135deg,rgb(var(--color-primary)/0.10),rgb(var(--color-secondary)/0.08)_45%,rgb(var(--color-accent)/0.10))] p-6 shadow-xl shadow-primary/10 sm:p-8 lg:p-10">
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">

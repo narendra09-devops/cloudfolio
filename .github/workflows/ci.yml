@@ -12,6 +12,10 @@ jobs:
   validate:
     name: Validate
     runs-on: ubuntu-latest
+    env:
+      GITHUB_USERNAME: narendra09-devops
+      NEXT_PUBLIC_GITHUB_USERNAME: narendra09-devops
+      NEXT_PUBLIC_SITE_URL: https://cloudfolio-xi.vercel.app
 
     steps:
       - name: Checkout

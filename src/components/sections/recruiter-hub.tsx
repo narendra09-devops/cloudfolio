@@ -96,7 +96,7 @@ const relocationReadiness = [
 export function RecruiterHub() {
   return (
     <>
-      <Section className="border-b border-border bg-background py-14 sm:py-16 lg:py-20">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
         <Container>
           <motion.div
             animate="visible"
@@ -145,7 +145,8 @@ export function RecruiterHub() {
             </motion.div>
 
             <motion.div variants={fadeUp}>
-              <Card>
+              <Card className="overflow-hidden border-primary/20 shadow-xl shadow-primary/10">
+                <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                 <CardHeader>
                   <CardTitle>Recruiter Snapshot</CardTitle>
                 </CardHeader>
@@ -168,7 +169,7 @@ export function RecruiterHub() {
         </Container>
       </Section>
 
-      <Section className="py-14 sm:py-16 lg:py-20">
+      <Section>
         <Container>
           <motion.div animate="visible" initial="hidden" variants={staggerContainer}>
             <motion.div className="max-w-3xl" variants={fadeUp}>
@@ -188,8 +189,10 @@ export function RecruiterHub() {
             >
               {technicalStrengths.map((strength) => (
                 <motion.div key={strength} variants={fadeUp}>
-                  <div className="flex min-h-14 items-center gap-3 rounded-lg border border-border bg-surface px-4 py-3">
-                    <CheckCircle2 className="size-4 shrink-0 text-primary" aria-hidden="true" />
+                  <div className="flex min-h-14 items-center gap-3 rounded-lg border border-primary/15 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 px-4 py-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/10">
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <CheckCircle2 className="size-4" aria-hidden="true" />
+                    </span>
                     <span className="text-sm font-medium text-foreground">{strength}</span>
                   </div>
                 </motion.div>
@@ -199,7 +202,7 @@ export function RecruiterHub() {
         </Container>
       </Section>
 
-      <Section className="border-y border-border bg-surface/30 py-14 sm:py-16 lg:py-20">
+      <Section className="border-y border-border bg-surface/30">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
@@ -214,7 +217,11 @@ export function RecruiterHub() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               {certifications.map((certification) => (
-                <Card className="h-full" key={certification}>
+                <Card
+                  className="h-full overflow-hidden border-primary/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10"
+                  key={certification}
+                >
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardHeader>
                     <CardTitle className="text-lg">{certification}</CardTitle>
                   </CardHeader>
@@ -228,7 +235,7 @@ export function RecruiterHub() {
         </Container>
       </Section>
 
-      <Section className="py-14 sm:py-16 lg:py-20">
+      <Section>
         <Container>
           <div className="max-w-3xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
@@ -244,9 +251,10 @@ export function RecruiterHub() {
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {featuredProof.map((proof) => (
               <Card
-                className="group h-full transition-colors hover:border-primary/40 hover:bg-surface/80"
+                className="group h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-surface/90 hover:shadow-xl hover:shadow-primary/15"
                 key={proof.title}
               >
+                <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
                     <CardTitle className="text-lg">{proof.title}</CardTitle>
@@ -259,7 +267,7 @@ export function RecruiterHub() {
                 <CardContent className="flex h-full flex-col gap-5">
                   <p className="text-sm leading-6 text-muted">{proof.description}</p>
                   <Link
-                    className="mt-auto inline-flex min-h-10 items-center justify-center rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                    className="mt-auto inline-flex min-h-10 items-center justify-center rounded-md border border-primary/25 bg-background/70 px-4 text-sm font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href={proof.href}
                   >
                     View proof
@@ -271,7 +279,7 @@ export function RecruiterHub() {
         </Container>
       </Section>
 
-      <Section className="border-y border-border bg-surface/30 py-14 sm:py-16 lg:py-20">
+      <Section className="border-y border-border bg-surface/30">
         <Container>
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
@@ -284,7 +292,7 @@ export function RecruiterHub() {
                 reliability, and platform ownership are the core hiring needs.
               </Paragraph>
             </div>
-            <Card>
+            <Card className="border-success/20 bg-gradient-to-br from-success/10 via-primary/5 to-secondary/10">
               <CardContent className="p-6">
                 <ul className="grid gap-3 sm:grid-cols-2" aria-label="Relocation readiness">
                   {relocationReadiness.map((item) => (
@@ -306,9 +314,9 @@ export function RecruiterHub() {
         </Container>
       </Section>
 
-      <Section className="py-14 sm:py-16 lg:py-20">
+      <Section>
         <Container>
-          <div className="rounded-lg border border-border bg-surface p-6 shadow-sm sm:p-8 lg:p-10">
+          <div className="rounded-lg border border-primary/20 bg-[linear-gradient(135deg,rgb(var(--color-primary)/0.10),rgb(var(--color-secondary)/0.08)_45%,rgb(var(--color-accent)/0.10))] p-6 shadow-xl shadow-primary/10 sm:p-8 lg:p-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
               <div>
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
