@@ -6,13 +6,13 @@ type DiagramPlaceholderProps = {
 };
 
 export function DiagramPlaceholder({
-  title = "Diagram placeholder",
+  title = "Diagram-ready system flow",
   nodes,
 }: DiagramPlaceholderProps) {
   return (
-    <div className="rounded-lg border border-dashed border-border bg-surface/50 p-5 sm:p-6">
+    <div className="rounded-lg border border-accent/20 bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10 p-5 shadow-lg shadow-accent/10 sm:p-6">
       <div className="flex items-center gap-3">
-        <div className="flex size-10 items-center justify-center rounded-md border border-secondary/30 bg-secondary/10 text-sky-300">
+        <div className="flex size-10 items-center justify-center rounded-md border border-secondary/30 bg-secondary/10 text-secondary">
           <GitBranch aria-hidden="true" className="size-5" />
         </div>
         <div>
@@ -20,7 +20,7 @@ export function DiagramPlaceholder({
             {title}
           </h2>
           <p className="text-sm leading-6 text-muted">
-            Placeholder for an architecture diagram or rendered system flow.
+            System steps organized for architecture review and visual implementation.
           </p>
         </div>
       </div>

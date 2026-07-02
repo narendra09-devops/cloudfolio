@@ -1,5 +1,5 @@
 export type GithubProfile = {
-  avatarUrl: string;
+  avatarUrl: string | null;
   bio: string | null;
   blog: string | null;
   company: string | null;
@@ -28,12 +28,26 @@ export type GithubRepository = {
   topics: string[];
 };
 
+export type GithubActivity = {
+  actorLogin: string;
+  createdAt: string;
+  id: string;
+  public: boolean;
+  repoName: string;
+  type: string;
+  url: string;
+};
+
 export type GithubDashboardData = {
+  activities: GithubActivity[];
   error: string | null;
   fetchedAt: string;
   languages: Record<string, number>;
   profile: GithubProfile | null;
   repositories: GithubRepository[];
+  revalidateSeconds: number;
+  username: string;
+  usingFallback: boolean;
 };
 
 type GithubProfileResponse = {
@@ -66,11 +80,39 @@ type GithubRepositoryResponse = {
   topics?: string[];
 };
 
+type GithubActivityResponse = {
+  actor: {
+    login: string;
+  };
+  created_at: string;
+  id: string;
+  public: boolean;
+  repo: {
+    name: string;
+    url: string;
+  };
+  type: string;
+};
+
 const GITHUB_API_URL = "https://api.github.com";
 const DEFAULT_REVALIDATE_SECONDS = 60 * 30;
 
 export const githubUsername =
   process.env.GITHUB_USERNAME ?? process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? "narendra09-devops";
+
+const fallbackProfile: GithubProfile = {
+  avatarUrl: null,
+  bio: "GitHub profile fallback for CloudFolio when the GitHub API is unavailable.",
+  blog: null,
+  company: null,
+  followers: 0,
+  following: 0,
+  htmlUrl: `https://github.com/${githubUsername}`,
+  location: null,
+  login: githubUsername,
+  name: "Narendra Pratap Singh",
+  publicRepos: 0,
+};
 
 function githubHeaders(): HeadersInit {
   const headers: HeadersInit = {
@@ -136,6 +178,20 @@ function mapRepository(
   };
 }
 
+function mapActivity(activity: GithubActivityResponse): GithubActivity {
+  const repoName = activity.repo.name;
+
+  return {
+    actorLogin: activity.actor.login,
+    createdAt: activity.created_at,
+    id: activity.id,
+    public: activity.public,
+    repoName,
+    type: activity.type,
+    url: `https://github.com/${repoName}`,
+  };
+}
+
 function mergeLanguages(repositories: GithubRepository[]) {
   return repositories.reduce<Record<string, number>>((accumulator, repository) => {
     Object.entries(repository.languages).forEach(([language, bytes]) => {
@@ -150,11 +206,12 @@ export async function getGithubDashboardData(): Promise<GithubDashboardData> {
   const fetchedAt = new Date().toISOString();
 
   try {
-    const [profileResponse, repositoryResponses] = await Promise.all([
+    const [profileResponse, repositoryResponses, activityResponses] = await Promise.all([
       githubFetch<GithubProfileResponse>(`/users/${githubUsername}`),
       githubFetch<GithubRepositoryResponse[]>(
         `/users/${githubUsername}/repos?sort=pushed&direction=desc&per_page=12`,
       ),
+      githubFetch<GithubActivityResponse[]>(`/users/${githubUsername}/events/public?per_page=20`),
     ]);
 
     const languageResponses = await Promise.all(
@@ -172,19 +229,27 @@ export async function getGithubDashboardData(): Promise<GithubDashboardData> {
     );
 
     return {
+      activities: activityResponses.map(mapActivity),
       error: null,
       fetchedAt,
       languages: mergeLanguages(repositories),
       profile: mapProfile(profileResponse),
       repositories,
+      revalidateSeconds: DEFAULT_REVALIDATE_SECONDS,
+      username: githubUsername,
+      usingFallback: false,
     };
   } catch (error) {
     return {
+      activities: [],
       error: error instanceof Error ? error.message : "GitHub data is temporarily unavailable.",
       fetchedAt,
       languages: {},
-      profile: null,
+      profile: fallbackProfile,
       repositories: [],
+      revalidateSeconds: DEFAULT_REVALIDATE_SECONDS,
+      username: githubUsername,
+      usingFallback: true,
     };
   }
 }

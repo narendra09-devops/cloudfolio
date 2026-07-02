@@ -17,14 +17,14 @@ const levels = [
 
 export function ContributionGraph() {
   return (
-    <Card>
+    <Card className="min-w-0 overflow-hidden">
       <CardHeader>
         <CardTitle>Contribution graph</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
+        <div className="min-w-0 max-w-full overflow-x-auto">
           <div
-            aria-label="Contribution graph placeholder"
+            aria-label="Contribution activity visualization"
             className="grid min-w-[560px] grid-flow-col grid-rows-7 gap-1"
             role="img"
           >
@@ -40,7 +40,7 @@ export function ContributionGraph() {
           </div>
         </div>
         <div className="mt-4 flex items-center justify-between gap-4 text-xs text-muted">
-          <span>GitHub contribution calendar placeholder</span>
+          <span>Contribution activity</span>
           <span>Less to more</span>
         </div>
       </CardContent>

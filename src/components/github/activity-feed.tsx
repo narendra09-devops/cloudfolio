@@ -4,12 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { BlogPost } from "@/content/blog";
 import type { Project } from "@/content/projects";
-import type { GithubRepository } from "@/lib/github";
+import type { GithubActivity, GithubRepository } from "@/lib/github";
 
 type ActivityFeedProps = {
   blogs: BlogPost[];
+  githubActivities: GithubActivity[];
   projects: Project[];
   repositories: GithubRepository[];
+  usingFallback?: boolean;
 };
 
 type ActivityItem = {
@@ -27,16 +29,36 @@ const sourceIcons = {
   Project: FolderKanban,
 };
 
-export function ActivityFeed({ blogs, projects, repositories }: ActivityFeedProps) {
+function formatGithubEventType(type: string) {
+  return type.replace(/Event$/, "").replace(/([a-z])([A-Z])/g, "$1 $2");
+}
+
+export function ActivityFeed({
+  blogs,
+  githubActivities,
+  projects,
+  repositories,
+  usingFallback = false,
+}: ActivityFeedProps) {
   const items: ActivityItem[] = [
-    ...repositories.slice(0, 8).map((repository) => ({
-      date: repository.pushedAt,
-      description: repository.description ?? "Repository activity updated on GitHub.",
-      href: repository.htmlUrl,
-      label: "Repository updated",
+    ...githubActivities.slice(0, 12).map((activity) => ({
+      date: activity.createdAt,
+      description: `${formatGithubEventType(activity.type)} in ${activity.repoName}.`,
+      href: activity.url,
+      label: formatGithubEventType(activity.type),
       source: "GitHub" as const,
-      title: repository.name,
+      title: activity.repoName,
     })),
+    ...(githubActivities.length === 0 && !usingFallback
+      ? repositories.slice(0, 4).map((repository) => ({
+          date: repository.pushedAt,
+          description: repository.description ?? "Repository activity updated on GitHub.",
+          href: repository.htmlUrl,
+          label: "Repository updated",
+          source: "GitHub" as const,
+          title: repository.name,
+        }))
+      : []),
     ...blogs.slice(0, 4).map((post) => ({
       date: post.publishedAt,
       description: post.summary,
@@ -61,6 +83,11 @@ export function ActivityFeed({ blogs, projects, repositories }: ActivityFeedProp
         <CardTitle>Activity feed</CardTitle>
       </CardHeader>
       <CardContent>
+        {usingFallback ? (
+          <div className="mb-4 rounded-md border border-amber-400/30 bg-amber-500/10 p-3 text-sm leading-6 text-muted">
+            Using fallback data because GitHub API activity could not be loaded.
+          </div>
+        ) : null}
         <ol className="space-y-4">
           {items.map((item) => {
             const Icon = sourceIcons[item.source];
