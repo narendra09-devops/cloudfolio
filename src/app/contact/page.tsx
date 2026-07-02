@@ -356,33 +356,29 @@ export default function ContactPage() {
                   </span>
                   <div>
                     <h3 className="font-heading text-lg font-semibold text-foreground">
-                      Contact form placeholder
+                      Email introduction details
                     </h3>
-                    <p className="text-sm text-muted">Frontend-only contact helper.</p>
+                    <p className="text-sm text-muted">Useful context for a first recruiter note.</p>
                   </div>
                 </div>
                 <p className="mt-4 rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-2 text-sm leading-6 text-muted">
-                  This form is a visual contact helper. For now, please use Email Me or LinkedIn to
-                  contact me directly.
+                  Add the role, location, sponsorship status, interview timeline, and a short
+                  company overview when reaching out by email or LinkedIn.
                 </p>
-                <form className="mt-5 grid gap-3" aria-label="Contact form placeholder">
-                  {["Name", "Email", "Company"].map((label) => (
-                    <label className="grid gap-1.5" key={label}>
-                      <span className="text-sm font-medium text-foreground">{label}</span>
-                      <input
-                        className="h-11 rounded-md border border-border bg-card px-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                        placeholder={label}
-                        type={label === "Email" ? "email" : "text"}
-                      />
-                    </label>
+                <div className="mt-5 grid gap-3" aria-label="Recommended email details">
+                  {[
+                    "Role title and team",
+                    "Location, remote policy, and relocation support",
+                    "Visa sponsorship path if Europe-based",
+                    "Interview timeline and compensation range",
+                  ].map((item) => (
+                    <div
+                      className="rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground"
+                      key={item}
+                    >
+                      {item}
+                    </div>
                   ))}
-                  <label className="grid gap-1.5">
-                    <span className="text-sm font-medium text-foreground">Message</span>
-                    <textarea
-                      className="min-h-28 rounded-md border border-border bg-card px-3 py-2 text-sm text-foreground outline-none transition-colors placeholder:text-muted focus:border-primary"
-                      placeholder="Role, timeline, location, and a few details about the opportunity"
-                    />
-                  </label>
                   <a
                     className="mt-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-gradient-to-r from-emerald-500 to-cyan-500 px-5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-emerald-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href={emailHref}
@@ -390,7 +386,7 @@ export default function ContactPage() {
                     <Send className="size-4" />
                     Email Narendra
                   </a>
-                </form>
+                </div>
               </div>
             </CardContent>
           </Card>

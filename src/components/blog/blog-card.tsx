@@ -13,7 +13,8 @@ type BlogCardProps = {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <Card className="group h-full transition-colors hover:border-primary/40 hover:bg-surface/80">
+    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:bg-surface/90 hover:shadow-xl hover:shadow-secondary/15">
+      <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-primary to-accent" />
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-2">
@@ -22,10 +23,9 @@ export function BlogCard({ post }: BlogCardProps) {
             </p>
             <CardTitle className="text-lg leading-snug">{post.title}</CardTitle>
           </div>
-          <ArrowUpRight
-            aria-hidden="true"
-            className="mt-1 size-4 shrink-0 text-muted transition-colors group-hover:text-primary"
-          />
+          <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-secondary/20 bg-secondary/10 text-secondary transition-all group-hover:border-secondary/40 group-hover:bg-secondary/15">
+            <ArrowUpRight aria-hidden="true" className="size-4" />
+          </span>
         </div>
         <CardDescription>{post.summary}</CardDescription>
       </CardHeader>
@@ -48,7 +48,7 @@ export function BlogCard({ post }: BlogCardProps) {
           ))}
         </div>
         <Link
-          className="inline-flex min-h-10 items-center justify-center rounded-md border border-border px-4 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="inline-flex min-h-10 items-center justify-center rounded-md border border-secondary/25 bg-background/70 px-4 text-sm font-semibold text-foreground transition-all hover:border-secondary/50 hover:bg-secondary/10 hover:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           href={`/blog/${post.slug}`}
         >
           Read article

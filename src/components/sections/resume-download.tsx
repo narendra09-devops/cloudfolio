@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
@@ -20,7 +21,7 @@ export function ResumeDownload() {
           variants={staggerContainer}
         >
           <motion.div variants={fadeUp}>
-            <Card>
+            <Card className="overflow-hidden border-primary/20 bg-[linear-gradient(135deg,rgb(var(--color-primary)/0.10),rgb(var(--color-secondary)/0.08)_45%,rgb(var(--color-accent)/0.10))] shadow-xl shadow-primary/10">
               <CardContent className="p-6 text-center sm:p-8">
                 <H2>Download Resume</H2>
                 <Paragraph className="mt-4">
@@ -28,21 +29,19 @@ export function ResumeDownload() {
                   Site Reliability Engineer, Platform Engineer, and AWS Cloud Engineer roles.
                 </Paragraph>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-                  <a
-                    className="inline-flex min-h-11 items-center justify-center rounded-md border border-border bg-transparent px-5 text-base font-medium text-foreground transition-colors hover:border-muted hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  <ButtonLink
+                    className="w-full sm:w-auto"
                     href={resumePdfPath}
                     rel="noopener noreferrer"
+                    size="lg"
                     target="_blank"
+                    variant="outline"
                   >
                     View Resume
-                  </a>
-                  <a
-                    className="inline-flex min-h-11 items-center justify-center rounded-md border border-transparent bg-primary px-5 text-base font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                    download
-                    href={resumePdfPath}
-                  >
+                  </ButtonLink>
+                  <ButtonLink className="w-full sm:w-auto" download href={resumePdfPath} size="lg">
                     Download Resume PDF
-                  </a>
+                  </ButtonLink>
                 </div>
               </CardContent>
             </Card>

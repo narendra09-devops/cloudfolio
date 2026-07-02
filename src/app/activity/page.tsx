@@ -10,6 +10,8 @@ import { blogPosts } from "@/content/blog";
 import { projects } from "@/content/projects";
 import { getGithubDashboardData } from "@/lib/github";
 
+export const revalidate = 1800;
+
 export const metadata: Metadata = {
   title: "Engineering Activity",
   description:
@@ -32,7 +34,7 @@ export default async function ActivityPage() {
 
   return (
     <>
-      <Section className="border-b border-border bg-surface/30">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-success)/0.14),transparent_24rem),linear-gradient(135deg,rgb(var(--color-primary)/0.10),transparent_42%)]">
         <Container>
           <div className="max-w-4xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
@@ -55,12 +57,21 @@ export default async function ActivityPage() {
             <div className="rounded-lg border border-primary/30 bg-primary/10 p-4 text-sm text-muted">
               <div className="flex gap-3">
                 <AlertTriangle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
-                <p>{github.error}. Blog and project activity remains available.</p>
+                <p>
+                  Using fallback data for {github.username}. {github.error}. GitHub API data will
+                  retry on the next 30-minute revalidation window.
+                </p>
               </div>
             </div>
           ) : null}
 
-          <ActivityFeed blogs={blogPosts} projects={projects} repositories={github.repositories} />
+          <ActivityFeed
+            blogs={blogPosts}
+            githubActivities={github.activities}
+            projects={projects}
+            repositories={github.repositories}
+            usingFallback={github.usingFallback}
+          />
 
           <div>
             <div className="mb-6">

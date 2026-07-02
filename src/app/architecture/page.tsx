@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function ArchitecturePage() {
   return (
     <>
-      <Section className="border-b border-border bg-surface/30">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-accent)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-primary)/0.10),transparent_42%)]">
         <Container>
           <div className="max-w-4xl">
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
@@ -45,7 +45,7 @@ export default function ArchitecturePage() {
 
       <Section>
         <Container>
-          <div className="mb-10 max-w-3xl">
+          <div className="mb-8 max-w-3xl">
             <H2>Reference diagrams.</H2>
             <Paragraph className="mt-4">
               Each architecture topic explains the system flow, the technical choices, and the

@@ -137,8 +137,8 @@ export default async function ArchitectureTopicPage({ params }: ArchitecturePage
                 <CardContent className="space-y-3 p-6">
                   <p className="text-sm font-medium text-foreground">Architecture metadata</p>
                   <p className="text-sm leading-6 text-muted">
-                    This placeholder will later be replaced with a rendered diagram, exported image,
-                    or code-derived visual asset.
+                    This system flow captures the major components, ownership boundaries, and
+                    operational handoffs for technical review.
                   </p>
                 </CardContent>
               </Card>
