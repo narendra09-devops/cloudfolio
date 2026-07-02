@@ -8,10 +8,10 @@ import { Section } from "@/components/ui/section";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const stats = [
-  { value: "14+", label: "Years Experience" },
-  { value: "5+", label: "Years AWS & SRE" },
-  { value: "1000+", label: "Servers Managed" },
-  { value: "50+", label: "Automations Delivered" },
+  { value: "14+", label: "Years IT experience" },
+  { value: "5+", label: "Years AWS/SRE focus" },
+  { value: "AWS", label: "Cloud infrastructure" },
+  { value: "IaC", label: "Terraform automation" },
 ] as const;
 
 export function ExperienceSnapshot() {
@@ -23,10 +23,10 @@ export function ExperienceSnapshot() {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Experience
             </p>
-            <H2 className="mt-3">Operational depth across infrastructure at scale.</H2>
+            <H2 className="mt-3">Operational depth for cloud reliability teams.</H2>
             <Paragraph className="mt-4">
-              A snapshot of hands-on experience across cloud platforms, Linux operations,
-              automation, and reliability engineering.
+              A concise snapshot for recruiters screening senior cloud infrastructure, SRE, platform
+              engineering, and AWS cloud operations roles.
             </Paragraph>
           </motion.div>
 
@@ -38,7 +38,7 @@ export function ExperienceSnapshot() {
               <motion.div key={stat.label} variants={fadeUp}>
                 <Card className="h-full">
                   <CardContent className="p-6">
-                    <p className="font-heading text-4xl font-semibold tracking-tight text-foreground">
+                    <p className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                       {stat.value}
                     </p>
                     <p className="mt-2 text-sm font-medium text-muted">{stat.label}</p>

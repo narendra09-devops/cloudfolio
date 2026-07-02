@@ -11,9 +11,9 @@ import { LatestBlogs } from "@/components/sections/latest-blogs";
 import { SkillsOverview } from "@/components/sections/skills-overview";
 
 export const metadata: Metadata = {
-  title: "Narendra Pratap Singh | Senior Cloud Infrastructure Engineer | SRE",
+  title: "Narendra Pratap Singh | Senior Cloud Infrastructure Engineer | SRE | Platform Engineer",
   description:
-    "Senior Cloud Infrastructure Engineer, Site Reliability Engineer, and Platform Engineer with 14+ years of experience in AWS, Kubernetes, Terraform, and automation.",
+    "Senior Cloud Infrastructure Engineer, SRE, Platform Engineer, and AWS Cloud Engineer with 14+ years IT experience, 5+ years AWS/SRE focus, and availability for Germany/Europe relocation and remote roles.",
 };
 
 export default function Home() {

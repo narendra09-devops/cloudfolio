@@ -21,22 +21,29 @@ export function AboutPreview() {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               About
             </p>
-            <H2 className="mt-3">Infrastructure engineer focused on dependable systems.</H2>
+            <H2 className="mt-3">
+              Cloud infrastructure engineer ready for Germany and Europe hiring.
+            </H2>
           </motion.div>
 
           <motion.div className="space-y-5" variants={fadeUp}>
             <Paragraph>
-              I design and operate cloud infrastructure, platform engineering workflows, and
+              I design and operate AWS cloud infrastructure, platform engineering workflows, and
               reliability systems for teams that need production environments to be observable,
               repeatable, and resilient.
             </Paragraph>
             <Paragraph>
-              My work spans AWS, Linux, automation, infrastructure as code, CI/CD, and operational
-              practices that reduce manual toil while improving delivery confidence.
+              My work spans AWS, Terraform, Kubernetes, Linux, observability, automation, and
+              operational practices that reduce manual toil while improving delivery confidence.
             </Paragraph>
-            <ButtonLink href="/about" variant="outline">
-              Learn More
-            </ButtonLink>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <ButtonLink className="w-full sm:w-auto" href="/about" variant="outline">
+                Learn More
+              </ButtonLink>
+              <ButtonLink className="w-full sm:w-auto" href="/recruiter" variant="ghost">
+                Recruiter Hub
+              </ButtonLink>
+            </div>
           </motion.div>
         </motion.div>
       </Container>

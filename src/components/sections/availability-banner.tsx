@@ -6,10 +6,10 @@ import { Container } from "@/components/ui/container";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const availability = [
+  "Germany/Europe relocation",
   "Remote roles",
-  "Europe relocation",
-  "UAE relocation",
-  "Consulting opportunities",
+  "Cloud/SRE roles",
+  "Platform engineering",
 ] as const;
 
 export function AvailabilityBanner() {
@@ -23,7 +23,7 @@ export function AvailabilityBanner() {
           variants={staggerContainer}
         >
           <motion.p className="text-sm font-medium text-foreground" variants={fadeUp}>
-            Available for:
+            Open to:
           </motion.p>
           <motion.div className="flex flex-wrap gap-2" variants={fadeUp}>
             {availability.map((item) => (

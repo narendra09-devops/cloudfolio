@@ -9,32 +9,34 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 
 const skillCategories = [
   {
-    title: "Cloud",
-    description: "AWS infrastructure, scalable environments, migration planning, operations.",
+    title: "AWS Cloud Infrastructure",
+    description: "Scalable AWS environments, cloud operations, migration planning, and governance.",
   },
   {
-    title: "Containers",
-    description: "Kubernetes platforms, workload operations, deployment reliability.",
+    title: "Terraform / IaC",
+    description: "Repeatable provisioning, environment standards, and configuration control.",
   },
   {
-    title: "IaC",
-    description: "Terraform-driven provisioning, repeatable environments, configuration control.",
+    title: "Kubernetes",
+    description: "Container platform operations, workload reliability, and deployment readiness.",
   },
   {
-    title: "CI/CD",
-    description: "Delivery pipelines, release automation, deployment governance.",
+    title: "Linux Operations",
+    description:
+      "Production Linux administration, troubleshooting, networking, and service support.",
   },
   {
     title: "Observability",
-    description: "Monitoring, alerting, logs, metrics, incident visibility, SRE practices.",
+    description: "Monitoring, alerting, logs, metrics, incident visibility, and SRE practices.",
   },
   {
-    title: "Programming",
-    description: "Automation scripts, platform tooling, operational utilities.",
+    title: "Automation",
+    description: "Scripts, platform tooling, operational utilities, and toil reduction workflows.",
   },
   {
-    title: "Networking",
-    description: "Linux networking, cloud connectivity, DNS, SSL, routing fundamentals.",
+    title: "Reliability & Cost",
+    description:
+      "Reliability improvement, cloud cost optimization, security, and compliance hygiene.",
   },
 ] as const;
 
@@ -47,10 +49,10 @@ export function SkillsOverview() {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Skills
             </p>
-            <H2 className="mt-3">Cloud, platform, and reliability engineering.</H2>
+            <H2 className="mt-3">Cloud, platform, and reliability strengths.</H2>
             <Paragraph className="mt-4">
-              Practical engineering coverage across infrastructure design, automation, operations,
-              and production reliability.
+              Recruiter-ready coverage across AWS, Terraform, Kubernetes, Linux, observability,
+              automation, and production reliability.
             </Paragraph>
           </motion.div>
 
