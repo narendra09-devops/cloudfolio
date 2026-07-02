@@ -19,10 +19,10 @@ export function FeaturedProjects() {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Projects
             </p>
-            <H2 className="mt-3">Featured engineering work.</H2>
+            <H2 className="mt-3">Featured proof for cloud and SRE hiring.</H2>
             <Paragraph className="mt-4">
-              Selected case studies across AWS security, infrastructure automation, cost
-              optimization, and reliability engineering.
+              Privacy-safe case studies across AWS security remediation, infrastructure automation,
+              cloud cost optimization, architecture governance, and reliability engineering.
             </Paragraph>
           </motion.div>
 
