@@ -36,3 +36,5 @@ test-results/
 tmp/
 temp/
 .vercel
+NEXT_MILESTONES.md
+PROJECT_STATUS.txt
