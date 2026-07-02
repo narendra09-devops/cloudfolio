@@ -3,6 +3,7 @@ import { CheckCircle2, Database, Server, ShieldCheck, UserRound, Wrench } from "
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { ArchitecturePlaceholder } from "@/components/projects/architecture-placeholder";
+import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import { CaseStudyHero } from "@/components/projects/case-study-hero";
 import { MermaidDiagram } from "@/components/projects/mermaid-diagram";
 import { MetricsCards } from "@/components/projects/metrics-cards";
@@ -15,6 +16,7 @@ import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { getProjectBySlug, getRelatedProjects, projects } from "@/content/projects";
 import { siteConfig } from "@/config/site";
+import { analyticsEvents } from "@/lib/analytics";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -104,7 +106,15 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const relatedProjects = getRelatedProjects(project);
 
   if (project.slug === "vm-audit-automation-platform") {
-    return <VmAuditFlagshipCaseStudy project={project} relatedProjects={relatedProjects} />;
+    return (
+      <>
+        <PageViewTracker
+          eventName={analyticsEvents.vmAuditCaseStudyViewed}
+          pageSection="VM Audit Case Study"
+        />
+        <VmAuditFlagshipCaseStudy project={project} relatedProjects={relatedProjects} />
+      </>
+    );
   }
 
   return (

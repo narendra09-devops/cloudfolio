@@ -1,7 +1,8 @@
 import { ArrowRight, Cloud, Database, ShieldCheck } from "lucide-react";
-import Link from "next/link";
 import type { Project } from "@/content/projects";
 import { VmAuditGlassCard } from "@/components/projects/vm-audit/VmAuditGlassCard";
+import { ButtonLink } from "@/components/ui/button";
+import { analyticsEvents } from "@/lib/analytics";
 
 export function VmAuditRelatedWork({ projects }: { projects: Project[] }) {
   const icons = [ShieldCheck, Cloud, Database];
@@ -54,13 +55,18 @@ export function VmAuditRelatedWork({ projects }: { projects: Project[] }) {
                     </span>
                   ))}
                 </div>
-                <Link
+                <ButtonLink
                   className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/15"
                   href={`/projects/${project.slug}`}
+                  tracking={{
+                    eventName: analyticsEvents.projectCtaClicked,
+                    pageSection: "VM Audit Related Work",
+                    ctaType: "read-case-study",
+                  }}
                 >
                   Read case study
                   <ArrowRight className="size-4" />
-                </Link>
+                </ButtonLink>
               </VmAuditGlassCard>
             );
           })}

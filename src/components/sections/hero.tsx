@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { H1, Paragraph } from "@/components/ui/heading";
 import { fadeIn, fadeUp, staggerContainer } from "@/lib/animations";
+import { analyticsEvents } from "@/lib/analytics";
 
 const heroBadges = [
   "AWS",
@@ -71,7 +72,17 @@ export function Hero() {
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
               variants={fadeUp}
             >
-              <ButtonLink className="w-full sm:w-auto" href={resumePdfPath} size="lg" download>
+              <ButtonLink
+                className="w-full sm:w-auto"
+                href={resumePdfPath}
+                size="lg"
+                download
+                tracking={{
+                  eventName: analyticsEvents.resumeDownloaded,
+                  pageSection: "Hero",
+                  ctaType: "resume-download",
+                }}
+              >
                 Download Resume
               </ButtonLink>
               <ButtonLink
@@ -79,13 +90,38 @@ export function Hero() {
                 href="/recruiter"
                 size="lg"
                 variant="outline"
+                tracking={{
+                  eventName: analyticsEvents.projectCtaClicked,
+                  pageSection: "Hero",
+                  ctaType: "recruiter-hub",
+                }}
               >
                 Recruiter Hub
               </ButtonLink>
-              <ButtonLink className="w-full sm:w-auto" href="/projects" size="lg" variant="ghost">
+              <ButtonLink
+                className="w-full sm:w-auto"
+                href="/projects"
+                size="lg"
+                variant="ghost"
+                tracking={{
+                  eventName: analyticsEvents.projectCtaClicked,
+                  pageSection: "Hero",
+                  ctaType: "projects",
+                }}
+              >
                 View Projects
               </ButtonLink>
-              <ButtonLink className="w-full sm:w-auto" href="/contact" size="lg" variant="ghost">
+              <ButtonLink
+                className="w-full sm:w-auto"
+                href="/contact"
+                size="lg"
+                variant="ghost"
+                tracking={{
+                  eventName: analyticsEvents.contactEmailClicked,
+                  pageSection: "Hero",
+                  ctaType: "contact-me",
+                }}
+              >
                 Contact Me
               </ButtonLink>
             </motion.div>

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { CareerHighlights } from "@/components/sections/career-highlights";
 import { CertificationsSection } from "@/components/sections/certifications-section";
+import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import { ResumeDownload } from "@/components/sections/resume-download";
 import { SkillsMatrix } from "@/components/sections/skills-matrix";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { analyticsEvents } from "@/lib/analytics";
 
 const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
 
@@ -19,6 +21,7 @@ export const metadata: Metadata = {
 export default function ResumePage() {
   return (
     <>
+      <PageViewTracker eventName={analyticsEvents.resumeViewed} pageSection="Resume Page" />
       <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
         <Container>
           <div className="max-w-4xl">
@@ -39,6 +42,11 @@ export default function ResumePage() {
                 rel="noopener noreferrer"
                 size="lg"
                 target="_blank"
+                tracking={{
+                  eventName: analyticsEvents.resumeViewed,
+                  pageSection: "Resume Page Hero",
+                  ctaType: "view-resume",
+                }}
               >
                 View Resume
               </ButtonLink>
@@ -48,6 +56,11 @@ export default function ResumePage() {
                 href={resumePdfPath}
                 size="lg"
                 variant="outline"
+                tracking={{
+                  eventName: analyticsEvents.resumeDownloaded,
+                  pageSection: "Resume Page Hero",
+                  ctaType: "download-resume",
+                }}
               >
                 Download Resume PDF
               </ButtonLink>

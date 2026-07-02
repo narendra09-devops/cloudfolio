@@ -24,6 +24,8 @@ import { ProblemInfographic } from "@/components/projects/ProblemInfographic";
 import { RecruiterCTA } from "@/components/projects/RecruiterCTA";
 import { TerminalCard } from "@/components/projects/TerminalCard";
 import { TimelineFlow } from "@/components/projects/TimelineFlow";
+import { ButtonLink } from "@/components/ui/button";
+import { analyticsEvents } from "@/lib/analytics";
 import type { Project } from "@/content/projects";
 
 type VmAuditFlagshipCaseStudyProps = {
@@ -210,26 +212,41 @@ export function VmAuditFlagshipCaseStudy({
               ))}
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
+              <ButtonLink
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-surface shadow-lg shadow-primary/20 transition-colors hover:bg-primary/90"
                 href="/resume"
+                tracking={{
+                  eventName: analyticsEvents.resumeViewed,
+                  pageSection: "VM Audit Hero",
+                  ctaType: "view-resume",
+                }}
               >
                 View Resume
                 <ArrowRight className="size-4" />
-              </Link>
-              <Link
+              </ButtonLink>
+              <ButtonLink
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card/75 px-5 text-sm font-semibold text-foreground backdrop-blur-xl transition-colors hover:border-primary/40"
                 href="#project-gallery"
+                tracking={{
+                  eventName: analyticsEvents.projectCtaClicked,
+                  pageSection: "VM Audit Hero",
+                  ctaType: "download-case-study",
+                }}
               >
                 <FileDown className="size-4" />
                 Download Case Study
-              </Link>
-              <Link
+              </ButtonLink>
+              <ButtonLink
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card/75 px-5 text-sm font-semibold text-foreground backdrop-blur-xl transition-colors hover:border-primary/40"
                 href="#architecture"
+                tracking={{
+                  eventName: analyticsEvents.projectCtaClicked,
+                  pageSection: "VM Audit Hero",
+                  ctaType: "view-architecture",
+                }}
               >
                 View Architecture
-              </Link>
+              </ButtonLink>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               <HeroMeta label="Employer" value={project.employer} />

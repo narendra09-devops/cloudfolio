@@ -1,6 +1,7 @@
 import { ArrowRight, Mail } from "lucide-react";
-import Link from "next/link";
 import { VmAuditGlassCard } from "@/components/projects/vm-audit/VmAuditGlassCard";
+import { ButtonLink } from "@/components/ui/button";
+import { analyticsEvents } from "@/lib/analytics";
 
 export function VmAuditCTA() {
   return (
@@ -18,20 +19,30 @@ export function VmAuditCTA() {
               </h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
+              <ButtonLink
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-colors hover:bg-primary/90"
                 href="/resume"
+                tracking={{
+                  eventName: analyticsEvents.resumeViewed,
+                  pageSection: "VM Audit CTA",
+                  ctaType: "view-resume",
+                }}
               >
                 View Resume
                 <ArrowRight className="size-4" />
-              </Link>
-              <Link
+              </ButtonLink>
+              <ButtonLink
                 className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card/70 px-5 text-sm font-semibold text-foreground backdrop-blur-xl transition-colors hover:border-primary/40"
                 href="/contact"
+                tracking={{
+                  eventName: analyticsEvents.contactEmailClicked,
+                  pageSection: "VM Audit CTA",
+                  ctaType: "contact-page",
+                }}
               >
                 <Mail className="size-4" />
                 Contact Me
-              </Link>
+              </ButtonLink>
             </div>
           </div>
         </VmAuditGlassCard>

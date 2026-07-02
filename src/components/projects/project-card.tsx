@@ -1,8 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ButtonLink } from "@/components/ui/button";
 import { TechnologyBadges } from "@/components/projects/technology-badges";
 import type { Project } from "@/content/projects";
+import { analyticsEvents } from "@/lib/analytics";
 
 type ProjectCardProps = {
   project: Project;
@@ -34,12 +35,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {primaryMetric.label} {primaryMetric.context}
           </p>
         </div>
-        <Link
+        <ButtonLink
           className="inline-flex min-h-10 items-center justify-center rounded-md border border-primary/25 bg-background/70 px-4 text-sm font-semibold text-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           href={href}
+          tracking={{
+            eventName: analyticsEvents.projectCtaClicked,
+            pageSection: "Featured Projects",
+            ctaType: "read-case-study",
+          }}
         >
           Read case study
-        </Link>
+        </ButtonLink>
       </CardContent>
     </Card>
   );

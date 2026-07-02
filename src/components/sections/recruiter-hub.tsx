@@ -29,6 +29,7 @@ import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { fadeUp, staggerContainer } from "@/lib/animations";
+import { analyticsEvents } from "@/lib/analytics";
 
 const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
 const atsResumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
@@ -325,7 +326,17 @@ export function RecruiterHub() {
                 className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
                 variants={fadeUp}
               >
-                <ButtonLink className="w-full sm:w-auto" href={resumePdfPath} size="lg" download>
+                <ButtonLink
+                  className="w-full sm:w-auto"
+                  href={resumePdfPath}
+                  size="lg"
+                  download
+                  tracking={{
+                    eventName: analyticsEvents.resumeDownloaded,
+                    pageSection: "Recruiter Hub Hero",
+                    ctaType: "resume-download",
+                  }}
+                >
                   <Download className="size-4" />
                   Download Resume
                 </ButtonLink>
@@ -336,6 +347,11 @@ export function RecruiterHub() {
                   variant="outline"
                   target="_blank"
                   rel="noopener noreferrer"
+                  tracking={{
+                    eventName: analyticsEvents.linkedinClicked,
+                    pageSection: "Recruiter Hub Hero",
+                    ctaType: "linkedin",
+                  }}
                 >
                   <Linkedin className="size-4" />
                   LinkedIn
@@ -347,6 +363,11 @@ export function RecruiterHub() {
                   variant="outline"
                   target="_blank"
                   rel="noopener noreferrer"
+                  tracking={{
+                    eventName: analyticsEvents.githubClicked,
+                    pageSection: "Recruiter Hub Hero",
+                    ctaType: "github",
+                  }}
                 >
                   <Github className="size-4" />
                   GitHub
@@ -356,6 +377,11 @@ export function RecruiterHub() {
                   href={contactPath}
                   size="lg"
                   variant="ghost"
+                  tracking={{
+                    eventName: analyticsEvents.projectCtaClicked,
+                    pageSection: "Recruiter Hub Hero",
+                    ctaType: "schedule-discussion",
+                  }}
                 >
                   <CalendarClock className="size-4" />
                   Schedule a Discussion
@@ -802,7 +828,15 @@ export function RecruiterHub() {
                 </Paragraph>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-                <ButtonLink href={emailHref} size="lg">
+                <ButtonLink
+                  href={emailHref}
+                  size="lg"
+                  tracking={{
+                    eventName: analyticsEvents.contactEmailClicked,
+                    pageSection: "Recruiter Hub Contact CTA",
+                    ctaType: "email",
+                  }}
+                >
                   <Mail className="size-4" />
                   Email
                 </ButtonLink>
@@ -812,11 +846,26 @@ export function RecruiterHub() {
                   variant="outline"
                   target="_blank"
                   rel="noopener noreferrer"
+                  tracking={{
+                    eventName: analyticsEvents.linkedinClicked,
+                    pageSection: "Recruiter Hub Contact CTA",
+                    ctaType: "linkedin",
+                  }}
                 >
                   <Linkedin className="size-4" />
                   LinkedIn
                 </ButtonLink>
-                <ButtonLink href={resumePdfPath} size="lg" variant="ghost" download>
+                <ButtonLink
+                  href={resumePdfPath}
+                  size="lg"
+                  variant="ghost"
+                  download
+                  tracking={{
+                    eventName: analyticsEvents.resumeDownloaded,
+                    pageSection: "Recruiter Hub Contact CTA",
+                    ctaType: "resume-download",
+                  }}
+                >
                   <Download className="size-4" />
                   Download Resume
                 </ButtonLink>
