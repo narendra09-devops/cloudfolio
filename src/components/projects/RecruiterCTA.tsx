@@ -7,7 +7,7 @@ import { GlassCard } from "@/components/projects/GlassCard";
 
 export function RecruiterCTA() {
   return (
-    <section className="px-4 py-[60px] sm:px-6 md:py-20 lg:px-8 xl:py-[120px]">
+    <section className="px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
       <div className="mx-auto max-w-[1400px]">
         <GlassCard className="relative overflow-hidden p-6 sm:p-8 lg:p-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(var(--color-primary)/0.16),transparent_30%),radial-gradient(circle_at_82%_30%,rgb(var(--color-accent)/0.16),transparent_32%)]" />

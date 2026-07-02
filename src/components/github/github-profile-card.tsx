@@ -25,19 +25,20 @@ export function GithubProfileCard({ profile }: GithubProfileCardProps) {
   }
 
   return (
-    <Card className="h-full">
+    <Card className="h-full overflow-hidden">
+      <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
       <CardHeader>
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
           {profile.avatarUrl ? (
             <Image
               alt={`${profile.login} GitHub avatar`}
-              className="size-20 rounded-lg border border-border bg-background object-cover"
+              className="size-20 rounded-2xl border border-border/60 bg-background object-cover shadow-lg shadow-primary/10"
               height={80}
               src={profile.avatarUrl}
               width={80}
             />
           ) : (
-            <div className="flex size-20 shrink-0 items-center justify-center rounded-lg border border-primary/25 bg-gradient-to-br from-primary/15 via-secondary/10 to-accent/15 font-heading text-xl font-semibold text-primary">
+            <div className="flex size-20 shrink-0 items-center justify-center rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/15 via-secondary/10 to-accent/15 font-heading text-xl font-semibold text-primary shadow-lg shadow-primary/10">
               NPS
             </div>
           )}

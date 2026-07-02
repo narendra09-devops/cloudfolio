@@ -6,7 +6,7 @@ type IconButtonSize = "sm" | "md" | "lg";
 
 const variants: Record<IconButtonVariant, string> = {
   outline:
-    "border-border bg-transparent text-muted hover:border-muted hover:bg-surface hover:text-foreground",
+    "border-border/60 bg-background/70 text-muted hover:border-primary/40 hover:bg-surface hover:text-foreground dark:bg-card/50",
   ghost: "border-transparent bg-transparent text-muted hover:bg-surface hover:text-foreground",
 };
 
@@ -31,7 +31,7 @@ export function IconButton({
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center rounded-md border transition-colors",
+        "inline-flex items-center justify-center rounded-xl border transition-all duration-200 hover:-translate-y-0.5",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
         variants[variant],

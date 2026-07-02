@@ -27,6 +27,7 @@ tsconfig.tsbuildinfo
 .next/
 .turbo/
 .cache/
+out/
 
 # Test artifacts
 playwright-report/

@@ -36,12 +36,18 @@ export function AvailabilitySection() {
           </motion.div>
 
           <motion.div variants={fadeUp}>
-            <Card>
+            <Card className="overflow-hidden">
+              <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
               <CardContent className="p-6">
                 <ul className="grid gap-3" aria-label="Availability details">
                   {availabilityItems.map((item) => (
                     <li className="flex items-start gap-3 text-sm text-foreground" key={item}>
-                      <span aria-hidden="true">✅</span>
+                      <span
+                        aria-hidden="true"
+                        className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-success/10 text-success"
+                      >
+                        ✓
+                      </span>
                       <span>{item}</span>
                     </li>
                   ))}

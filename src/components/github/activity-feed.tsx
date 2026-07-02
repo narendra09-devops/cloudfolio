@@ -78,13 +78,14 @@ export function ActivityFeed({
   ].sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime());
 
   return (
-    <Card>
+    <Card className="overflow-hidden">
+      <div className="h-1 bg-gradient-to-r from-success via-secondary to-primary" />
       <CardHeader>
         <CardTitle>Activity feed</CardTitle>
       </CardHeader>
       <CardContent>
         {usingFallback ? (
-          <div className="mb-4 rounded-md border border-amber-400/30 bg-amber-500/10 p-3 text-sm leading-6 text-muted">
+          <div className="mb-4 rounded-2xl border border-amber-400/30 bg-amber-500/10 p-3 text-sm leading-6 text-muted">
             Using fallback data because GitHub API activity could not be loaded.
           </div>
         ) : null}
@@ -93,11 +94,13 @@ export function ActivityFeed({
             const Icon = sourceIcons[item.source];
             const external = item.href.startsWith("https://");
             const content = (
-              <article className="rounded-md border border-border bg-background/50 p-4 transition-colors hover:border-primary/40 hover:bg-surface/80">
+              <article className="rounded-2xl border border-border/60 bg-gradient-to-br from-background/70 via-card/60 to-primary/5 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <Icon aria-hidden="true" className="size-4 text-primary" />
+                      <span className="flex size-8 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                        <Icon aria-hidden="true" className="size-4" />
+                      </span>
                       <Badge variant={item.source === "GitHub" ? "primary" : "outline"}>
                         {item.source}
                       </Badge>

@@ -13,12 +13,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const primaryMetric = project.metrics[0];
 
   return (
-    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:bg-surface/90 hover:shadow-xl hover:shadow-primary/15">
+    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/15">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
           <CardTitle className="text-lg">{project.title}</CardTitle>
-          <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary transition-all group-hover:border-primary/40 group-hover:bg-primary/15">
+          <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-gradient-to-br from-primary/15 via-secondary/10 to-accent/15 text-primary transition-all group-hover:border-primary/40 group-hover:shadow-lg group-hover:shadow-primary/15">
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </span>
         </div>
@@ -26,7 +26,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </CardHeader>
       <CardContent className="flex h-full flex-col gap-5">
         <TechnologyBadges limit={4} technologies={project.technologies} />
-        <div className="mt-auto rounded-md border border-secondary/20 bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/10 p-4">
+        <div className="mt-auto rounded-2xl border border-secondary/20 bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/10 p-4">
           <p className="font-heading text-2xl font-semibold tracking-tight text-foreground">
             {primaryMetric.value}
           </p>

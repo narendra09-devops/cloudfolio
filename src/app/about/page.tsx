@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BadgeCheck, Cloud, Gauge, ShieldCheck, Sparkles, Workflow } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
+      <Section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.16),transparent_24rem),radial-gradient(circle_at_84%_8%,rgb(var(--color-secondary)/0.10),transparent_20rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.10),transparent_42%)]">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="max-w-4xl">
@@ -181,20 +182,30 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {strengths.map((strength) => (
-              <Card
-                className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10"
-                key={strength.title}
-              >
-                <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
-                <CardHeader>
-                  <CardTitle>{strength.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-6 text-muted">{strength.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+            {strengths.map((strength, index) => {
+              const icons = [Cloud, ShieldCheck, Workflow, Gauge, Sparkles, BadgeCheck] as const;
+              const Icon = icons[index];
+
+              return (
+                <Card
+                  className="group h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/35 hover:shadow-xl hover:shadow-primary/10"
+                  key={strength.title}
+                >
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <span className="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 via-secondary/10 to-accent/15 text-primary">
+                        <Icon aria-hidden="true" className="size-5" />
+                      </span>
+                      <CardTitle>{strength.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm leading-6 text-muted">{strength.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </Container>
       </Section>

@@ -11,10 +11,10 @@ type CaseStudyHeroProps = {
 
 export function CaseStudyHero({ project }: CaseStudyHeroProps) {
   return (
-    <section className="border-b border-border bg-surface/30 py-16 sm:py-20 lg:py-24">
+    <section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.12),transparent_24rem),radial-gradient(circle_at_84%_14%,rgb(var(--color-secondary)/0.10),transparent_20rem),linear-gradient(135deg,rgb(var(--color-primary)/0.04),transparent_42%)] py-10 sm:py-12 lg:py-16">
       <Container>
         <Link
-          className="inline-flex items-center gap-2 rounded-md text-sm font-medium text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="inline-flex items-center gap-2 rounded-xl border border-transparent bg-background/60 px-3 py-2 text-sm font-medium text-muted backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-primary/20 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           href="/projects"
         >
           <ArrowLeft aria-hidden="true" className="size-4" />

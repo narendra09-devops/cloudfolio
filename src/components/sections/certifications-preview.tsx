@@ -31,7 +31,8 @@ export function CertificationsPreview() {
           <motion.div className="mt-10 grid gap-4 md:grid-cols-2" variants={staggerContainer}>
             {certifications.map((certification) => (
               <motion.div key={certification} variants={fadeUp}>
-                <Card className="h-full">
+                <Card className="h-full overflow-hidden">
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardHeader>
                     <CardTitle>{certification}</CardTitle>
                   </CardHeader>

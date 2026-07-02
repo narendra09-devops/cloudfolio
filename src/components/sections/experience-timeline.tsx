@@ -42,10 +42,8 @@ export function ExperienceTimeline() {
                   aria-hidden="true"
                   className="absolute -left-[31px] top-7 size-3 rounded-full border border-primary bg-background shadow-[0_0_0_4px_rgb(var(--color-background))]"
                 />
-                <Card
-                  className="transition-colors hover:border-primary/60 focus-visible:border-primary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                  tabIndex={0}
-                >
+                <Card className="overflow-hidden transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardContent className="p-6">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                       <Badge variant="primary">{milestone.year}</Badge>

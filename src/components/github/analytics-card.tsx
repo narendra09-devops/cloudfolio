@@ -34,6 +34,7 @@ export function AnalyticsCard({ fetchedAt }: AnalyticsCardProps) {
 
   return (
     <Card className="min-w-0 overflow-hidden">
+      <div className="h-1 bg-gradient-to-r from-secondary via-primary to-accent" />
       <CardHeader>
         <CardTitle>Analytics integration</CardTitle>
       </CardHeader>
@@ -44,11 +45,13 @@ export function AnalyticsCard({ fetchedAt }: AnalyticsCardProps) {
 
             return (
               <div
-                className="rounded-md border border-border bg-background/50 p-4"
+                className="rounded-2xl border border-border/60 bg-gradient-to-br from-background/70 via-card/60 to-secondary/5 p-4 shadow-sm shadow-secondary/5"
                 key={item.label}
               >
                 <div className="flex items-center gap-2 font-medium text-foreground">
-                  <Icon aria-hidden="true" className="size-4 text-primary" />
+                  <span className="flex size-8 items-center justify-center rounded-xl bg-secondary/10 text-secondary">
+                    <Icon aria-hidden="true" className="size-4" />
+                  </span>
                   {item.label}
                 </div>
                 <p className="mt-2 text-sm leading-6 text-muted">{item.value}</p>

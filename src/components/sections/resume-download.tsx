@@ -22,6 +22,7 @@ export function ResumeDownload() {
         >
           <motion.div variants={fadeUp}>
             <Card className="overflow-hidden border-primary/20 bg-[linear-gradient(135deg,rgb(var(--color-primary)/0.10),rgb(var(--color-secondary)/0.08)_45%,rgb(var(--color-accent)/0.10))] shadow-xl shadow-primary/10">
+              <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
               <CardContent className="p-6 text-center sm:p-8">
                 <H2>Download Resume</H2>
                 <Paragraph className="mt-4">
