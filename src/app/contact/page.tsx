@@ -16,10 +16,12 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { analyticsEvents } from "@/lib/analytics";
 
 const resumePdfUrl = "/resume/narendra-pratap-singh-resume.pdf";
 const emailAddress = "napr.singh09@gmail.com";
@@ -109,35 +111,6 @@ const availability = [
   { label: "Visa", value: "Open to visa sponsorship opportunities", icon: Sparkles },
 ];
 
-function ActionLink({
-  children,
-  href,
-  variant = "primary",
-  download,
-}: {
-  children: React.ReactNode;
-  href: string;
-  variant?: "primary" | "outline";
-  download?: boolean;
-}) {
-  const isExternal = href.startsWith("http");
-  return (
-    <a
-      className={
-        variant === "primary"
-          ? "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-gradient-to-r from-primary via-secondary to-accent px-5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          : "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-primary/25 bg-card/85 px-5 text-sm font-semibold text-foreground shadow-md shadow-primary/10 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-primary/50 hover:bg-surface hover:shadow-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-      }
-      download={download}
-      href={href}
-      rel={isExternal ? "noopener noreferrer" : undefined}
-      target={isExternal ? "_blank" : undefined}
-    >
-      {children}
-    </a>
-  );
-}
-
 export default function ContactPage() {
   return (
     <main className="bg-background text-foreground">
@@ -153,14 +126,30 @@ export default function ContactPage() {
                 Engineer, and Cloud Architect opportunities.
               </Paragraph>
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <ActionLink download href={resumePdfUrl}>
+                <ButtonLink
+                  download
+                  href={resumePdfUrl}
+                  tracking={{
+                    eventName: analyticsEvents.resumeDownloaded,
+                    pageSection: "Contact Hero",
+                    ctaType: "download-resume",
+                  }}
+                >
                   <Download className="size-4" />
                   Download Resume
-                </ActionLink>
-                <ActionLink href={emailHref} variant="outline">
+                </ButtonLink>
+                <ButtonLink
+                  href={emailHref}
+                  variant="outline"
+                  tracking={{
+                    eventName: analyticsEvents.contactEmailClicked,
+                    pageSection: "Contact Hero",
+                    ctaType: "email",
+                  }}
+                >
                   <Mail className="size-4" />
                   Email Me
-                </ActionLink>
+                </ButtonLink>
               </div>
               <div className="mt-6 flex flex-wrap gap-2">
                 {recruiterBadges.map((badge) => (
@@ -326,26 +315,66 @@ export default function ContactPage() {
                   automation, or reliability roles, I would be happy to connect.
                 </Paragraph>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <ActionLink download href={resumePdfUrl}>
+                  <ButtonLink
+                    download
+                    href={resumePdfUrl}
+                    tracking={{
+                      eventName: analyticsEvents.resumeDownloaded,
+                      pageSection: "Contact CTA",
+                      ctaType: "download-resume",
+                    }}
+                  >
                     <Download className="size-4" />
                     Download Resume
-                  </ActionLink>
-                  <ActionLink href={emailHref} variant="outline">
+                  </ButtonLink>
+                  <ButtonLink
+                    href={emailHref}
+                    variant="outline"
+                    tracking={{
+                      eventName: analyticsEvents.contactEmailClicked,
+                      pageSection: "Contact CTA",
+                      ctaType: "email",
+                    }}
+                  >
                     <Mail className="size-4" />
                     Email Me
-                  </ActionLink>
-                  <ActionLink href="/projects" variant="outline">
+                  </ButtonLink>
+                  <ButtonLink
+                    href="/projects"
+                    variant="outline"
+                    tracking={{
+                      eventName: analyticsEvents.projectCtaClicked,
+                      pageSection: "Contact CTA",
+                      ctaType: "projects",
+                    }}
+                  >
                     <Globe2 className="size-4" />
                     View Projects
-                  </ActionLink>
-                  <ActionLink href={linkedinUrl} variant="outline">
+                  </ButtonLink>
+                  <ButtonLink
+                    href={linkedinUrl}
+                    variant="outline"
+                    tracking={{
+                      eventName: analyticsEvents.linkedinClicked,
+                      pageSection: "Contact CTA",
+                      ctaType: "linkedin",
+                    }}
+                  >
                     <Linkedin className="size-4" />
                     LinkedIn
-                  </ActionLink>
-                  <ActionLink href={githubUrl} variant="outline">
+                  </ButtonLink>
+                  <ButtonLink
+                    href={githubUrl}
+                    variant="outline"
+                    tracking={{
+                      eventName: analyticsEvents.githubClicked,
+                      pageSection: "Contact CTA",
+                      ctaType: "github",
+                    }}
+                  >
                     <Github className="size-4" />
                     GitHub
-                  </ActionLink>
+                  </ButtonLink>
                 </div>
               </div>
 
@@ -379,13 +408,18 @@ export default function ContactPage() {
                       {item}
                     </div>
                   ))}
-                  <a
+                  <ButtonLink
                     className="mt-2 inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-transparent bg-gradient-to-r from-emerald-500 to-cyan-500 px-5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-emerald-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                     href={emailHref}
+                    tracking={{
+                      eventName: analyticsEvents.contactEmailClicked,
+                      pageSection: "Contact CTA",
+                      ctaType: "email",
+                    }}
                   >
                     <Send className="size-4" />
                     Email Narendra
-                  </a>
+                  </ButtonLink>
                 </div>
               </div>
             </CardContent>

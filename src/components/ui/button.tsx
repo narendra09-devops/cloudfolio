@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
+import { safeTrackEvent, type AnalyticsEventName } from "@/lib/analytics";
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
@@ -34,6 +37,11 @@ export interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement>
   href: string;
   variant?: ButtonVariant;
   size?: ButtonSize;
+  tracking?: {
+    eventName: AnalyticsEventName;
+    pageSection: string;
+    ctaType: string;
+  };
 }
 
 export function Button({
@@ -57,12 +65,26 @@ export function ButtonLink({
   href,
   variant = "primary",
   size = "md",
+  tracking,
+  onClick,
   ...props
 }: ButtonLinkProps) {
+  const handleClick: AnchorHTMLAttributes<HTMLAnchorElement>["onClick"] = (event) => {
+    onClick?.(event);
+
+    if (!event.defaultPrevented && tracking) {
+      safeTrackEvent(tracking.eventName, {
+        pageSection: tracking.pageSection,
+        ctaType: tracking.ctaType,
+      });
+    }
+  };
+
   return (
     <Link
       className={cn(baseButtonClasses, variants[variant], sizes[size], className)}
       href={href}
+      onClick={handleClick}
       {...props}
     />
   );

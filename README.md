@@ -96,6 +96,25 @@ npm run test -- --run
 npm run build
 ```
 
+## Analytics
+
+CloudFolio uses Vercel Analytics and Vercel Speed Insights for privacy-friendly usage and
+performance telemetry.
+
+- Analytics only captures page and CTA interactions needed for portfolio review.
+- No email content, form message content, IP address, or other sensitive personal data is tracked.
+- Custom events are limited to the event name plus a small set of contextual fields such as page
+  section and CTA type.
+
+To disable analytics locally, set:
+
+```bash
+NEXT_PUBLIC_VERCEL_ANALYTICS=false
+```
+
+To verify analytics in production, open the Vercel dashboard for the project and review the
+Analytics and Speed Insights sections after deploying to the `main` branch.
+
 End-to-end tests are prepared with Playwright and will become meaningful once user-facing pages are implemented.
 
 ## Project Structure

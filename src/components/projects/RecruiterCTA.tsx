@@ -2,8 +2,9 @@
 
 import { ArrowRight, Mail, Network, Server } from "lucide-react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { GlassCard } from "@/components/projects/GlassCard";
+import { ButtonLink } from "@/components/ui/button";
+import { analyticsEvents } from "@/lib/analytics";
 
 export function RecruiterCTA() {
   return (
@@ -20,26 +21,41 @@ export function RecruiterCTA() {
                 Interested in how I design and automate large-scale infrastructure platforms?
               </h2>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link
+                <ButtonLink
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-primary px-5 text-sm font-semibold text-surface shadow-lg shadow-primary/20 transition-colors hover:bg-primary/90"
                   href="/resume"
+                  tracking={{
+                    eventName: analyticsEvents.resumeViewed,
+                    pageSection: "Recruiter CTA",
+                    ctaType: "view-resume",
+                  }}
                 >
                   View Resume
                   <ArrowRight className="size-4" />
-                </Link>
-                <Link
+                </ButtonLink>
+                <ButtonLink
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card/70 px-5 text-sm font-semibold text-foreground backdrop-blur-xl transition-colors hover:border-primary/40"
                   href="/contact"
+                  tracking={{
+                    eventName: analyticsEvents.contactEmailClicked,
+                    pageSection: "Recruiter CTA",
+                    ctaType: "contact-page",
+                  }}
                 >
                   <Mail className="size-4" />
                   Contact Me
-                </Link>
-                <Link
+                </ButtonLink>
+                <ButtonLink
                   className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-border bg-card/70 px-5 text-sm font-semibold text-foreground backdrop-blur-xl transition-colors hover:border-primary/40"
                   href="/projects"
+                  tracking={{
+                    eventName: analyticsEvents.projectCtaClicked,
+                    pageSection: "Recruiter CTA",
+                    ctaType: "projects",
+                  }}
                 >
                   Explore More Projects
-                </Link>
+                </ButtonLink>
               </div>
             </div>
 

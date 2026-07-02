@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import { RecruiterHub } from "@/components/sections/recruiter-hub";
+import { analyticsEvents } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Recruiter Hub v2 | Narendra Pratap Singh",
@@ -8,5 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default function RecruiterPage() {
-  return <RecruiterHub />;
+  return (
+    <>
+      <PageViewTracker
+        eventName={analyticsEvents.recruiterPageViewed}
+        pageSection="Recruiter Page"
+      />
+      <RecruiterHub />
+    </>
+  );
 }

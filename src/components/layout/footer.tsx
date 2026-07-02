@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { FileText, Github, Linkedin, Mail } from "lucide-react";
 import { footerNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { Container } from "@/components/ui/container";
 import { Divider } from "@/components/ui/divider";
+import { analyticsEvents, safeTrackEvent } from "@/lib/analytics";
 
 const socialIcons = {
   GitHub: Github,
@@ -49,6 +52,28 @@ export function Footer() {
                   key={item.label}
                   rel={isExternal ? "noopener noreferrer" : undefined}
                   target={isExternal ? "_blank" : undefined}
+                  onClick={() => {
+                    if (item.label === "GitHub") {
+                      safeTrackEvent(analyticsEvents.githubClicked, {
+                        pageSection: "Footer",
+                        ctaType: "social-link",
+                      });
+                    }
+
+                    if (item.label === "LinkedIn") {
+                      safeTrackEvent(analyticsEvents.linkedinClicked, {
+                        pageSection: "Footer",
+                        ctaType: "social-link",
+                      });
+                    }
+
+                    if (item.label === "Email") {
+                      safeTrackEvent(analyticsEvents.contactEmailClicked, {
+                        pageSection: "Footer",
+                        ctaType: "social-link",
+                      });
+                    }
+                  }}
                 >
                   <Icon className="size-4" />
                 </Link>
