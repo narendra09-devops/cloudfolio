@@ -36,7 +36,8 @@ export function ExperienceSnapshot() {
           >
             {stats.map((stat) => (
               <motion.div key={stat.label} variants={fadeUp}>
-                <Card className="h-full">
+                <Card className="h-full overflow-hidden">
+                  <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
                   <CardContent className="p-6">
                     <p className="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                       {stat.value}

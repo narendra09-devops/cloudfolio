@@ -14,7 +14,10 @@ const availability = [
 
 export function AvailabilityBanner() {
   return (
-    <section aria-label="Availability" className="border-b border-border bg-surface/40 py-5">
+    <section
+      aria-label="Availability"
+      className="border-b border-border bg-surface/40 py-4 sm:py-5"
+    >
       <Container>
         <motion.div
           animate="visible"

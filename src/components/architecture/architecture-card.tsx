@@ -12,7 +12,7 @@ type ArchitectureCardProps = {
 
 export function ArchitectureCard({ topic }: ArchitectureCardProps) {
   return (
-    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface/90 hover:shadow-xl hover:shadow-accent/15">
+    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/15">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-primary to-secondary" />
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
@@ -22,7 +22,7 @@ export function ArchitectureCard({ topic }: ArchitectureCardProps) {
             </p>
             <CardTitle className="text-lg leading-snug">{topic.title}</CardTitle>
           </div>
-          <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-accent/20 bg-accent/10 text-accent transition-all group-hover:border-accent/40 group-hover:bg-accent/15">
+          <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-gradient-to-br from-accent/15 via-primary/10 to-secondary/15 text-accent transition-all group-hover:border-accent/40 group-hover:shadow-lg group-hover:shadow-accent/15">
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </span>
         </div>
@@ -36,7 +36,7 @@ export function ArchitectureCard({ topic }: ArchitectureCardProps) {
             </Badge>
           ))}
         </div>
-        <div className="rounded-md border border-accent/20 bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10 p-4">
+        <div className="rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10 p-4">
           <p className="text-sm font-medium text-foreground">Architecture nodes</p>
           <p className="mt-2 text-sm leading-6 text-muted">{topic.diagramNodes.join(" • ")}</p>
         </div>

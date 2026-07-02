@@ -13,7 +13,7 @@ type BlogCardProps = {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:bg-surface/90 hover:shadow-xl hover:shadow-secondary/15">
+    <Card className="group relative h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/15">
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-secondary via-primary to-accent" />
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
@@ -23,7 +23,7 @@ export function BlogCard({ post }: BlogCardProps) {
             </p>
             <CardTitle className="text-lg leading-snug">{post.title}</CardTitle>
           </div>
-          <span className="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-lg border border-secondary/20 bg-secondary/10 text-secondary transition-all group-hover:border-secondary/40 group-hover:bg-secondary/15">
+          <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-secondary/20 bg-gradient-to-br from-secondary/15 via-primary/10 to-accent/15 text-secondary transition-all group-hover:border-secondary/40 group-hover:shadow-lg group-hover:shadow-secondary/15">
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </span>
         </div>

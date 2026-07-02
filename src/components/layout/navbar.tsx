@@ -17,7 +17,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <header className="bg-background/82 supports-[backdrop-filter]:bg-background/72 sticky top-0 z-50 border-b border-border/70 backdrop-blur-xl">
       <Container>
         <nav aria-label="Primary navigation" className="flex h-16 items-center justify-between">
           <Link
@@ -39,8 +39,8 @@ export function Navbar() {
                 <Link
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "rounded-md px-3 py-2 text-sm font-medium text-muted transition-all",
-                    "hover:-translate-y-0.5 hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    "rounded-xl px-3 py-2 text-sm font-medium text-muted transition-all",
+                    "hover:-translate-y-0.5 hover:bg-surface/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                     active &&
                       "bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 text-primary shadow-sm ring-1 ring-primary/25",
                   )}
@@ -90,8 +90,8 @@ export function Navbar() {
                   <Link
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "rounded-md px-3 py-2 text-sm font-medium text-muted transition-colors",
-                      "hover:bg-surface hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                      "rounded-xl px-3 py-2 text-sm font-medium text-muted transition-colors",
+                      "hover:bg-surface/80 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                       active &&
                         "bg-gradient-to-r from-primary/15 via-secondary/15 to-accent/15 text-primary shadow-sm ring-1 ring-primary/25",
                     )}

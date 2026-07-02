@@ -48,7 +48,8 @@ export function MetricsDashboard({ languages, repositories }: MetricsDashboardPr
   ];
 
   return (
-    <Card>
+    <Card className="overflow-hidden">
+      <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent" />
       <CardHeader>
         <CardTitle>Engineering metrics</CardTitle>
       </CardHeader>
@@ -59,11 +60,13 @@ export function MetricsDashboard({ languages, repositories }: MetricsDashboardPr
 
             return (
               <div
-                className="rounded-md border border-border bg-background/50 p-4"
+                className="rounded-2xl border border-border/60 bg-gradient-to-br from-background/70 via-card/60 to-primary/5 p-4 shadow-sm shadow-primary/5"
                 key={metric.label}
               >
                 <dt className="flex items-center gap-2 text-sm text-muted">
-                  <Icon aria-hidden="true" className="size-4 text-primary" />
+                  <span className="flex size-8 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <Icon aria-hidden="true" className="size-4" />
+                  </span>
                   {metric.label}
                 </dt>
                 <dd className="mt-3 font-heading text-2xl font-semibold tracking-tight text-foreground">
@@ -89,10 +92,10 @@ export function MetricsDashboard({ languages, repositories }: MetricsDashboardPr
                       <span className="font-medium text-foreground">{language}</span>
                       <span className="font-mono text-muted">{value}%</span>
                     </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-background">
+                    <div className="h-2 overflow-hidden rounded-full bg-background/80">
                       <div
                         aria-hidden="true"
-                        className="h-full rounded-full bg-primary"
+                        className="h-full rounded-full bg-gradient-to-r from-primary via-secondary to-accent"
                         style={{ width: `${value}%` }}
                       />
                     </div>

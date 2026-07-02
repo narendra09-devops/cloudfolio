@@ -49,7 +49,10 @@ html {
 body {
   min-height: 100%;
   margin: 0;
-  background: rgb(var(--color-background));
+  background:
+    radial-gradient(circle at top left, rgb(var(--color-primary) / 0.08), transparent 22rem),
+    radial-gradient(circle at top right, rgb(var(--color-secondary) / 0.06), transparent 18rem),
+    rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   font-family: var(--font-body), Inter, system-ui, sans-serif;
   text-rendering: optimizeLegibility;
