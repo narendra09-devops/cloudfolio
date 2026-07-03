@@ -31,6 +31,7 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm run test -- --run
+npm run test:e2e
 npm run build
 ```
 
@@ -63,6 +64,7 @@ Audit areas:
 - Footer links
 - Resume download
 - Social links
+- Playwright smoke coverage for primary CTAs and mobile overflow
 
 ## Accepted Limitations
 

@@ -7,6 +7,7 @@
 - [ ] `npm run lint` passing
 - [ ] `npm run typecheck` passing
 - [ ] `npm run test -- --run` passing
+- [ ] `npm run test:e2e` passing
 - [ ] `npm run build` passing
 
 ## Analytics
@@ -40,6 +41,7 @@
 - [ ] Mobile navigation works
 - [ ] Dark mode renders correctly
 - [ ] Light mode renders correctly
+- [ ] Playwright smoke tests cover primary routes and CTAs
 - [ ] No console errors on primary routes
 
 ## SEO Validation

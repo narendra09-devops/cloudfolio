@@ -38,7 +38,7 @@ Primary audiences:
 - Theme: next-themes
 - Content: TypeScript content modules and MDX support
 - Analytics: Vercel Analytics, Vercel Speed Insights
-- Testing: Vitest, Testing Library, Playwright configuration
+- Testing: Vitest, Testing Library, Playwright smoke tests
 - Quality: ESLint, Prettier, TypeScript, Husky, lint-staged
 - Deployment: Vercel
 
@@ -110,6 +110,7 @@ npm run format:check
 npm run lint
 npm run typecheck
 npm run test -- --run
+npm run test:e2e
 npm run build
 ```
 
@@ -185,7 +186,7 @@ v2 planning is maintained in [docs/ROADMAP_v2.md](docs/ROADMAP_v2.md).
 High-priority next improvements:
 
 - Add automated route and link checks.
-- Add Playwright smoke tests for recruiter, resume, contact, and project flows.
+- Expand Playwright smoke tests with deeper accessibility assertions.
 - Add committed production screenshots for README and release pages.
 - Add richer per-page structured data.
 - Add Lighthouse CI for production score tracking.

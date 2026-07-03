@@ -1,11 +1,8 @@
-"use client";
-
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { TechnologyBadges } from "@/components/projects/technology-badges";
 import type { Project } from "@/content/projects";
-import { analyticsEvents, safeTrackEvent } from "@/lib/analytics";
 
 type ProjectCardProps = {
   project: Project;
@@ -19,12 +16,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
       aria-label={`View complete project: ${project.title}`}
       className="group block h-full cursor-pointer rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       href={`/projects/${project.slug}`}
-      onClick={() => {
-        safeTrackEvent(analyticsEvents.projectCtaClicked, {
-          pageSection: "Project Card",
-          ctaType: "view-complete-project",
-        });
-      }}
     >
       <Card className="relative flex h-full flex-col overflow-hidden transition-all duration-300 group-hover:-translate-y-1 group-hover:border-primary/40 group-hover:shadow-xl group-hover:shadow-primary/15">
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent" />

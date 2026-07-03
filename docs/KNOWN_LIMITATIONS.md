@@ -5,10 +5,11 @@ This document tracks production limitations accepted for CloudFolio v1.0.0.
 ## Automated Tests
 
 - Vitest is configured, but no unit test files are currently present.
-- Playwright is configured, but production smoke tests are not yet implemented.
-- Accessibility checks are manual and build-time only through lint/type validation.
+- Playwright smoke tests cover primary navigation, resume, contact, project, recruiter, dashboard,
+  theme, and mobile overflow checks.
+- Dedicated axe-based accessibility tests are not yet implemented.
 
-Mitigation: Add Playwright smoke tests and accessibility assertions in v1.1.
+Mitigation: Add focused unit tests and axe accessibility assertions in v1.1.
 
 ## Lighthouse
 

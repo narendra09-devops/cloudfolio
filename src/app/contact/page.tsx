@@ -356,6 +356,8 @@ export default function ContactPage() {
                   <ButtonLink
                     href={linkedinUrl}
                     variant="outline"
+                    rel="noopener noreferrer"
+                    target="_blank"
                     tracking={{
                       eventName: analyticsEvents.linkedinClicked,
                       pageSection: "Contact CTA",
@@ -368,6 +370,8 @@ export default function ContactPage() {
                   <ButtonLink
                     href={githubUrl}
                     variant="outline"
+                    rel="noopener noreferrer"
+                    target="_blank"
                     tracking={{
                       eventName: analyticsEvents.githubClicked,
                       pageSection: "Contact CTA",
@@ -393,6 +397,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <p className="mt-4 rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-2 text-sm leading-6 text-muted">
+                  This form is a visual contact helper. Please use Email Me or LinkedIn to contact
+                  me directly.
+                </p>
+                <p className="mt-3 rounded-lg border border-emerald-400/20 bg-emerald-500/10 px-3 py-2 text-sm leading-6 text-muted">
                   Add the role, location, sponsorship status, interview timeline, and a short
                   company overview when reaching out by email or LinkedIn.
                 </p>

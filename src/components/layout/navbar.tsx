@@ -31,7 +31,7 @@ export function Navbar() {
             {siteConfig.name}
           </Link>
 
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 xl:flex">
             {mainNavigation.map((item) => {
               const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
@@ -53,7 +53,7 @@ export function Navbar() {
             })}
           </div>
 
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 xl:flex">
             <ThemeToggle />
             <ButtonLink aria-label="View resume" href="/resume" size="sm" variant="primary">
               <FileText aria-hidden="true" className="size-4" />
@@ -61,7 +61,7 @@ export function Navbar() {
             </ButtonLink>
           </div>
 
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 xl:hidden">
             <ThemeToggle />
             <IconButton
               aria-controls="mobile-navigation"
@@ -80,7 +80,7 @@ export function Navbar() {
       </Container>
 
       {open ? (
-        <div className="border-t border-border md:hidden" id="mobile-navigation">
+        <div className="border-t border-border xl:hidden" id="mobile-navigation">
           <Container className="py-3">
             <div className="grid gap-1">
               {mainNavigation.map((item) => {
