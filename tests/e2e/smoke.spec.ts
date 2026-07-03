@@ -9,6 +9,8 @@ const projectUrls = [
 const responsivePages = [
   "/",
   "/projects",
+  "/blog",
+  "/architecture",
   "/projects/aws-security-hub-remediation-program",
   "/recruiter",
   "/dashboard",
@@ -133,6 +135,72 @@ test.describe("CloudFolio production smoke checks", () => {
       page.locator(`a[href="${projectUrls[0]}"]`).first().click(),
     ]);
     await expect(page.getByRole("heading", { name: /vm audit/i }).first()).toBeVisible();
+  });
+
+  test("project search and filters work", async ({ page }) => {
+    await page.goto("/projects", { waitUntil: "domcontentloaded" });
+
+    const search = page.getByRole("textbox", { name: /search projects/i });
+    await search.fill("security hub");
+    await expect(
+      page.getByRole("link", {
+        name: /view complete project: aws security hub remediation program/i,
+      }),
+    ).toBeVisible();
+    await expect(page.getByText(/1 of \d+/i).first()).toBeVisible();
+
+    const securityChip = page.getByRole("button", { name: /^Security$/ }).first();
+    await securityChip.click();
+    await expect(page.getByRole("button", { name: /clear filters/i })).toBeVisible();
+    await expect(
+      page.getByRole("link", {
+        name: /view complete project: aws security hub remediation program/i,
+      }),
+    ).toBeVisible();
+
+    await page.getByRole("button", { name: /clear filters/i }).click();
+    await expect(search).toHaveValue("");
+    await expect(page.getByText(/case studies/i).first()).toBeVisible();
+  });
+
+  test("blog search and filters work", async ({ page }) => {
+    await page.goto("/blog", { waitUntil: "domcontentloaded" });
+
+    const search = page.getByRole("textbox", { name: /search blog posts/i });
+    await search.fill("ssl");
+    await expect(
+      page.getByRole("heading", { name: /ssl lifecycle automation/i }).first(),
+    ).toBeVisible();
+
+    await page
+      .getByRole("button", { name: /^Reliability$/ })
+      .first()
+      .click();
+    await expect(page.getByRole("button", { name: /^Clear search$/ }).last()).toBeVisible();
+
+    await search.fill("zzzz no match");
+    await expect(page.getByText(/no matching articles/i)).toBeVisible();
+    await page
+      .getByRole("button", { name: /^Clear search$/ })
+      .last()
+      .click();
+    await expect(search).toHaveValue("");
+  });
+
+  test("architecture search and filters work", async ({ page }) => {
+    await page.goto("/architecture", { waitUntil: "domcontentloaded" });
+
+    const search = page.getByRole("textbox", { name: /search architecture topics/i });
+    await search.fill("security");
+    await expect(
+      page.getByRole("heading", { name: /aws security remediation architecture/i }).first(),
+    ).toBeVisible();
+
+    await page.getByRole("button", { name: /^AWS$/ }).first().click();
+    await expect(page.getByRole("button", { name: /clear filters/i })).toBeVisible();
+
+    await search.fill("no matching diagram");
+    await expect(page.getByText(/no matching diagrams/i)).toBeVisible();
   });
 
   test("key project detail pages return case-study content", async ({ page }) => {

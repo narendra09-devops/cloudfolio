@@ -3,6 +3,7 @@ import { AboutPreview } from "@/components/sections/about-preview";
 import { AvailabilityBanner } from "@/components/sections/availability-banner";
 import { CertificationsPreview } from "@/components/sections/certifications-preview";
 import { ContactCta } from "@/components/sections/contact-cta";
+import { DiscoverySection } from "@/components/sections/discovery-section";
 import { ExperienceSnapshot } from "@/components/sections/experience-snapshot";
 import { FeaturedProjects } from "@/components/sections/featured-projects";
 import { GitHubPreview } from "@/components/sections/github-preview";
@@ -25,6 +26,7 @@ export default function Home() {
       <AboutPreview />
       <SkillsOverview />
       <ExperienceSnapshot />
+      <DiscoverySection />
       <FeaturedProjects />
       <CertificationsPreview />
       <GitHubPreview />

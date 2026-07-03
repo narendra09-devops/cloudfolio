@@ -11,6 +11,8 @@ export type ArchitectureTopic = {
   category: string;
   publishedAt: string;
   technologies: string[];
+  focusAreas?: string[];
+  searchableText?: string;
   diagramNodes: string[];
   sections: DiagramSection[];
   takeaways: string[];
@@ -25,6 +27,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Security Architecture",
     publishedAt: "2026-02-08",
     technologies: ["AWS Security Hub", "AWS Config", "Lambda", "IAM", "SNS"],
+    focusAreas: ["AWS", "Security", "Governance", "Automation"],
+    searchableText:
+      "aws security remediation architecture security hub config lambda iam sns findings intake prioritization owner routing remediation tracking",
     diagramNodes: ["Findings intake", "Prioritization", "Owner routing", "Remediation tracking"],
     sections: [
       {
@@ -54,6 +59,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Cost Architecture",
     publishedAt: "2026-01-20",
     technologies: ["AWS EC2", "Systems Manager", "CloudWatch", "Cost Explorer"],
+    focusAreas: ["AWS", "Cost Optimization", "Automation"],
+    searchableText:
+      "sap cost optimization architecture scheduling rightsizing aws ec2 systems manager cloudwatch cost explorer",
     diagramNodes: ["Utilization data", "Scheduling policy", "Start/stop action", "Cost reporting"],
     sections: [
       {
@@ -83,6 +91,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Automation Architecture",
     publishedAt: "2025-12-18",
     technologies: ["Python", "PostgreSQL", "Linux", "Reporting"],
+    focusAreas: ["Automation", "Governance", "Reliability"],
+    searchableText:
+      "vm audit automation architecture data pipeline inventory collection normalization compliance checks audit reporting",
     diagramNodes: ["Collectors", "Normalization", "Rules engine", "Audit output"],
     sections: [
       {
@@ -112,6 +123,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Reliability Architecture",
     publishedAt: "2025-11-08",
     technologies: ["SSL/TLS", "DNS", "Prometheus", "Grafana", "Python"],
+    focusAreas: ["Reliability", "Networking", "Automation", "Observability"],
+    searchableText:
+      "ssl automation architecture certificate lifecycle discovery monitoring alerting renewal coordination dns prometheus grafana",
     diagramNodes: ["Endpoint discovery", "Expiry scanner", "Alerting", "Renewal workflow"],
     sections: [
       {
@@ -141,6 +155,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Observability Architecture",
     publishedAt: "2025-10-16",
     technologies: ["Grafana", "Prometheus", "APIs", "AWS", "Linux"],
+    focusAreas: ["Observability", "AWS", "Platform Engineering"],
+    searchableText:
+      "infrastructure dashboard architecture ownership health operational context fast review cycles grafana prometheus aws linux",
     diagramNodes: ["Data sources", "Normalization", "Views", "Review exports"],
     sections: [
       {
@@ -170,6 +187,9 @@ export const architectureTopics: ArchitectureTopic[] = [
     category: "Migration Architecture",
     publishedAt: "2025-09-22",
     technologies: ["AWS", "Terraform", "Kubernetes", "Networking", "CI/CD"],
+    focusAreas: ["AWS", "Networking", "Reliability", "Governance"],
+    searchableText:
+      "cloud migration architecture discovery sequencing cutover stabilization aws terraform kubernetes networking ci cd",
     diagramNodes: ["Discovery", "Wave planning", "Cutover", "Stabilization"],
     sections: [
       {
