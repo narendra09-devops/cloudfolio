@@ -3,17 +3,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { learningTopics, notes } from "@/content/notes";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Learning",
   description:
     "CloudFolio learning page with focused study tracks for AWS security, cost optimization, observability, and automation.",
-  alternates: {
-    canonical: `${siteConfig.url}/learning`,
-  },
-};
+  path: "/learning",
+});
 
 export default function LearningPage() {
   return (

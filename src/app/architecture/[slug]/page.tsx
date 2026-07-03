@@ -14,7 +14,7 @@ import {
   getArchitectureTopicBySlug,
   getRelatedArchitectureTopics,
 } from "@/content/architecture";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/config/site";
 
 type ArchitecturePageProps = {
   params: Promise<{
@@ -38,22 +38,12 @@ export async function generateMetadata({ params }: ArchitecturePageProps): Promi
     };
   }
 
-  const url = `${siteConfig.url}/architecture/${topic.slug}`;
-
-  return {
+  return createPageMetadata({
     title: topic.title,
     description: topic.summary,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      title: `${topic.title} | CloudFolio`,
-      description: topic.summary,
-      url,
-      siteName: siteConfig.name,
-      type: "article",
-    },
-  };
+    path: `/architecture/${topic.slug}`,
+    type: "article",
+  });
 }
 
 export default async function ArchitectureTopicPage({ params }: ArchitecturePageProps) {
@@ -91,9 +81,9 @@ export default async function ArchitectureTopicPage({ params }: ArchitecturePage
             <div className="space-y-10">
               {topic.sections.map((section) => (
                 <section key={section.heading}>
-                  <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
+                  <h2 className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                     {section.heading}
-                  </p>
+                  </h2>
                   <Paragraph className="mt-4">{section.paragraphs[0]}</Paragraph>
                   {section.paragraphs.slice(1).map((paragraph) => (
                     <Paragraph className="mt-4" key={paragraph}>

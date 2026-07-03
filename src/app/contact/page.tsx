@@ -21,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { analyticsEvents } from "@/lib/analytics";
 
 const resumePdfUrl = "/resume/narendra-pratap-singh-resume.pdf";
@@ -29,11 +30,12 @@ const emailHref = `mailto:${emailAddress}?subject=CloudFolio%20Opportunity%20Dis
 const githubUrl = "https://github.com/narendra09-devops";
 const linkedinUrl = "https://www.linkedin.com/in/narendra09-devops";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Contact | CloudFolio",
   description:
     "Contact Narendra Pratap Singh for Senior Cloud Infrastructure Engineer, SRE, Platform Engineer, AWS Cloud Engineer, and Cloud Architect opportunities.",
-};
+  path: "/contact",
+});
 
 const contactCards = [
   {

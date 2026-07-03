@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H1, H2, H3, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 
 const resumePath = "/resume/narendra-pratap-singh-resume.pdf";
 const contactPath = "/contact";
@@ -56,11 +57,12 @@ const availability = [
   "Visa sponsorship required for Europe",
 ] as const;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "About Narendra Pratap Singh | Cloud Infrastructure, SRE, Platform Engineering",
   description:
     "About Narendra Pratap Singh, a Senior Cloud Infrastructure Engineer, Site Reliability Engineer, and Platform Engineer based in Greater Noida, India.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

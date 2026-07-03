@@ -15,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { getProjectBySlug, getRelatedProjects, projects } from "@/content/projects";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/config/site";
 import { analyticsEvents } from "@/lib/analytics";
 
 type ProjectPageProps = {
@@ -77,22 +77,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     };
   }
 
-  const url = `${siteConfig.url}/projects/${project.slug}`;
-
-  return {
+  return createPageMetadata({
     title: project.title,
     description: project.summary,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      title: `${project.title} | CloudFolio Case Study`,
-      description: project.summary,
-      url,
-      siteName: siteConfig.name,
-      type: "article",
-    },
-  };
+    path: `/projects/${project.slug}`,
+    type: "article",
+  });
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {

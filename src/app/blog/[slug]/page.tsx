@@ -16,7 +16,7 @@ import {
   getPreviousBlogPost,
   getRelatedBlogPosts,
 } from "@/content/blog";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/config/site";
 
 type BlogPageProps = {
   params: Promise<{
@@ -40,22 +40,12 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
     };
   }
 
-  const url = `${siteConfig.url}/blog/${post.slug}`;
-
-  return {
+  return createPageMetadata({
     title: post.title,
     description: post.summary,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      title: `${post.title} | CloudFolio`,
-      description: post.summary,
-      url,
-      siteName: siteConfig.name,
-      type: "article",
-    },
-  };
+    path: `/blog/${post.slug}`,
+    type: "article",
+  });
 }
 
 export default async function BlogPostPage({ params }: BlogPageProps) {
@@ -89,9 +79,9 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
             <div className="space-y-10">
               {post.sections.map((section) => (
                 <section key={section.heading}>
-                  <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
+                  <h2 className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                     {section.heading}
-                  </p>
+                  </h2>
                   <Paragraph className="mt-4">{section.paragraphs[0]}</Paragraph>
                   {section.paragraphs.slice(1).map((paragraph) => (
                     <Paragraph className="mt-4" key={paragraph}>
