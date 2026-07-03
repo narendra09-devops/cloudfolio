@@ -4,17 +4,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { notes } from "@/content/notes";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Notes",
   description:
     "CloudFolio operational notes and engineering reference cards for review checklists, incident follow-up, and automation decisions.",
-  alternates: {
-    canonical: `${siteConfig.url}/notes`,
-  },
-};
+  path: "/notes",
+});
 
 export default function NotesPage() {
   return (

@@ -3,25 +3,15 @@ import { ProjectsGrid } from "@/components/projects/projects-grid";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { projects } from "@/content/projects";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Projects and Case Studies",
   description:
     "CloudFolio project case studies covering AWS security, SAP cost optimization, cloud architecture, VM audits, SSL automation, infrastructure visibility, operations, and SRE automation.",
-  alternates: {
-    canonical: `${siteConfig.url}/projects`,
-  },
-  openGraph: {
-    title: "Projects and Case Studies | CloudFolio",
-    description:
-      "Professional case studies for cloud infrastructure, DevOps, platform engineering, and SRE automation work.",
-    url: `${siteConfig.url}/projects`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  path: "/projects",
+});
 
 export default function ProjectsPage() {
   return (

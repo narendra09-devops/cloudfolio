@@ -3,25 +3,15 @@ import { ArchitectureGrid } from "@/components/architecture/architecture-grid";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { architectureTopics } from "@/content/architecture";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Architecture Gallery",
   description:
     "CloudFolio architecture gallery covering AWS security, SAP cost optimization, VM audit automation, SSL lifecycle, dashboards, and cloud migration.",
-  alternates: {
-    canonical: `${siteConfig.url}/architecture`,
-  },
-  openGraph: {
-    title: "Architecture Gallery | CloudFolio",
-    description:
-      "A gallery of cloud architecture patterns and operational diagrams for recruiters and engineering teams.",
-    url: `${siteConfig.url}/architecture`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  path: "/architecture",
+});
 
 export default function ArchitecturePage() {
   return (

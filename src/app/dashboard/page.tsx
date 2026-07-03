@@ -11,29 +11,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/config/site";
 import { blogPosts } from "@/content/blog";
 import { projects } from "@/content/projects";
 import { getGithubDashboardData } from "@/lib/github";
 
 export const revalidate = 1800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Engineering Dashboard",
   description:
     "Live CloudFolio engineering dashboard with GitHub profile data, repositories, language statistics, project highlights, and analytics readiness.",
-  alternates: {
-    canonical: `${siteConfig.url}/dashboard`,
-  },
-  openGraph: {
-    title: "Engineering Dashboard | CloudFolio",
-    description:
-      "GitHub-backed portfolio dashboard for repositories, engineering metrics, activity, and content widgets.",
-    url: `${siteConfig.url}/dashboard`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  path: "/dashboard",
+});
 
 export default async function DashboardPage() {
   const github = await getGithubDashboardData();

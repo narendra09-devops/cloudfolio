@@ -5,29 +5,19 @@ import { RepositoryGrid } from "@/components/github/repository-grid";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
-import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/config/site";
 import { blogPosts } from "@/content/blog";
 import { projects } from "@/content/projects";
 import { getGithubDashboardData } from "@/lib/github";
 
 export const revalidate = 1800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Engineering Activity",
   description:
     "Recent CloudFolio engineering activity across GitHub repositories, technical writing, and project case studies.",
-  alternates: {
-    canonical: `${siteConfig.url}/activity`,
-  },
-  openGraph: {
-    title: "Engineering Activity | CloudFolio",
-    description:
-      "Activity feed combining GitHub repository updates, blog posts, and project portfolio updates.",
-    url: `${siteConfig.url}/activity`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  path: "/activity",
+});
 
 export default async function ActivityPage() {
   const github = await getGithubDashboardData();

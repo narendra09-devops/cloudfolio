@@ -3,25 +3,15 @@ import { BlogGrid } from "@/components/blog/blog-grid";
 import { Container } from "@/components/ui/container";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { blogPosts } from "@/content/blog";
-import { siteConfig } from "@/config/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Blog",
   description:
     "CloudFolio blog posts about AWS security, SAP cost optimization, operations, observability, SSL automation, and infrastructure scale.",
-  alternates: {
-    canonical: `${siteConfig.url}/blog`,
-  },
-  openGraph: {
-    title: "Blog | CloudFolio",
-    description:
-      "Technical writing for cloud infrastructure, DevOps, platform engineering, and SRE leadership.",
-    url: `${siteConfig.url}/blog`,
-    siteName: siteConfig.name,
-    type: "website",
-  },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

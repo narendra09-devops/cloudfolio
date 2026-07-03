@@ -8,15 +8,17 @@ import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
+import { createPageMetadata } from "@/config/site";
 import { analyticsEvents } from "@/lib/analytics";
 
 const resumePdfPath = "/resume/narendra-pratap-singh-resume.pdf";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Resume | Narendra Pratap Singh",
   description:
     "Resume overview for Narendra Pratap Singh, Senior Cloud Infrastructure Engineer, SRE, Platform Engineer, and AWS Cloud Engineer.",
-};
+  path: "/resume",
+});
 
 export default function ResumePage() {
   return (

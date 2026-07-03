@@ -1,28 +1,36 @@
 import type { MetadataRoute } from "next";
+import { absoluteUrl } from "@/config/site";
+import { architectureTopics } from "@/content/architecture";
+import { blogPosts } from "@/content/blog";
+import { projects } from "@/content/projects";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://cloudfolio-xi.vercel.app";
-
-  const routes = [
-    "",
+  const staticRoutes = [
+    "/",
     "/about",
-    "/projects",
-    "/blog",
-    "/architecture",
-    "/dashboard",
     "/activity",
-    "/timeline",
-    "/resume",
-    "/recruiter",
+    "/architecture",
+    "/blog",
     "/contact",
+    "/dashboard",
+    "/learning",
+    "/notes",
+    "/projects",
+    "/recruiter",
+    "/resume",
+    "/timeline",
   ];
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+  const projectRoutes = projects.map((project) => `/projects/${project.slug}`);
+  const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`);
+  const architectureRoutes = architectureTopics.map((topic) => `/architecture/${topic.slug}`);
+
+  return [...staticRoutes, ...projectRoutes, ...blogRoutes, ...architectureRoutes].map((route) => ({
+    url: absoluteUrl(route),
     lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
+    changeFrequency: route === "/" ? "weekly" : "monthly",
+    priority: route === "/" ? 1 : route.includes("/projects/") ? 0.85 : 0.8,
   }));
 }
