@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ArchitectureGrid } from "@/components/architecture/architecture-grid";
+import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
-import { H2, Paragraph } from "@/components/ui/heading";
+import { Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { createPageMetadata } from "@/config/site";
+import { ArchitectureDiscovery } from "@/components/discovery/architecture-discovery";
 import { architectureTopics } from "@/content/architecture";
 
 export const metadata: Metadata = createPageMetadata({
@@ -33,18 +34,19 @@ export default function ArchitecturePage() {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <div className="mb-8 max-w-3xl">
-            <H2>Reference diagrams.</H2>
-            <Paragraph className="mt-4">
-              Each architecture topic explains the system flow, the technical choices, and the
-              operational constraints behind the design.
-            </Paragraph>
-          </div>
-          <ArchitectureGrid topics={architectureTopics} />
-        </Container>
-      </Section>
+      <Suspense
+        fallback={
+          <Section>
+            <Container>
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-6 text-sm text-muted">
+                Loading architecture discovery tools...
+              </div>
+            </Container>
+          </Section>
+        }
+      >
+        <ArchitectureDiscovery topics={architectureTopics} />
+      </Suspense>
     </>
   );
 }

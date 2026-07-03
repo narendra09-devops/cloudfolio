@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { ProjectsGrid } from "@/components/projects/projects-grid";
+import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
-import { H2, Paragraph } from "@/components/ui/heading";
+import { Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { createPageMetadata } from "@/config/site";
+import { ProjectsDiscovery } from "@/components/discovery/projects-discovery";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = createPageMetadata({
@@ -33,21 +34,19 @@ export default function ProjectsPage() {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl">
-              <H2>Selected project portfolio.</H2>
-              <Paragraph className="mt-4">
-                Each case study highlights the problem, solution, measurable results, technology
-                choices, business impact, and lessons learned.
-              </Paragraph>
-            </div>
-            <p className="font-mono text-sm text-muted">{projects.length} case studies</p>
-          </div>
-          <ProjectsGrid projects={projects} />
-        </Container>
-      </Section>
+      <Suspense
+        fallback={
+          <Section>
+            <Container>
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-6 text-sm text-muted">
+                Loading project discovery tools...
+              </div>
+            </Container>
+          </Section>
+        }
+      >
+        <ProjectsDiscovery projects={projects} />
+      </Suspense>
     </>
   );
 }

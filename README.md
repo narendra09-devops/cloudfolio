@@ -19,6 +19,7 @@ Primary audiences:
 
 - Recruiter Hub with role fit, skills, relocation preferences, featured projects, FAQ, resume downloads, and direct contact paths.
 - Project portfolio with case studies for cloud security, cost optimization, VM audit automation, SSL automation, dashboards, backlog reduction, and SRE automation.
+- Discovery search and filters across projects, blog posts, and architecture topics with query-param support for recruiters who want to narrow quickly.
 - VM Audit flagship case study with business context, implementation narrative, metrics, gallery, and architecture flow.
 - Resume page with view/download CTAs and analytics events.
 - Blog and architecture gallery content systems.
@@ -189,10 +190,12 @@ High-priority next improvements:
 - Add committed production screenshots for README and release pages.
 - Add richer per-page structured data.
 - Add Lighthouse CI for production score tracking.
+- Expand the discovery layer with saved searches, sort controls, and analytics on filter usage.
 
 ## Documentation
 
 - [Release Notes v1](docs/RELEASE_NOTES_v1.md)
+- [Release Notes v1.2](docs/V1_2_RELEASE_NOTES.md)
 - [Launch Checklist](docs/LAUNCH_CHECKLIST.md)
 - [Production Scorecard](docs/PRODUCTION_SCORECARD.md)
 - [Known Limitations](docs/KNOWN_LIMITATIONS.md)

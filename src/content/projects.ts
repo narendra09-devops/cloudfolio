@@ -22,6 +22,12 @@ export type Project = {
   problem: string;
   solution: string;
   technologies: string[];
+  category: string;
+  projectType?: string;
+  focusAreas?: string[];
+  outcomes?: string[];
+  seniorityKeywords?: string[];
+  searchableText?: string;
   metrics: ProjectMetric[];
   businessImpact: string[];
   lessonsLearned: string[];
@@ -30,7 +36,6 @@ export type Project = {
   client?: string;
   role?: string;
   duration?: string;
-  projectType?: string;
   teamSize?: string;
   primaryOutcome?: string;
   environmentScale?: string[];
@@ -45,6 +50,7 @@ export const projects: Project[] = [
   {
     title: "VM Audit & Automation Platform - Infrastructure Optimization",
     slug: "vm-audit-automation-platform",
+    category: "SRE Automation",
     summary:
       "Designed and implemented an automation platform to audit, reconcile, and optimize virtual infrastructure across two enterprise environments for a global hosting provider.",
     employer: "Agivant Technologies Pvt. Ltd.",
@@ -65,6 +71,11 @@ export const projects: Project[] = [
       "Automation Framework",
       "Infrastructure Audit Platform",
     ],
+    focusAreas: ["SRE", "Automation", "Cost Optimization", "Infrastructure Visibility"],
+    outcomes: ["70% reduction in manual audit effort", "900+ assets reconciled"],
+    seniorityKeywords: ["Lead Engineer", "Cloud Site Reliability Engineer", "Digital Platform"],
+    searchableText:
+      "VM audit automation platform infrastructure optimization SRE automation cost optimization reconciliation backup restore lifecycle controls billing platform virtualization platform",
     metrics: [
       {
         label: "Infrastructure assets",
@@ -210,6 +221,7 @@ export const projects: Project[] = [
   {
     title: "AWS Security Hub Remediation Program",
     slug: "aws-security-hub-remediation-program",
+    category: "Security",
     summary:
       "Centralized cloud security remediation and compliance automation for enterprise-scale AWS environments.",
     employer: "Confidential Enterprise Customer",
@@ -239,6 +251,11 @@ export const projects: Project[] = [
       "KMS",
       "AWS Organizations",
     ],
+    focusAreas: ["Security", "Compliance", "Automation", "SRE"],
+    outcomes: ["65% reduction in critical findings", "40% faster incident triage"],
+    seniorityKeywords: ["Senior Cloud Infrastructure Engineer", "SRE", "Cloud Security Engineer"],
+    searchableText:
+      "AWS Security Hub remediation program cloud security automation compliance eventbridge lambda sns guardduty inspector config organizations iam access analyzer security operations",
     metrics: [
       {
         label: "Critical findings",
@@ -356,6 +373,7 @@ export const projects: Project[] = [
   {
     title: "SAP Development Environment Cost Optimization",
     slug: "sap-development-environment-cost-optimization",
+    category: "Cost Optimization",
     summary:
       "Cost optimization initiative for SAP development infrastructure using schedules, rightsizing, and utilization review.",
     role: "Cloud Infrastructure Engineer",
@@ -368,6 +386,11 @@ export const projects: Project[] = [
     solution:
       "Introduced environment scheduling, utilization analysis, instance rightsizing, and cost guardrails that preserved developer access while lowering idle spend.",
     technologies: ["AWS EC2", "SAP", "CloudWatch", "Cost Explorer", "Systems Manager", "Terraform"],
+    focusAreas: ["Cost Optimization", "Automation", "Reliability", "Terraform"],
+    outcomes: ["32% reduction in non-production monthly spend", "55% idle runtime removed"],
+    seniorityKeywords: ["Cloud Infrastructure Engineer", "Platform Engineer"],
+    searchableText:
+      "SAP development environment cost optimization AWS EC2 CloudWatch Cost Explorer Systems Manager Terraform scheduling rightsizing utilization cost guardrails",
     metrics: [
       { label: "Monthly spend", value: "32%", context: "reduction in non-production run cost" },
       { label: "Idle runtime", value: "55%", context: "removed through scheduled availability" },
@@ -430,6 +453,7 @@ export const projects: Project[] = [
   {
     title: "Cloud Architecture Design Framework",
     slug: "cloud-architecture-design-framework",
+    category: "Architecture",
     summary:
       "A reusable cloud architecture framework for standardizing design reviews, operational readiness, and platform decisions.",
     role: "Cloud Architect / Platform Engineer",
@@ -449,6 +473,11 @@ export const projects: Project[] = [
       "CI/CD",
       "Observability",
     ],
+    focusAreas: ["Architecture", "Platform Engineering", "Governance", "Reliability"],
+    outcomes: ["90% review consistency across the checkpoint model", "30% shorter design cycles"],
+    seniorityKeywords: ["Cloud Architect", "Platform Engineer"],
+    searchableText:
+      "cloud architecture design framework decision records reference patterns AWS Well-Architected governance operational readiness platform decisions",
     metrics: [
       {
         label: "Review consistency",
@@ -506,6 +535,7 @@ export const projects: Project[] = [
   {
     title: "SSL Lifecycle Automation Platform",
     slug: "ssl-lifecycle-automation-platform",
+    category: "Reliability",
     summary:
       "Certificate lifecycle automation for discovery, expiration tracking, renewal coordination, and service reliability.",
     role: "SRE / Infrastructure Automation Engineer",
@@ -518,6 +548,11 @@ export const projects: Project[] = [
     solution:
       "Implemented certificate discovery, expiration monitoring, alerting, ownership mapping, and renewal workflows for critical services.",
     technologies: ["SSL/TLS", "DNS", "Python", "Cron", "Prometheus", "Grafana"],
+    focusAreas: ["Reliability", "Automation", "Observability", "Networking"],
+    outcomes: ["0 certificate expiry incidents", "85%+ endpoint coverage"],
+    seniorityKeywords: ["SRE Automation Engineer", "Infrastructure Engineer"],
+    searchableText:
+      "SSL lifecycle automation platform discovery expiration tracking alerting ownership renewal coordination DNS endpoints reliability observability",
     metrics: [
       { label: "Expiry incidents", value: "0", context: "after proactive lifecycle tracking" },
       { label: "Coverage", value: "85%+", context: "of known critical endpoints monitored" },
@@ -580,6 +615,7 @@ export const projects: Project[] = [
   {
     title: "Infrastructure Visibility Dashboard",
     slug: "infrastructure-visibility-dashboard",
+    category: "Observability",
     summary:
       "Operational dashboard for infrastructure status, ownership, health signals, and executive-ready service visibility.",
     role: "Platform Engineer / Observability Engineer",
@@ -592,6 +628,11 @@ export const projects: Project[] = [
     solution:
       "Created a consolidated dashboard that connected inventory, health indicators, service ownership, and operational risk signals.",
     technologies: ["Grafana", "Prometheus", "AWS", "Linux", "APIs", "Observability"],
+    focusAreas: ["Observability", "Dashboarding", "Platform Engineering", "Operations"],
+    outcomes: ["80% faster status lookup", "6 data sources integrated"],
+    seniorityKeywords: ["Platform Engineer", "Observability Engineer"],
+    searchableText:
+      "infrastructure visibility dashboard ownership health operational context Grafana Prometheus AWS Linux APIs observability executive visibility",
     metrics: [
       { label: "Status lookup", value: "80%", context: "faster during operational reviews" },
       { label: "Data sources", value: "6", context: "integrated into one infrastructure view" },
@@ -649,6 +690,7 @@ export const projects: Project[] = [
   {
     title: "Operational Backlog Reduction Initiative",
     slug: "operational-backlog-reduction-initiative",
+    category: "Operations",
     summary:
       "Program to reduce recurring infrastructure operations backlog through prioritization, automation, and clearer service ownership.",
     role: "SRE / Operations Automation Engineer",
@@ -661,6 +703,11 @@ export const projects: Project[] = [
     solution:
       "Segmented backlog items by risk and toil, automated repeatable tasks, clarified ownership, and introduced throughput reporting.",
     technologies: ["Jira", "Python", "Shell", "Linux", "Automation", "Service Management"],
+    focusAreas: ["SRE", "Automation", "Operations", "Workflow"],
+    outcomes: ["45% reduction across targeted operational queues", "25 hours saved per month"],
+    seniorityKeywords: ["SRE", "Operations Engineer"],
+    searchableText:
+      "operational backlog reduction initiative toil automation ownership routing throughput reporting service management SRE",
     metrics: [
       { label: "Backlog size", value: "45%", context: "reduction across targeted queues" },
       { label: "Manual toil", value: "25 hrs", context: "saved per month through automation" },
@@ -719,6 +766,7 @@ export const projects: Project[] = [
   {
     title: "SRE Automation Toolkit",
     slug: "sre-automation-toolkit",
+    category: "Automation",
     summary:
       "Reusable SRE automation toolkit for operational checks, incident support, reporting, and infrastructure maintenance workflows.",
     role: "SRE Automation Engineer",
@@ -731,6 +779,11 @@ export const projects: Project[] = [
     solution:
       "Packaged common operational automation into reusable commands, documented workflows, and standardized checks for infrastructure teams.",
     technologies: ["Python", "Bash", "AWS CLI", "Linux", "GitHub Actions", "Runbooks"],
+    focusAreas: ["SRE", "Automation", "Reliability", "Platform Engineering"],
+    outcomes: ["20+ reusable commands", "35% script duplication reduced"],
+    seniorityKeywords: ["SRE Automation Engineer", "Platform Engineer"],
+    searchableText:
+      "SRE automation toolkit operational checks incident support reporting infrastructure maintenance runbooks github actions linux python bash",
     metrics: [
       {
         label: "Reusable commands",

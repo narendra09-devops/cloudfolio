@@ -12,6 +12,9 @@ export type BlogPost = {
   publishedAt: string;
   readTimeMinutes: number;
   tags: string[];
+  focusAreas?: string[];
+  technologies?: string[];
+  searchableText?: string;
   sections: BlogSection[];
   takeaways: string[];
 };
@@ -26,6 +29,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-02-14",
     readTimeMinutes: 7,
     tags: ["AWS", "Security Hub", "Remediation", "Cloud Security"],
+    focusAreas: ["Security", "Compliance", "Automation"],
+    technologies: ["AWS", "Security Hub", "Lambda"],
+    searchableText:
+      "improving aws security hub score to 100 practical remediation approach control ownership security hub remediation cloud security aws",
     sections: [
       {
         heading: "Why the score matters",
@@ -67,6 +74,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-01-28",
     readTimeMinutes: 6,
     tags: ["AWS", "SAP", "Cost Optimization", "Automation"],
+    focusAreas: ["Cost Optimization", "Automation", "SAP"],
+    technologies: ["AWS", "SAP", "Systems Manager"],
+    searchableText:
+      "automating sap start stop to reduce cloud costs scheduling automation rightsizing utilization non-production sap aws",
     sections: [
       {
         heading: "The problem with always-on environments",
@@ -102,6 +113,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2025-12-19",
     readTimeMinutes: 7,
     tags: ["Backlog", "Automation", "Operations", "SRE"],
+    focusAreas: ["SRE", "Automation", "Operations"],
+    technologies: ["Automation", "SRE", "Operations"],
+    searchableText:
+      "reducing operational backlog by 72 backlog reduction automation toil service queues operations sre",
     sections: [
       {
         heading: "The hidden cost of operational queues",
@@ -137,6 +152,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2025-11-30",
     readTimeMinutes: 6,
     tags: ["Dashboards", "Observability", "Grafana", "Operations"],
+    focusAreas: ["Observability", "Platform Engineering"],
+    technologies: ["Grafana", "Prometheus", "AWS"],
+    searchableText:
+      "building infrastructure visibility dashboards ownership health operational context grafana prometheus observability",
     sections: [
       {
         heading: "Dashboards need a decision model",
@@ -172,6 +191,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2025-10-24",
     readTimeMinutes: 5,
     tags: ["SSL", "Automation", "Reliability", "Incident Prevention"],
+    focusAreas: ["Reliability", "Automation", "Networking"],
+    technologies: ["SSL/TLS", "DNS", "Prometheus"],
+    searchableText:
+      "ssl lifecycle automation discovery monitoring alerting renewal coordination certificate expiry reliability",
     sections: [
       {
         heading: "Why certificate expiry keeps slipping through",
@@ -207,6 +230,10 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2025-09-10",
     readTimeMinutes: 8,
     tags: ["Linux", "Operations", "Automation", "Scale"],
+    focusAreas: ["Operations", "Automation", "Scale"],
+    technologies: ["Linux", "Automation", "Operations"],
+    searchableText:
+      "lessons learned managing 1000 plus servers operational lessons automation compliance ownership incident response scale",
     sections: [
       {
         heading: "Scale exposes process debt",

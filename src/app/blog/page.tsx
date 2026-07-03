@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { BlogGrid } from "@/components/blog/blog-grid";
+import { Suspense } from "react";
 import { Container } from "@/components/ui/container";
-import { H2, Paragraph } from "@/components/ui/heading";
+import { Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
 import { createPageMetadata } from "@/config/site";
+import { BlogDiscovery } from "@/components/discovery/blog-discovery";
 import { blogPosts } from "@/content/blog";
 
 export const metadata: Metadata = createPageMetadata({
@@ -33,18 +34,19 @@ export default function BlogPage() {
         </Container>
       </Section>
 
-      <Section>
-        <Container>
-          <div className="mb-8 max-w-3xl">
-            <H2>Latest articles.</H2>
-            <Paragraph className="mt-4">
-              Every article follows an evidence-based structure with clear context, operational
-              tradeoffs, and takeaways that can be applied in real environments.
-            </Paragraph>
-          </div>
-          <BlogGrid posts={blogPosts} />
-        </Container>
-      </Section>
+      <Suspense
+        fallback={
+          <Section>
+            <Container>
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-6 text-sm text-muted">
+                Loading blog discovery tools...
+              </div>
+            </Container>
+          </Section>
+        }
+      >
+        <BlogDiscovery posts={blogPosts} />
+      </Suspense>
     </>
   );
 }
