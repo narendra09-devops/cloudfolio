@@ -771,6 +771,9 @@ export function RecruiterHub() {
                       href={item.href}
                       size="lg"
                       variant={item.variant}
+                      {...(item.href.startsWith("http")
+                        ? { rel: "noopener noreferrer", target: "_blank" }
+                        : {})}
                       {...("download" in item && item.download ? { download: true } : {})}
                     >
                       <span className="flex items-center gap-3">
