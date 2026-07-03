@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { ArchitecturePlaceholder } from "@/components/projects/architecture-placeholder";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
+import { AwsSecurityHubCaseStudy } from "@/components/projects/aws-security-hub-case-study";
 import { CaseStudyHero } from "@/components/projects/case-study-hero";
 import { MermaidDiagram } from "@/components/projects/mermaid-diagram";
 import { MetricsCards } from "@/components/projects/metrics-cards";
@@ -105,6 +106,10 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         <VmAuditFlagshipCaseStudy project={project} relatedProjects={relatedProjects} />
       </>
     );
+  }
+
+  if (project.slug === "aws-security-hub-remediation-program") {
+    return <AwsSecurityHubCaseStudy project={project} />;
   }
 
   return (

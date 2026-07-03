@@ -205,40 +205,143 @@ export const projects: Project[] = [
     title: "AWS Security Hub Remediation Program",
     slug: "aws-security-hub-remediation-program",
     summary:
-      "A structured remediation program for AWS Security Hub findings across accounts, teams, and operational ownership boundaries.",
+      "Centralized cloud security remediation and compliance automation for enterprise-scale AWS environments.",
+    employer: "Confidential Enterprise Customer",
+    client: "Confidential Enterprise Customer",
+    role: "Senior Cloud Infrastructure Engineer / Site Reliability Engineer / Cloud Security Engineer",
+    duration: "January 2023 - June 2023",
     problem:
-      "Security Hub findings were visible, but remediation was inconsistent because ownership, severity handling, and repeatable runbooks were fragmented across environments.",
+      "Security Hub findings were visible, but remediation was inconsistent because ownership, severity handling, evidence collection, and repeatable runbooks were fragmented across environments.",
     solution:
-      "Built a prioritized remediation operating model with automated evidence collection, finding triage, reusable runbooks, and backlog tracking for high-risk AWS controls.",
-    technologies: ["AWS Security Hub", "AWS Config", "IAM", "Lambda", "CloudWatch", "Python"],
+      "Centralized AWS security findings, automated alerting, improved incident triage, and standardized remediation workflows using AWS-native security and automation services.",
+    technologies: [
+      "AWS Security Hub",
+      "Amazon GuardDuty",
+      "Amazon Inspector",
+      "AWS Config",
+      "IAM",
+      "IAM Access Analyzer",
+      "CloudTrail",
+      "EventBridge",
+      "Lambda",
+      "CloudWatch",
+      "SNS",
+      "Python",
+      "KMS",
+      "AWS Organizations",
+    ],
     metrics: [
       {
         label: "Critical findings",
         value: "65%",
-        context: "reduced through prioritized remediation",
+        context: "reduction in critical findings",
       },
-      { label: "Triage time", value: "40%", context: "faster with reusable evidence packs" },
+      { label: "Incident triage", value: "40%", context: "faster incident triage" },
       {
         label: "Account coverage",
         value: "100%",
-        context: "standardized reporting across target accounts",
+        context: "target account coverage",
+      },
+      {
+        label: "Compliance visibility",
+        value: "90%+",
+        context: "visibility across security controls",
       },
     ],
+    environmentScale: [
+      "Multi-account AWS environment managed under AWS Organizations.",
+      "Production workloads supporting business-critical applications.",
+      "Security findings across multiple AWS services and accounts.",
+      "Remediation ownership across infrastructure, platform, and application teams.",
+      "Compliance monitoring aligned with AWS Foundational Security Best Practices.",
+    ],
+    technicalChallenges: [
+      "Large volume of findings with inconsistent ownership.",
+      "Duplicate findings across multiple AWS security services.",
+      "Lack of standardized remediation procedures.",
+      "Limited visibility into remediation progress.",
+      "Manual evidence collection for audits.",
+      "Difficulty prioritizing high-risk findings.",
+    ],
+    implementation: [
+      {
+        title: "Security control plane",
+        items: [
+          "Implemented AWS Security Hub across production AWS environments.",
+          "Enabled AWS Foundational Security Best Practices controls.",
+          "Integrated Security Hub with GuardDuty, Inspector, AWS Config, CloudTrail, EventBridge, Lambda, CloudWatch, and SNS.",
+        ],
+      },
+      {
+        title: "Remediation workflow",
+        items: [
+          "Designed remediation workflows for critical and high-severity findings.",
+          "Configured monitoring, logging, and email alerting.",
+          "Standardized evidence collection and closure validation.",
+        ],
+      },
+      {
+        title: "IAM governance",
+        items: [
+          "Implemented IAM least-privilege improvements and MFA controls.",
+          "Reviewed IAM policies, roles, access keys, and privileged access.",
+          "Partnered with security and operations teams on remediation activities.",
+        ],
+      },
+    ],
+    keyAchievements: [
+      "Reduced MTTR for critical findings.",
+      "Standardized remediation workflows.",
+      "Reduced manual operational effort.",
+      "Improved compliance visibility.",
+      "Increased repeatability of remediation processes.",
+    ],
     businessImpact: [
-      "Improved security posture with clearer accountability for cloud control owners.",
-      "Reduced audit preparation effort by centralizing remediation evidence.",
-      "Created an operating cadence that helped leadership track risk reduction over time.",
+      "Improved cloud security posture.",
+      "Reduced manual triage effort.",
+      "Improved visibility into high-risk findings.",
+      "Strengthened IAM governance.",
+      "Improved audit readiness.",
+      "Created operational accountability.",
+      "Enabled leadership risk tracking.",
     ],
     lessonsLearned: [
-      "Security automation needs ownership metadata as much as technical detection.",
-      "A small set of high-quality runbooks improves adoption faster than broad generic guidance.",
-      "Risk reporting is more useful when tied to accountable service teams and due dates.",
+      "Security automation requires ownership metadata.",
+      "Event-driven workflows improve response time.",
+      "Small reusable runbooks are more effective.",
+      "Accountability improves remediation effectiveness.",
+      "Continuous compliance monitoring is essential.",
     ],
     architecture: [
-      "Security Hub findings",
-      "Aggregation and triage",
-      "Runbook automation",
-      "Evidence store",
+      "Security finding generated",
+      "Finding aggregated in AWS Security Hub",
+      "EventBridge detects severity and compliance events",
+      "Lambda executes alerting, evidence collection, and remediation logic",
+      "SNS sends notifications",
+      "CloudWatch stores logs",
+      "Evidence is collected",
+      "Findings are validated and closed",
+    ],
+    mermaidDiagrams: [
+      {
+        title: "AWS Security Hub Remediation Workflow",
+        description:
+          "Security findings are normalized in Security Hub, routed through EventBridge, processed by Lambda automation, and validated through evidence and remediation review.",
+        code: `flowchart LR
+    GD[Amazon GuardDuty] --> SH[AWS Security Hub]
+    INS[Amazon Inspector] --> SH
+    CFG[AWS Config] --> SH
+    IAM[IAM Access Analyzer] --> SH
+    CT[CloudTrail] --> SH
+
+    SH --> EB[Amazon EventBridge]
+    EB --> L[AWS Lambda]
+    L --> CW[CloudWatch Logs]
+    L --> SNS[SNS Email Alerts]
+    L --> EV[Evidence Store]
+    EV --> DB[Security Dashboard]
+    DB --> RM[Remediation Review]`,
+      },
     ],
   },
   {
