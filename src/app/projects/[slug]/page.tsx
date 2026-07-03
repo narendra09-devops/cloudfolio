@@ -11,12 +11,14 @@ import { MetricsCards } from "@/components/projects/metrics-cards";
 import { ProjectsGrid } from "@/components/projects/projects-grid";
 import { TechnologyBadges } from "@/components/projects/technology-badges";
 import { VmAuditFlagshipCaseStudy } from "@/components/projects/vm-audit/VmAuditFlagshipCaseStudy";
+import { Badge } from "@/components/ui/badge";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Card, CardContent } from "@/components/ui/card";
 import { H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
-import { getProjectBySlug, getRelatedProjects, projects } from "@/content/projects";
-import { createPageMetadata } from "@/config/site";
+import { getProjectBySlug, getRelatedProjects, projects, type Project } from "@/content/projects";
+import { absoluteUrl, createPageMetadata, siteConfig } from "@/config/site";
 import { analyticsEvents } from "@/lib/analytics";
 
 type ProjectPageProps = {
@@ -62,6 +64,225 @@ function DetailList({ eyebrow, title, items, icon }: DetailListProps) {
   );
 }
 
+function ProjectStructuredData({
+  project,
+  relatedProjects,
+}: {
+  project: Project;
+  relatedProjects: Project[];
+}) {
+  const projectUrl = absoluteUrl(`/projects/${project.slug}`);
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: project.title,
+      description: project.summary,
+      url: projectUrl,
+      author: {
+        "@type": "Person",
+        name: siteConfig.owner,
+        url: siteConfig.url,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: siteConfig.name,
+        url: siteConfig.url,
+      },
+      about: project.technologies,
+      keywords: [
+        project.projectType,
+        project.role,
+        ...project.technologies,
+        "Cloud Infrastructure",
+        "Site Reliability Engineering",
+      ]
+        .filter(Boolean)
+        .join(", "),
+      mainEntityOfPage: projectUrl,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: project.title,
+      description: project.summary,
+      url: projectUrl,
+      creator: {
+        "@type": "Person",
+        name: siteConfig.owner,
+      },
+      genre: project.projectType ?? "Cloud infrastructure case study",
+      result: project.primaryOutcome ?? project.metrics[0]?.context,
+      teaches: project.lessonsLearned,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: absoluteUrl("/"),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Projects",
+          item: absoluteUrl("/projects"),
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: project.title,
+          item: projectUrl,
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What type of engineering work does this case study demonstrate?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `${project.title} demonstrates ${project.projectType ?? "cloud infrastructure engineering"} with a focus on ${project.technologies.slice(0, 4).join(", ")}.`,
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What related infrastructure work is available?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: relatedProjects.map((relatedProject) => relatedProject.title).join(", "),
+          },
+        },
+      ],
+    },
+  ];
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+    />
+  );
+}
+
+function ProjectContextPanel({ project }: { project: Project }) {
+  const details = [
+    ["Project Type", project.projectType ?? "Cloud Infrastructure Project"],
+    ["Environment & Scale", project.environmentScale?.[0] ?? "Production engineering environment"],
+    ["Team Size", project.teamSize ?? "Cross-functional infrastructure stakeholders"],
+    ["Duration", project.duration ?? "Project-based engagement"],
+    ["Role", project.role ?? "Cloud Infrastructure Engineer"],
+    [
+      "Primary Outcome",
+      project.primaryOutcome ?? project.metrics[0]?.context ?? project.metrics[0]?.value,
+    ],
+  ];
+
+  return (
+    <aside className="rounded-lg border border-border bg-surface p-6 shadow-lg shadow-primary/5">
+      <div className="flex flex-wrap items-center gap-2">
+        <Badge variant="primary">{project.projectType ?? "Cloud Infrastructure Project"}</Badge>
+        <Badge variant="outline">Case Study</Badge>
+      </div>
+      <h2 className="mt-5 font-heading text-xl font-semibold tracking-tight text-foreground">
+        Case study snapshot
+      </h2>
+      <dl className="mt-6 space-y-5">
+        {project.client ? (
+          <div>
+            <dt className="text-sm font-medium text-muted">Client</dt>
+            <dd className="mt-1 text-sm text-foreground">{project.client}</dd>
+          </div>
+        ) : null}
+        {project.employer ? (
+          <div>
+            <dt className="text-sm font-medium text-muted">Employer</dt>
+            <dd className="mt-1 text-sm text-foreground">{project.employer}</dd>
+          </div>
+        ) : null}
+        {details.map(([label, value]) => (
+          <div key={label}>
+            <dt className="text-sm font-medium text-muted">{label}</dt>
+            <dd className="mt-1 text-sm leading-6 text-foreground">{value}</dd>
+          </div>
+        ))}
+        <div>
+          <dt className="text-sm font-medium text-muted">Technologies</dt>
+          <dd className="mt-2">
+            <TechnologyBadges technologies={project.technologies.slice(0, 6)} />
+          </dd>
+        </div>
+      </dl>
+    </aside>
+  );
+}
+
+function ArchitecturePreview({ project }: { project: Project }) {
+  return (
+    <Section className="bg-surface/30">
+      <Container>
+        <div className="mb-8 max-w-3xl">
+          <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
+            Architecture Preview
+          </p>
+          <H2 className="mt-3">How the workflow fits together.</H2>
+          <Paragraph className="mt-4">
+            A recruiter-readable preview of the technical flow before the detailed architecture
+            section.
+          </Paragraph>
+        </div>
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          {project.architecture.map((step, index) => (
+            <div
+              className="group rounded-lg border border-border bg-background/75 p-4 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/35 hover:shadow-lg hover:shadow-primary/10"
+              key={step}
+            >
+              <span className="font-mono text-xs font-semibold text-primary">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p className="mt-3 text-sm font-semibold leading-6 text-foreground">{step}</p>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function DiscussSimilarWorkCta({ project }: { project: Project }) {
+  return (
+    <Section className="pt-0">
+      <Container>
+        <div className="rounded-xl border border-primary/25 bg-[radial-gradient(circle_at_15%_20%,rgb(var(--color-primary)/0.16),transparent_18rem),linear-gradient(135deg,rgb(var(--color-secondary)/0.14),rgb(var(--color-accent)/0.08))] p-6 shadow-xl shadow-primary/10 sm:p-8">
+          <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                Discuss Similar Work
+              </p>
+              <h2 className="mt-3 font-heading text-2xl font-semibold tracking-tight text-foreground">
+                Need help with {project.projectType?.toLowerCase() ?? "cloud infrastructure work"}?
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-muted">
+                I can discuss architecture tradeoffs, operational constraints, automation approach,
+                and delivery patterns for similar infrastructure programs.
+              </p>
+            </div>
+            <ButtonLink href="/contact" size="lg">
+              Contact Narendra
+            </ButtonLink>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
 export function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
@@ -99,6 +320,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   if (project.slug === "vm-audit-automation-platform") {
     return (
       <>
+        <ProjectStructuredData project={project} relatedProjects={relatedProjects} />
         <PageViewTracker
           eventName={analyticsEvents.vmAuditCaseStudyViewed}
           pageSection="VM Audit Case Study"
@@ -109,11 +331,17 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   }
 
   if (project.slug === "aws-security-hub-remediation-program") {
-    return <AwsSecurityHubCaseStudy project={project} />;
+    return (
+      <>
+        <ProjectStructuredData project={project} relatedProjects={relatedProjects} />
+        <AwsSecurityHubCaseStudy project={project} />
+      </>
+    );
   }
 
   return (
     <>
+      <ProjectStructuredData project={project} relatedProjects={relatedProjects} />
       <CaseStudyHero project={project} />
 
       <Section className="bg-surface/30">
@@ -163,58 +391,12 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </section>
             </div>
 
-            <aside className="rounded-lg border border-border bg-surface p-6">
-              <h2 className="font-heading text-xl font-semibold tracking-tight text-foreground">
-                Case study snapshot
-              </h2>
-              <dl className="mt-6 space-y-5">
-                {project.client ? (
-                  <div>
-                    <dt className="text-sm font-medium text-muted">Client</dt>
-                    <dd className="mt-1 text-sm text-foreground">{project.client}</dd>
-                  </div>
-                ) : null}
-                {project.employer ? (
-                  <div>
-                    <dt className="text-sm font-medium text-muted">Employer</dt>
-                    <dd className="mt-1 text-sm text-foreground">{project.employer}</dd>
-                  </div>
-                ) : null}
-                {project.role ? (
-                  <div>
-                    <dt className="text-sm font-medium text-muted">Role</dt>
-                    <dd className="mt-1 text-sm text-foreground">{project.role}</dd>
-                  </div>
-                ) : null}
-                {project.duration ? (
-                  <div>
-                    <dt className="text-sm font-medium text-muted">Duration</dt>
-                    <dd className="mt-1 text-sm text-foreground">{project.duration}</dd>
-                  </div>
-                ) : null}
-                <div>
-                  <dt className="text-sm font-medium text-muted">Primary outcome</dt>
-                  <dd className="mt-1 font-heading text-2xl font-semibold text-foreground">
-                    {project.metrics[0].value}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-muted">Technology count</dt>
-                  <dd className="mt-1 text-sm text-foreground">
-                    {project.technologies.length} core tools and platforms
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-muted">Focus area</dt>
-                  <dd className="mt-1 text-sm text-foreground">
-                    Cloud infrastructure, automation, and operational reliability
-                  </dd>
-                </div>
-              </dl>
-            </aside>
+            <ProjectContextPanel project={project} />
           </div>
         </Container>
       </Section>
+
+      <ArchitecturePreview project={project} />
 
       {project.role ? (
         <Section className="bg-surface/30">
@@ -440,11 +622,16 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Related Work
             </p>
-            <H2 className="mt-3">Adjacent case studies.</H2>
+            <H2 className="mt-3">Adjacent infrastructure case studies.</H2>
+            <Paragraph className="mt-4">
+              Related work with overlapping cloud, platform, SRE, security, or automation themes.
+            </Paragraph>
           </div>
           <ProjectsGrid projects={relatedProjects} />
         </Container>
       </Section>
+
+      <DiscussSimilarWorkCta project={project} />
     </>
   );
 }

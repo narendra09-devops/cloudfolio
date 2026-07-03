@@ -22,6 +22,11 @@ export const metadata: Metadata = {
     "DevOps Engineer",
     "CloudFolio",
   ],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   ...createPageMetadata({
     title: "CloudFolio | Narendra Pratap Singh",
     description:
@@ -91,7 +96,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const analyticsEnabled = process.env.NEXT_PUBLIC_VERCEL_ANALYTICS !== "false";
+  const analyticsEnabled =
+    process.env.NEXT_PUBLIC_VERCEL_ANALYTICS === "true" || process.env.VERCEL_ENV === "production";
 
   return (
     <html lang="en" suppressHydrationWarning>

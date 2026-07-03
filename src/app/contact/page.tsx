@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { H1, H2, Paragraph } from "@/components/ui/heading";
 import { Section } from "@/components/ui/section";
@@ -177,14 +177,15 @@ export default function ContactPage() {
 
             <Card className="border-primary/15 bg-card/70 shadow-2xl shadow-primary/10 backdrop-blur-xl">
               <CardHeader>
-                <CardTitle>Fastest ways to reach me</CardTitle>
+                <h2 className="font-heading text-xl font-semibold leading-tight tracking-tight text-foreground">
+                  Fastest ways to reach me
+                </h2>
               </CardHeader>
               <CardContent className="grid gap-3">
                 {contactCards.slice(0, 3).map((item) => {
                   const Icon = item.icon;
                   return (
                     <a
-                      aria-label={`Open ${item.title}`}
                       className="group flex items-center gap-3 rounded-lg border border-border bg-background/60 p-3 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-primary/40 hover:bg-surface hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       download={item.download}
                       href={item.href}
@@ -225,7 +226,6 @@ export default function ContactPage() {
               const Icon = item.icon;
               return (
                 <a
-                  aria-label={`Open ${item.title} contact option`}
                   className={`group block h-full rounded-lg border p-px shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${item.accent}`}
                   download={item.download}
                   href={item.href}
@@ -393,6 +393,10 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <p className="mt-4 rounded-lg border border-blue-400/20 bg-blue-500/10 px-3 py-2 text-sm leading-6 text-muted">
+                  This form is a visual contact helper. Please use Email Me or LinkedIn to contact
+                  me directly.
+                </p>
+                <p className="mt-3 rounded-lg border border-emerald-400/20 bg-emerald-500/10 px-3 py-2 text-sm leading-6 text-muted">
                   Add the role, location, sponsorship status, interview timeline, and a short
                   company overview when reaching out by email or LinkedIn.
                 </p>

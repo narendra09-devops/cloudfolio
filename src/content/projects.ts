@@ -30,6 +30,9 @@ export type Project = {
   client?: string;
   role?: string;
   duration?: string;
+  projectType?: string;
+  teamSize?: string;
+  primaryOutcome?: string;
   environmentScale?: string[];
   dataCollected?: string[];
   technicalChallenges?: string[];
@@ -48,6 +51,9 @@ export const projects: Project[] = [
     client: "Confidential Enterprise Customer",
     role: "Cloud Site Reliability Engineer / Lead Digital Platform Engineer",
     duration: "November 2025 - April 2026",
+    projectType: "SRE Automation Project",
+    teamSize: "Cross-functional infrastructure, operations, finance, and business stakeholders",
+    primaryOutcome: "900+ infrastructure assets reconciled",
     problem:
       "The organization had no centralized dashboard or authoritative inventory for virtual workloads across Environment A and Environment B. Workload state was split across the virtualization platform, billing platform, and operational spreadsheets, leaving inactive and orphaned workloads powered on and consuming compute, storage, backup capacity, licensing, and infrastructure spend.",
     solution:
@@ -210,6 +216,9 @@ export const projects: Project[] = [
     client: "Confidential Enterprise Customer",
     role: "Senior Cloud Infrastructure Engineer / Site Reliability Engineer / Cloud Security Engineer",
     duration: "January 2023 - June 2023",
+    projectType: "Cloud Security Automation Project",
+    teamSize: "Security, infrastructure, platform, and application operations teams",
+    primaryOutcome: "65% reduction in critical findings",
     problem:
       "Security Hub findings were visible, but remediation was inconsistent because ownership, severity handling, evidence collection, and repeatable runbooks were fragmented across environments.",
     solution:
@@ -349,6 +358,11 @@ export const projects: Project[] = [
     slug: "sap-development-environment-cost-optimization",
     summary:
       "Cost optimization initiative for SAP development infrastructure using schedules, rightsizing, and utilization review.",
+    role: "Cloud Infrastructure Engineer",
+    duration: "Project-based optimization initiative",
+    projectType: "Cost Optimization Project",
+    teamSize: "Infrastructure, SAP application, and finance stakeholders",
+    primaryOutcome: "32% reduction in non-production monthly spend",
     problem:
       "SAP development environments were consuming steady-state infrastructure spend even when engineering activity was intermittent.",
     solution:
@@ -373,6 +387,39 @@ export const projects: Project[] = [
       "Rightsizing decisions need both utilization data and application owner validation.",
       "Savings programs should include a feedback loop so optimizations remain durable.",
     ],
+    environmentScale: [
+      "SAP development infrastructure with intermittent engineering usage patterns.",
+      "Non-production AWS resources reviewed for idle runtime and rightsizing opportunities.",
+      "Cost decisions coordinated between engineering owners and finance stakeholders.",
+    ],
+    technicalChallenges: [
+      "Development environments needed predictable access while reducing idle runtime.",
+      "Rightsizing required utilization evidence and application owner validation.",
+      "Cost guardrails had to avoid disrupting active SAP development work.",
+    ],
+    implementation: [
+      {
+        title: "Usage and cost analysis",
+        items: [
+          "Reviewed CloudWatch and Cost Explorer signals to identify idle runtime and oversized resources.",
+          "Mapped optimization candidates to SAP development usage windows and ownership inputs.",
+        ],
+      },
+      {
+        title: "Scheduling and rightsizing",
+        items: [
+          "Introduced scheduled availability patterns for non-production resources.",
+          "Recommended rightsizing changes where utilization data supported safe reductions.",
+        ],
+      },
+      {
+        title: "Governance loop",
+        items: [
+          "Established recurring cost review checkpoints.",
+          "Created a repeatable model for future non-production optimization reviews.",
+        ],
+      },
+    ],
     architecture: [
       "Usage telemetry",
       "Schedule policies",
@@ -385,6 +432,11 @@ export const projects: Project[] = [
     slug: "cloud-architecture-design-framework",
     summary:
       "A reusable cloud architecture framework for standardizing design reviews, operational readiness, and platform decisions.",
+    role: "Cloud Architect / Platform Engineer",
+    duration: "Framework development initiative",
+    projectType: "Platform Engineering Project",
+    teamSize: "Platform, application, security, and reliability reviewers",
+    primaryOutcome: "90% review consistency across the checkpoint model",
     problem:
       "Architecture reviews varied by project, which made reliability, security, cost, and operational readiness difficult to compare consistently.",
     solution:
@@ -416,6 +468,39 @@ export const projects: Project[] = [
       "Good templates capture tradeoffs and ownership, not just diagrams.",
       "Framework adoption improves when review outputs are reusable in delivery work.",
     ],
+    environmentScale: [
+      "Reusable review framework for cloud workload design and operational readiness.",
+      "Architecture decisions mapped across reliability, security, cost, and operations criteria.",
+      "Reference patterns designed for repeated platform and application team use.",
+    ],
+    technicalChallenges: [
+      "Architecture reviews varied by team and project phase.",
+      "Reliability and security tradeoffs were difficult to compare consistently.",
+      "Review outputs needed to support delivery work, not just governance documentation.",
+    ],
+    implementation: [
+      {
+        title: "Review model",
+        items: [
+          "Defined decision checkpoints for reliability, security, cost, operations, and delivery readiness.",
+          "Mapped review questions to AWS Well-Architected and platform standards.",
+        ],
+      },
+      {
+        title: "Reusable patterns",
+        items: [
+          "Documented repeatable reference patterns for common cloud workload decisions.",
+          "Captured architecture rationale using decision records and structured review outputs.",
+        ],
+      },
+      {
+        title: "Adoption support",
+        items: [
+          "Created lightweight templates to reduce review friction.",
+          "Focused governance language on acceleration, risk clarity, and implementation reuse.",
+        ],
+      },
+    ],
     architecture: ["Design intake", "Decision records", "Reference patterns", "Readiness review"],
   },
   {
@@ -423,6 +508,11 @@ export const projects: Project[] = [
     slug: "ssl-lifecycle-automation-platform",
     summary:
       "Certificate lifecycle automation for discovery, expiration tracking, renewal coordination, and service reliability.",
+    role: "SRE / Infrastructure Automation Engineer",
+    duration: "Lifecycle automation initiative",
+    projectType: "SRE Automation Project",
+    teamSize: "Infrastructure, service owner, DNS, and operations stakeholders",
+    primaryOutcome: "0 certificate expiry incidents after proactive tracking",
     problem:
       "Certificate expirations were tracked manually, creating avoidable outage risk and inconsistent renewal ownership.",
     solution:
@@ -447,6 +537,39 @@ export const projects: Project[] = [
       "Discovery should include DNS and endpoint checks because inventories drift.",
       "Alert timing matters; too early is ignored, too late becomes an incident.",
     ],
+    environmentScale: [
+      "Internet-facing and internal service endpoints requiring certificate lifecycle visibility.",
+      "DNS and endpoint discovery inputs used to account for inventory drift.",
+      "Renewal ownership coordinated across infrastructure and service teams.",
+    ],
+    technicalChallenges: [
+      "Certificate ownership was not continuously maintained across all services.",
+      "Manual tracking created avoidable outage risk near expiration windows.",
+      "Discovery needed to cover both known inventories and live endpoint behavior.",
+    ],
+    implementation: [
+      {
+        title: "Discovery and tracking",
+        items: [
+          "Built certificate discovery across endpoint and DNS inputs.",
+          "Tracked expiration windows and service ownership for monitored endpoints.",
+        ],
+      },
+      {
+        title: "Alerting workflow",
+        items: [
+          "Implemented 30, 15, and 7 day alert checkpoints before certificate expiry.",
+          "Routed renewal visibility to accountable service owners.",
+        ],
+      },
+      {
+        title: "Reliability controls",
+        items: [
+          "Reduced expiry risk through proactive review cadence.",
+          "Created repeatable renewal coordination workflows for critical services.",
+        ],
+      },
+    ],
     architecture: [
       "Endpoint discovery",
       "Certificate scanner",
@@ -459,6 +582,11 @@ export const projects: Project[] = [
     slug: "infrastructure-visibility-dashboard",
     summary:
       "Operational dashboard for infrastructure status, ownership, health signals, and executive-ready service visibility.",
+    role: "Platform Engineer / Observability Engineer",
+    duration: "Dashboard delivery initiative",
+    projectType: "Platform Engineering Project",
+    teamSize: "Infrastructure, operations, leadership, and service owner stakeholders",
+    primaryOutcome: "80% faster status lookup during operational reviews",
     problem:
       "Infrastructure health and ownership data lived in separate tools, forcing teams to assemble status manually during reviews and incidents.",
     solution:
@@ -483,6 +611,39 @@ export const projects: Project[] = [
       "Operational views should separate signal from diagnostic detail.",
       "A daily refresh cadence is often more valuable than real-time data for leadership review.",
     ],
+    environmentScale: [
+      "Multiple infrastructure health, ownership, and operational risk data sources.",
+      "Dashboard views designed for engineering reviews, incidents, and leadership summaries.",
+      "Daily refresh cadence optimized for status clarity and review readiness.",
+    ],
+    technicalChallenges: [
+      "Infrastructure health and ownership data lived in separate tools.",
+      "Manual status assembly slowed incident and review conversations.",
+      "Dashboard signals needed clear action paths rather than raw diagnostic noise.",
+    ],
+    implementation: [
+      {
+        title: "Data model",
+        items: [
+          "Connected inventory, health indicators, ownership metadata, and operational risk signals.",
+          "Separated review-ready status from deeper diagnostic detail.",
+        ],
+      },
+      {
+        title: "Dashboard experience",
+        items: [
+          "Created consolidated views for infrastructure status and ownership visibility.",
+          "Designed cards and exports for daily leadership summaries.",
+        ],
+      },
+      {
+        title: "Operational workflow",
+        items: [
+          "Made recurring risks visible to improve reliability prioritization.",
+          "Reduced dependency on individual engineers for basic infrastructure status lookup.",
+        ],
+      },
+    ],
     architecture: ["Source integrations", "Health model", "Dashboard views", "Review exports"],
   },
   {
@@ -490,6 +651,11 @@ export const projects: Project[] = [
     slug: "operational-backlog-reduction-initiative",
     summary:
       "Program to reduce recurring infrastructure operations backlog through prioritization, automation, and clearer service ownership.",
+    role: "SRE / Operations Automation Engineer",
+    duration: "Operational improvement program",
+    projectType: "SRE Automation Project",
+    teamSize: "Infrastructure operations, service owners, and delivery stakeholders",
+    primaryOutcome: "45% reduction across targeted operational queues",
     problem:
       "A large backlog of recurring operational tasks was slowing delivery and masking higher-risk infrastructure work.",
     solution:
@@ -510,6 +676,39 @@ export const projects: Project[] = [
       "Automation candidates should be selected by frequency, risk, and handoff cost.",
       "Visible throughput metrics change stakeholder conversations from anecdotal to factual.",
     ],
+    environmentScale: [
+      "Recurring infrastructure operations backlog across targeted service queues.",
+      "Tasks categorized by risk, toil, owner, and automation potential.",
+      "Throughput reporting used to improve stakeholder visibility.",
+    ],
+    technicalChallenges: [
+      "Recurring work masked higher-risk infrastructure priorities.",
+      "Backlog intake needed control so the queue did not refill after cleanup.",
+      "Automation candidates required selection by frequency, risk, and handoff cost.",
+    ],
+    implementation: [
+      {
+        title: "Backlog taxonomy",
+        items: [
+          "Segmented operational tasks by risk, toil, frequency, and service ownership.",
+          "Separated urgent work from low-value queue noise.",
+        ],
+      },
+      {
+        title: "Automation delivery",
+        items: [
+          "Automated repeatable tasks where the risk and handoff cost justified investment.",
+          "Standardized recurring operational workflows for infrastructure teams.",
+        ],
+      },
+      {
+        title: "Throughput visibility",
+        items: [
+          "Introduced reporting that made progress and constraints visible.",
+          "Improved prioritization conversations with factual queue data.",
+        ],
+      },
+    ],
     architecture: [
       "Backlog taxonomy",
       "Automation candidates",
@@ -522,6 +721,11 @@ export const projects: Project[] = [
     slug: "sre-automation-toolkit",
     summary:
       "Reusable SRE automation toolkit for operational checks, incident support, reporting, and infrastructure maintenance workflows.",
+    role: "SRE Automation Engineer",
+    duration: "Reusable tooling initiative",
+    projectType: "SRE Automation Project",
+    teamSize: "SRE, infrastructure, and incident response stakeholders",
+    primaryOutcome: "20+ reusable commands for common operational workflows",
     problem:
       "SRE tasks were solved repeatedly with one-off scripts, which created inconsistent behavior and duplicated maintenance effort.",
     solution:
@@ -545,6 +749,39 @@ export const projects: Project[] = [
       "Toolkits succeed when command interfaces stay predictable and boring.",
       "Documentation should live beside the automation so usage does not drift.",
       "Reusable checks should return actionable output, not raw noise.",
+    ],
+    environmentScale: [
+      "Reusable operational commands for infrastructure checks, maintenance, and incident support.",
+      "Toolkit workflows designed for versioned review and team extension.",
+      "Runbook-aligned automation used to reduce repeated one-off scripting.",
+    ],
+    technicalChallenges: [
+      "Repeated one-off scripts created inconsistent operational behavior.",
+      "Incident checks needed predictable interfaces and actionable output.",
+      "Shared tooling required documentation and validation to avoid drift.",
+    ],
+    implementation: [
+      {
+        title: "Command design",
+        items: [
+          "Packaged repeated operational checks into reusable commands.",
+          "Kept command interfaces predictable so incident usage stayed simple.",
+        ],
+      },
+      {
+        title: "Runbook alignment",
+        items: [
+          "Mapped toolkit workflows to documented incident and maintenance procedures.",
+          "Returned actionable output instead of raw diagnostic noise.",
+        ],
+      },
+      {
+        title: "Versioned maintenance",
+        items: [
+          "Organized automation for review, reuse, and extension across teams.",
+          "Reduced duplicated scripts through shared libraries and CI validation.",
+        ],
+      },
     ],
     architecture: ["CLI commands", "Shared libraries", "Runbook workflows", "CI validation"],
   },

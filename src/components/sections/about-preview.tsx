@@ -37,8 +37,13 @@ export function AboutPreview() {
               operational practices that reduce manual toil while improving delivery confidence.
             </Paragraph>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <ButtonLink className="w-full sm:w-auto" href="/about" variant="outline">
-                Learn More
+              <ButtonLink
+                aria-label="Learn more about Narendra Pratap Singh"
+                className="w-full sm:w-auto"
+                href="/about"
+                variant="outline"
+              >
+                Learn About Narendra
               </ButtonLink>
               <ButtonLink className="w-full sm:w-auto" href="/recruiter" variant="ghost">
                 Recruiter Hub

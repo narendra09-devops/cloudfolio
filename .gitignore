@@ -32,6 +32,8 @@ out/
 # Test artifacts
 playwright-report/
 test-results/
+.lighthouseci/
+C:*/
 
 # Temporary files
 tmp/

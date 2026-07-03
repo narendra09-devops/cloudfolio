@@ -63,6 +63,10 @@ export default async function DashboardPage() {
             </div>
           ) : null}
 
+          <div className="sr-only">
+            <H2>GitHub profile and engineering metrics.</H2>
+          </div>
+
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <GithubProfileCard profile={github.profile} />
             <MetricsDashboard languages={github.languages} repositories={github.repositories} />

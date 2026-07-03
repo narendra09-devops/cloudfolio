@@ -251,6 +251,7 @@ function HeroSection({ project }: { project: Project }) {
       <div className="mx-auto grid max-w-[1400px] gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
           <div className="flex flex-wrap gap-2">
+            <Badge variant="primary">Cloud Security Automation Project</Badge>
             <Badge variant="primary">AWS Security</Badge>
             <Badge variant="secondary">SRE Automation</Badge>
             <Badge variant="success">Compliance</Badge>
@@ -291,9 +292,11 @@ function HeroSection({ project }: { project: Project }) {
           </p>
           <dl className="mt-5 grid gap-4 sm:grid-cols-2">
             {[
+              ["Project Type", "Cloud Security Automation Project"],
               ["Customer", "Confidential Enterprise Customer"],
               ["Industry", "Global Hosting Provider"],
               ["Duration", "Jan 2023 - Jun 2023"],
+              ["Team Size", "Security, infrastructure, platform, and application operations teams"],
               ["Environment", "Production AWS Enterprise Environment"],
               ["Scale", "Multi-account AWS Organization"],
               ["Primary Outcome", "65% reduction in critical findings"],
@@ -517,6 +520,7 @@ function SnapshotAndTechnologies({ project }: { project: Project }) {
               ["Industry", "Global Hosting Provider"],
               ["Environment", "Production AWS Enterprise Environment"],
               ["Scale", "Multi-account AWS Organization"],
+              ["Team Size", "Security, infrastructure, platform, and application operations teams"],
               ["Role", "Senior Cloud Infrastructure Engineer / SRE"],
               ["Primary Outcome", "65% reduction in critical findings"],
               ["Focus Areas", "Cloud Security, Automation, Compliance, Operational Excellence"],
