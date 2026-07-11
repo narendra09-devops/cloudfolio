@@ -153,7 +153,7 @@ function ProjectStructuredData({
         },
         {
           "@type": "Question",
-          name: "What related infrastructure work is available?",
+          name: "What related engineering work is available?",
           acceptedAnswer: {
             "@type": "Answer",
             text: relatedProjects.map((relatedProject) => relatedProject.title).join(", "),
@@ -316,6 +316,8 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   }
 
   const relatedProjects = getRelatedProjects(project);
+  const roleResponsibilities =
+    project.implementation?.flatMap((section) => section.items).slice(0, 6) ?? [];
 
   if (project.slug === "vm-audit-automation-platform") {
     return (
@@ -350,7 +352,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Metrics Dashboard
             </p>
-            <H2 className="mt-3">Measured infrastructure outcomes.</H2>
+            <H2 className="mt-3">Project outcomes and indicators.</H2>
           </div>
           <MetricsCards metrics={project.metrics} />
         </Container>
@@ -365,14 +367,14 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   Executive Summary
                 </p>
                 <H2 className="mt-3" id="summary-heading">
-                  A single source of truth for VPS infrastructure.
+                  Project overview and engineering context.
                 </H2>
                 <Paragraph className="mt-4">{project.summary}</Paragraph>
               </section>
 
               <section aria-labelledby="problem-heading">
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
-                  Business Problem
+                  Project Challenge
                 </p>
                 <H2 className="mt-3" id="problem-heading">
                   The operational challenge.
@@ -406,7 +408,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                   My Role
                 </p>
-                <H2 className="mt-3">Lead engineer for audit, automation, and safe execution.</H2>
+                <H2 className="mt-3">Engineering role and implementation focus.</H2>
               </div>
               <Card>
                 <CardContent className="p-6">
@@ -418,21 +420,19 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       {project.role}
                     </h3>
                   </div>
-                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                    {[
-                      "Designed the audit and reconciliation approach.",
-                      "Developed automation scripts and reporting workflows.",
-                      "Collected, validated, and compared VM inventory records.",
-                      "Coordinated stakeholder approvals and change requests.",
-                      "Automated backup, restore, suspend, and unsuspend processes.",
-                      "Executed controlled VM decommissioning with recovery validation.",
-                    ].map((responsibility) => (
-                      <li className="flex gap-3 text-sm leading-6 text-muted" key={responsibility}>
-                        <span className="mt-2 size-1.5 shrink-0 rounded-full bg-secondary" />
-                        <span>{responsibility}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {roleResponsibilities.length > 0 ? (
+                    <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                      {roleResponsibilities.map((responsibility) => (
+                        <li
+                          className="flex gap-3 text-sm leading-6 text-muted"
+                          key={responsibility}
+                        >
+                          <span className="mt-2 size-1.5 shrink-0 rounded-full bg-secondary" />
+                          <span>{responsibility}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </CardContent>
               </Card>
             </div>
@@ -447,7 +447,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                 Environment & Challenges
               </p>
-              <H2 className="mt-3">Scale, evidence, and operational risk.</H2>
+              <H2 className="mt-3">Environment, inputs, and technical challenges.</H2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
               {project.environmentScale ? (
@@ -455,15 +455,15 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                   eyebrow="Environment"
                   icon={<Server aria-hidden="true" className="size-5" />}
                   items={project.environmentScale}
-                  title="Infrastructure scale"
+                  title="Environment scope"
                 />
               ) : null}
               {project.dataCollected ? (
                 <DetailList
-                  eyebrow="Data Collected"
+                  eyebrow="Project Inputs"
                   icon={<Database aria-hidden="true" className="size-5" />}
                   items={project.dataCollected}
-                  title="Audit evidence"
+                  title="Technical inputs"
                 />
               ) : null}
               {project.technicalChallenges ? (
@@ -487,7 +487,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                   Key Achievements
                 </p>
-                <H2 className="mt-3">What changed because of the platform.</H2>
+                <H2 className="mt-3">What the project delivered.</H2>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
                 {project.keyAchievements.map((achievement) => (
@@ -512,7 +512,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
                 Implementation
               </p>
-              <H2 className="mt-3">Automation delivered as reusable operational tooling.</H2>
+              <H2 className="mt-3">How the solution was implemented.</H2>
             </div>
             <div className="grid gap-4 lg:grid-cols-3">
               {project.implementation.map((section) => (
@@ -549,8 +549,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
               </p>
               <H2 className="mt-3">Tools and platforms.</H2>
               <Paragraph className="mt-4">
-                Core technologies used to collect infrastructure evidence, reconcile billing state,
-                automate lifecycle operations, and preserve recovery options.
+                Core technologies used to design, implement, and demonstrate the project.
               </Paragraph>
             </div>
             <div className="rounded-lg border border-border bg-background/70 p-6">
@@ -566,7 +565,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <Card className="h-full">
               <CardContent className="p-6">
                 <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
-                  Business Impact
+                  Project Impact
                 </p>
                 <H2 className="mt-3 text-3xl">Why it mattered.</H2>
                 <ul className="mt-6 space-y-4">
@@ -622,7 +621,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
               Related Work
             </p>
-            <H2 className="mt-3">Adjacent infrastructure case studies.</H2>
+            <H2 className="mt-3">Related engineering case studies.</H2>
             <Paragraph className="mt-4">
               Related work with overlapping cloud, platform, SRE, security, or automation themes.
             </Paragraph>

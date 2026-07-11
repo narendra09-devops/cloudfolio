@@ -28,6 +28,7 @@ export type Project = {
   outcomes?: string[];
   seniorityKeywords?: string[];
   searchableText?: string;
+  repositoryUrl?: string;
   metrics: ProjectMetric[];
   businessImpact: string[];
   lessonsLearned: string[];
@@ -47,6 +48,130 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "Open-Source Kubernetes Platform on AWS EKS",
+    slug: "open-source-kubernetes-platform-aws-eks",
+    category: "Platform Engineering",
+    summary:
+      "Personal open-source project demonstrating a production-inspired Kubernetes platform on AWS EKS through hands-on implementation of infrastructure, cluster, delivery, and observability patterns.",
+    role: "Platform Engineer",
+    duration: "Personal open-source project",
+    projectType: "Personal Open-Source Project",
+    primaryOutcome: "Production-inspired AWS EKS platform engineering demonstration",
+    problem:
+      "Kubernetes platform engineering requires more than provisioning a cluster. A useful hands-on implementation must connect cloud infrastructure, cluster configuration, workload delivery, observability, and operational practices in a coherent and reproducible design.",
+    solution:
+      "Built a personal open-source AWS EKS platform as a hands-on implementation of production-inspired platform engineering patterns, organizing infrastructure provisioning, Kubernetes configuration, application delivery, observability, and operational documentation into a reusable project structure.",
+    technologies: [
+      "AWS",
+      "Amazon EKS",
+      "Kubernetes",
+      "Terraform",
+      "Helm",
+      "GitHub Actions",
+      "Prometheus",
+      "Grafana",
+    ],
+    focusAreas: [
+      "Platform Engineering",
+      "Kubernetes",
+      "AWS",
+      "Infrastructure as Code",
+      "CI/CD",
+      "Observability",
+      "Open Source",
+    ],
+    outcomes: [
+      "Hands-on AWS EKS implementation",
+      "Production-inspired platform design",
+      "Reusable infrastructure and deployment patterns",
+      "Documented platform engineering learning",
+    ],
+    seniorityKeywords: [
+      "Platform Engineer",
+      "Cloud Infrastructure Engineer",
+      "Kubernetes Engineer",
+      "DevOps Engineer",
+    ],
+    searchableText:
+      "personal open-source project AWS EKS Kubernetes platform engineering Terraform Helm GitHub Actions CI/CD Prometheus Grafana observability infrastructure as code hands-on implementation production-inspired platform engineering demonstration",
+    metrics: [
+      {
+        label: "Implementation",
+        value: "Hands-on",
+        context: "AWS EKS platform engineering demonstration",
+      },
+      {
+        label: "Design approach",
+        value: "Production-inspired",
+        context: "without representing the project as a production platform",
+      },
+      {
+        label: "Project classification",
+        value: "Open source",
+        context: "personal learning and engineering project",
+      },
+    ],
+    businessImpact: [
+      "Demonstrates how cloud infrastructure, Kubernetes, delivery automation, and observability can be organized as one platform engineering workflow.",
+      "Provides a reusable learning reference for AWS EKS platform design and implementation.",
+      "Shows hands-on implementation skills without presenting the project as employer, customer, or production work.",
+    ],
+    lessonsLearned: [
+      "A Kubernetes platform should be treated as a collection of operational capabilities rather than only a managed cluster.",
+      "Infrastructure and cluster configuration are easier to understand and reproduce when expressed through version-controlled automation.",
+      "Delivery workflows, observability, and operational documentation should be designed alongside the cluster foundation.",
+      "Production-inspired controls can be demonstrated without claiming production usage, business impact, or service-level improvements.",
+    ],
+    environmentScale: [
+      "Personal AWS environment used for hands-on platform engineering implementation.",
+      "Amazon EKS cluster organized as a production-inspired learning platform.",
+      "Open-source repository structure covering infrastructure, cluster configuration, delivery, and observability.",
+    ],
+    technicalChallenges: [
+      "Connecting AWS infrastructure provisioning with Kubernetes cluster configuration.",
+      "Keeping platform configuration reproducible and understandable through infrastructure as code.",
+      "Designing delivery and observability workflows as integrated platform capabilities.",
+      "Applying production-inspired practices while clearly preserving the project's personal and non-production classification.",
+    ],
+    implementation: [
+      {
+        title: "AWS and EKS foundation",
+        items: [
+          "Organized the cloud infrastructure required for an Amazon EKS-based Kubernetes platform.",
+          "Used infrastructure-as-code patterns to make the environment reproducible and reviewable.",
+        ],
+      },
+      {
+        title: "Kubernetes platform configuration",
+        items: [
+          "Structured cluster configuration and workload deployment as version-controlled platform code.",
+          "Applied reusable packaging and configuration patterns for Kubernetes resources.",
+        ],
+      },
+      {
+        title: "Delivery and observability",
+        items: [
+          "Connected automated validation and delivery workflows to the platform repository.",
+          "Included monitoring and visualization patterns as part of the platform engineering demonstration.",
+        ],
+      },
+    ],
+    keyAchievements: [
+      "Created a personal open-source AWS EKS platform engineering project.",
+      "Implemented a production-inspired Kubernetes architecture through hands-on work.",
+      "Organized infrastructure, cluster configuration, delivery, and observability concerns into a coherent project.",
+      "Documented learning outcomes and operational design considerations without making production or business-impact claims.",
+    ],
+    architecture: [
+      "AWS network and infrastructure foundation",
+      "Amazon EKS control plane and worker capacity",
+      "Kubernetes platform configuration",
+      "Application packaging and deployment",
+      "CI/CD validation and delivery",
+      "Metrics collection and visualization",
+    ],
+  },
   {
     title: "VM Audit & Automation Platform - Infrastructure Optimization",
     slug: "vm-audit-automation-platform",

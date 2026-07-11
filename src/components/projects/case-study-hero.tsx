@@ -10,6 +10,8 @@ type CaseStudyHeroProps = {
 };
 
 export function CaseStudyHero({ project }: CaseStudyHeroProps) {
+  const isPersonalOpenSourceProject = project.projectType === "Personal Open-Source Project";
+
   return (
     <section className="border-b border-border bg-[radial-gradient(circle_at_12%_12%,rgb(var(--color-primary)/0.12),transparent_24rem),radial-gradient(circle_at_84%_14%,rgb(var(--color-secondary)/0.10),transparent_20rem),linear-gradient(135deg,rgb(var(--color-primary)/0.04),transparent_42%)] py-10 sm:py-12 lg:py-16">
       <Container>
@@ -22,7 +24,7 @@ export function CaseStudyHero({ project }: CaseStudyHeroProps) {
         </Link>
         <div className="mt-8 max-w-4xl">
           <p className="font-mono text-sm font-medium uppercase tracking-[0.16em] text-primary">
-            Case Study
+            {isPersonalOpenSourceProject ? "Open Source Project" : "Case Study"}
           </p>
           <h1 className="mt-4 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {project.title}
@@ -31,9 +33,25 @@ export function CaseStudyHero({ project }: CaseStudyHeroProps) {
         </div>
         <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <TechnologyBadges technologies={project.technologies} />
-          <ButtonLink href="/contact" variant="outline">
-            Discuss similar work
-          </ButtonLink>
+          {project.repositoryUrl ? (
+            <ButtonLink
+              aria-label={`View the GitHub repository for ${project.title} (opens in a new tab)`}
+              href={project.repositoryUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+              variant="outline"
+            >
+              GitHub Repository
+            </ButtonLink>
+          ) : isPersonalOpenSourceProject ? (
+            <ButtonLink href="/architecture" variant="outline">
+              View Architecture
+            </ButtonLink>
+          ) : (
+            <ButtonLink href="/contact" variant="outline">
+              Discuss similar work
+            </ButtonLink>
+          )}
         </div>
       </Container>
     </section>
